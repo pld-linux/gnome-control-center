@@ -6,7 +6,7 @@ Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
 Version:	2.19.91
-Release:	1
+Release:	2
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
@@ -103,6 +103,7 @@ Summary:	GNOME Control Center gnome-window-settings library
 Summary(pl.UTF-8):	Biblioteka Control Center gnome-window-settings
 Group:		Development/Libraries
 Requires:	libgnomeui >= 2.19.1
+Provides:	control-center-libs = %{epoch}:%{version}-%{release}
 Obsoletes:	control-center-libs
 
 %description libs
@@ -123,6 +124,7 @@ Requires:	gnome-menus-devel >= 2.19.90
 Requires:	gtk+2-devel >= 2:2.11.6
 Requires:	libgnomeui-devel >= 2.19.1
 Requires:	librsvg-devel >= 2.18.1
+Provides:	control-center-devel = %{epoch}:%{version}-%{release}
 Obsoletes:	control-center-devel
 
 %description devel
@@ -136,6 +138,7 @@ Summary:	GNOME Control Center static libraries
 Summary(pl.UTF-8):	Statyczne biblioteki GNOME Control Center
 Group:		X11/Development/Libraries
 Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
+Provides:	control-center-static = %{epoch}:%{version}-%{release}
 Obsoletes:	control-center-static
 
 %description static
