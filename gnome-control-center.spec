@@ -246,8 +246,22 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/mime/packages/gnome-theme-package.xml
 %{_iconsdir}/hicolor/*/*/*.png
 %{_iconsdir}/hicolor/*/*/*.svg
-%{_omf_dest_dir}/control-center
 %{_desktopdir}/*.desktop
+%dir %{_omf_dest_dir}/control-center
+%{_omf_dest_dir}/control-center/control-center-C.omf
+%lang(ca) %{_omf_dest_dir}/control-center/control-center-ca.omf
+%lang(en_GB) %{_omf_dest_dir}/control-center/control-center-en_GB.omf
+%lang(es) %{_omf_dest_dir}/control-center/control-center-es.omf
+%lang(fr) %{_omf_dest_dir}/control-center/control-center-fr.omf
+%lang(ja) %{_omf_dest_dir}/control-center/control-center-ja.omf
+%lang(oc) %{_omf_dest_dir}/control-center/control-center-oc.omf
+%lang(pa) %{_omf_dest_dir}/control-center/control-center-pa.omf
+%lang(pt_BR) %{_omf_dest_dir}/control-center/control-center-pt_BR.omf
+%lang(ru) %{_omf_dest_dir}/control-center/control-center-ru.omf
+%lang(sv) %{_omf_dest_dir}/control-center/control-center-sv.omf
+%lang(uk) %{_omf_dest_dir}/control-center/control-center-uk.omf
+%lang(vi) %{_omf_dest_dir}/control-center/control-center-vi.omf
+%lang(zh_CN) %{_omf_dest_dir}/control-center/control-center-zh_CN.omf
 
 %files libs
 %defattr(644,root,root,755)
