@@ -5,13 +5,13 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	2.19.92
+Version:	2.20.0
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/2.19/%{name}-%{version}.tar.bz2
-# Source0-md5:	c7019c6351c46a413a90256762c33e57
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/2.20/%{name}-%{version}.tar.bz2
+# Source0-md5:	a3d5f41cd9e30e8f777c5ae43070557b
 Patch0:		%{name}-randr.patch
 Patch1:		%{name}-wm_properties-dir.patch
 Patch3:		%{name}-default_apps.patch
@@ -39,7 +39,7 @@ BuildRequires:	gstreamer-plugins-base-devel >= 0.10.10
 BuildRequires:	gtk+2-devel >= 2:2.11.6
 BuildRequires:	intltool >= 0.36.1
 BuildRequires:	libglade2-devel >= 1:2.6.2
-BuildRequires:	libgnomekbd-devel >= 2.19.91
+BuildRequires:	libgnomekbd-devel >= 2.20.0
 BuildRequires:	libgnomeui-devel >= 2.19.1
 BuildRequires:	librsvg-devel >= 2.18.1
 BuildRequires:	libtool
