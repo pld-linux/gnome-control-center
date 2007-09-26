@@ -5,20 +5,20 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	2.20.0
+Version:	2.20.0.1
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/2.20/%{name}-%{version}.tar.bz2
-# Source0-md5:	a3d5f41cd9e30e8f777c5ae43070557b
+# Source0-md5:	2c14dab486227fe15451468780f11b74
 Patch0:		%{name}-randr.patch
 Patch1:		%{name}-wm_properties-dir.patch
 Patch3:		%{name}-default_apps.patch
 Patch4:		%{name}-capplet.patch
 Patch5:		%{name}-Makefile.patch
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.19.1
+BuildRequires:	GConf2-devel >= 2.20.0
 BuildRequires:	alsa-lib-devel >= 1.0.12
 BuildRequires:	audiofile >= 1:0.2.6
 BuildRequires:	autoconf
@@ -26,26 +26,26 @@ BuildRequires:	automake >= 1:1.9
 BuildRequires:	bison
 BuildRequires:	dbus-glib-devel >= 0.73
 BuildRequires:	esound-devel
-BuildRequires:	evolution-data-server-devel >= 1.11.91
+BuildRequires:	evolution-data-server-devel >= 1.12.0
 BuildRequires:	flex
 BuildRequires:	gettext-devel
-BuildRequires:	gnome-common >= 2.18.0
-BuildRequires:	gnome-desktop-devel >= 2.19.90
-BuildRequires:	gnome-doc-utils >= 0.11.2
-BuildRequires:	gnome-menus-devel >= 2.19.90
-BuildRequires:	gnome-panel-devel >= 2.19.6
-BuildRequires:	gnome-vfs2-devel >= 2.19.91
+BuildRequires:	gnome-common >= 2.20.0
+BuildRequires:	gnome-desktop-devel >= 2.20.0
+BuildRequires:	gnome-doc-utils >= 0.12.0
+BuildRequires:	gnome-menus-devel >= 2.20.0
+BuildRequires:	gnome-panel-devel >= 2.20.0
+BuildRequires:	gnome-vfs2-devel >= 2.20.0
 BuildRequires:	gstreamer-plugins-base-devel >= 0.10.10
-BuildRequires:	gtk+2-devel >= 2:2.11.6
-BuildRequires:	intltool >= 0.36.1
+BuildRequires:	gtk+2-devel >= 2:2.12.0
+BuildRequires:	intltool >= 0.36.2
 BuildRequires:	libglade2-devel >= 1:2.6.2
 BuildRequires:	libgnomekbd-devel >= 2.20.0
-BuildRequires:	libgnomeui-devel >= 2.19.1
+BuildRequires:	libgnomeui-devel >= 2.20.0
 BuildRequires:	librsvg-devel >= 2.18.1
 BuildRequires:	libtool
-BuildRequires:	libxml2-devel >= 1:2.6.29
-BuildRequires:	metacity-devel >= 2:2.19.55
-BuildRequires:	nautilus-devel >= 2.19.91
+BuildRequires:	libxml2-devel >= 1:2.6.30
+BuildRequires:	metacity-devel >= 2:2.20.0
+BuildRequires:	nautilus-devel >= 2.20.0
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper
@@ -58,7 +58,7 @@ Requires(post,postun):	shared-mime-info
 Requires(post,preun):	GConf2
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
 Requires:	desktop-file-utils
-Requires:	gnome-vfs2 >= 2.19.91
+Requires:	gnome-vfs2 >= 2.20.0
 Requires:	gstreamer-audio-effects-base >= 0.10.10
 Provides:	control-center = %{epoch}:%{version}-%{release}
 Obsoletes:	acme
@@ -102,7 +102,7 @@ GNOME вашей системы (такие вещи как фон рабоче�
 Summary:	GNOME Control Center gnome-window-settings library
 Summary(pl.UTF-8):	Biblioteka Control Center gnome-window-settings
 Group:		Development/Libraries
-Requires:	libgnomeui >= 2.19.1
+Requires:	libgnomeui >= 2.20.0
 Provides:	control-center-libs = %{epoch}:%{version}-%{release}
 Obsoletes:	control-center-libs
 
@@ -119,10 +119,10 @@ Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
 Requires:	dbus-glib-devel >= 0.73
 Requires:	fam-devel
-Requires:	gnome-desktop-devel >= 2.19.90
-Requires:	gnome-menus-devel >= 2.19.90
-Requires:	gtk+2-devel >= 2:2.11.6
-Requires:	libgnomeui-devel >= 2.19.1
+Requires:	gnome-desktop-devel >= 2.20.0
+Requires:	gnome-menus-devel >= 2.20.0
+Requires:	gtk+2-devel >= 2:2.12.0
+Requires:	libgnomeui-devel >= 2.20.0
 Requires:	librsvg-devel >= 2.18.1
 Provides:	control-center-devel = %{epoch}:%{version}-%{release}
 Obsoletes:	control-center-devel
