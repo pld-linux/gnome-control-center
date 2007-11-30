@@ -6,7 +6,7 @@ Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
 Version:	2.20.1
-Release:	2
+Release:	3
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
@@ -47,8 +47,10 @@ BuildRequires:	libxml2-devel >= 1:2.6.30
 BuildRequires:	metacity-devel >= 2:2.20.0
 BuildRequires:	nautilus-devel >= 2.20.0
 BuildRequires:	pkgconfig
+BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper
+BuildRequires:	sed >= 4.0
 BuildRequires:	xorg-lib-libXxf86misc-devel
 BuildRequires:	xorg-lib-libxkbfile-devel
 Requires(post,postun):	desktop-file-utils
@@ -157,6 +159,9 @@ Statyczne biblioteki GNOME Control Center.
 %patch4 -p1
 %patch5 -p1
 
+sed -i -e 's#sr\@Latn#sr\@latin#' po/LINGUAS
+mv po/sr\@{Latn,latin}.po
+
 %build
 %{__gnome_doc_prepare}
 %{__gnome_doc_common}
@@ -186,9 +191,7 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/window-manager-settings/*.{a,la}
 rm -f $RPM_BUILD_ROOT%{_libdir}/nautilus/extensions*/*.{a,la}
 rm -f $RPM_BUILD_ROOT%{_libdir}/gnome-vfs-2.0/modules/*.{a,la}
 
-[ -d $RPM_BUILD_ROOT%{_datadir}/locale/sr@latin ] || \
-	mv -f $RPM_BUILD_ROOT%{_datadir}/locale/sr@{Latn,latin}
-%find_lang %{name} --with-gnome --all-name
+%find_lang %{name} --with-gnome --with-omf --all-name
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -251,21 +254,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/*/*/*.png
 %{_iconsdir}/hicolor/*/*/*.svg
 %{_desktopdir}/*.desktop
-%dir %{_omf_dest_dir}/control-center
-%{_omf_dest_dir}/control-center/control-center-C.omf
-%lang(ca) %{_omf_dest_dir}/control-center/control-center-ca.omf
-%lang(en_GB) %{_omf_dest_dir}/control-center/control-center-en_GB.omf
-%lang(es) %{_omf_dest_dir}/control-center/control-center-es.omf
-%lang(fr) %{_omf_dest_dir}/control-center/control-center-fr.omf
-%lang(ja) %{_omf_dest_dir}/control-center/control-center-ja.omf
-%lang(oc) %{_omf_dest_dir}/control-center/control-center-oc.omf
-%lang(pa) %{_omf_dest_dir}/control-center/control-center-pa.omf
-%lang(pt_BR) %{_omf_dest_dir}/control-center/control-center-pt_BR.omf
-%lang(ru) %{_omf_dest_dir}/control-center/control-center-ru.omf
-%lang(sv) %{_omf_dest_dir}/control-center/control-center-sv.omf
-%lang(uk) %{_omf_dest_dir}/control-center/control-center-uk.omf
-%lang(vi) %{_omf_dest_dir}/control-center/control-center-vi.omf
-%lang(zh_CN) %{_omf_dest_dir}/control-center/control-center-zh_CN.omf
 
 %files libs
 %defattr(644,root,root,755)
