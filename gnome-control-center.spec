@@ -5,13 +5,13 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	2.20.1
-Release:	3
+Version:	2.21.2
+Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/2.20/%{name}-%{version}.tar.bz2
-# Source0-md5:	d7420f0fc28937573a13bc5c1633b23b
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/2.21/%{name}-%{version}.tar.bz2
+# Source0-md5:	3dc0b4c9fd1a9a6107b2dc594bffd1be
 Patch0:		%{name}-randr.patch
 Patch1:		%{name}-wm_properties-dir.patch
 Patch3:		%{name}-default_apps.patch
@@ -39,7 +39,7 @@ BuildRequires:	gstreamer-plugins-base-devel >= 0.10.10
 BuildRequires:	gtk+2-devel >= 2:2.12.0
 BuildRequires:	intltool >= 0.36.2
 BuildRequires:	libglade2-devel >= 1:2.6.2
-BuildRequires:	libgnomekbd-devel >= 2.20.0
+BuildRequires:	libgnomekbd-devel >= 2.21.0
 BuildRequires:	libgnomeui-devel >= 2.20.0
 BuildRequires:	librsvg-devel >= 2.18.1
 BuildRequires:	libtool
@@ -238,6 +238,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_sysconfdir}/gconf/schemas/fontilus.schemas
 %{_sysconfdir}/gconf/schemas/themus.schemas
 %{_sysconfdir}/gnome-vfs-2.0/modules/*
+%{_sysconfdir}/xdg/autostart/gnome-at-session.desktop
 %{_sysconfdir}/xdg/menus/gnomecc.menu
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/gnome-settings-daemon
@@ -249,7 +250,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/dbus-1/services/*.service
 %{_datadir}/desktop-directories/*.directory
 %{_datadir}/gnome/cursor-fonts
-%{_datadir}/gnome/autostart/gnome-at-session.desktop
 %{_datadir}/mime/packages/gnome-theme-package.xml
 %{_iconsdir}/hicolor/*/*/*.png
 %{_iconsdir}/hicolor/*/*/*.svg
