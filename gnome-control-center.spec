@@ -5,13 +5,13 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	2.21.2
+Version:	2.21.4
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/2.21/%{name}-%{version}.tar.bz2
-# Source0-md5:	3dc0b4c9fd1a9a6107b2dc594bffd1be
+# Source0-md5:	0674531ced6f9322251d94c4ad3594a2
 Patch0:		%{name}-randr.patch
 Patch1:		%{name}-wm_properties-dir.patch
 Patch3:		%{name}-default_apps.patch
@@ -32,14 +32,15 @@ BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.20.0
 BuildRequires:	gnome-desktop-devel >= 2.20.0
 BuildRequires:	gnome-doc-utils >= 0.12.0
-BuildRequires:	gnome-menus-devel >= 2.20.0
+BuildRequires:	gnome-menus-devel >= 2.21.3
 BuildRequires:	gnome-panel-devel >= 2.20.0
 BuildRequires:	gnome-vfs2-devel >= 2.20.0
 BuildRequires:	gstreamer-plugins-base-devel >= 0.10.10
 BuildRequires:	gtk+2-devel >= 2:2.12.0
+BuildRequires:	hal-devel >= 0.5.9
 BuildRequires:	intltool >= 0.36.2
 BuildRequires:	libglade2-devel >= 1:2.6.2
-BuildRequires:	libgnomekbd-devel >= 2.21.0
+BuildRequires:	libgnomekbd-devel >= 2.21.4.1
 BuildRequires:	libgnomeui-devel >= 2.20.0
 BuildRequires:	librsvg-devel >= 2.18.1
 BuildRequires:	libtool
@@ -122,12 +123,10 @@ Summary(pl.UTF-8):	Pliki nagłówkowe bibliotek GNOME Control Center
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
 Requires:	dbus-glib-devel >= 0.73
-Requires:	fam-devel
 Requires:	gnome-desktop-devel >= 2.20.0
-Requires:	gnome-menus-devel >= 2.20.0
+Requires:	gnome-menus-devel >= 2.21.3
 Requires:	gtk+2-devel >= 2:2.12.0
 Requires:	libgnomeui-devel >= 2.20.0
-Requires:	librsvg-devel >= 2.18.1
 Provides:	control-center-devel = %{epoch}:%{version}-%{release}
 Obsoletes:	control-center-devel
 
@@ -159,8 +158,8 @@ Statyczne biblioteki GNOME Control Center.
 %patch4 -p1
 %patch5 -p1
 
-sed -i -e 's#sr\@Latn#sr\@latin#' po/LINGUAS
-mv po/sr\@{Latn,latin}.po
+sed -i -e 's#sr@Latn#sr@latin#' po/LINGUAS
+mv po/sr@{Latn,latin}.po
 
 %build
 %{__gnome_doc_prepare}
