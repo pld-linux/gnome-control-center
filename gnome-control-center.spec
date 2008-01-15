@@ -5,13 +5,13 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	2.21.4
+Version:	2.21.5
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/2.21/%{name}-%{version}.tar.bz2
-# Source0-md5:	0674531ced6f9322251d94c4ad3594a2
+# Source0-md5:	4de7124991cb34828009317a7e5f7c6a
 Patch0:		%{name}-randr.patch
 Patch1:		%{name}-wm_properties-dir.patch
 Patch3:		%{name}-default_apps.patch
@@ -34,6 +34,7 @@ BuildRequires:	gnome-desktop-devel >= 2.20.0
 BuildRequires:	gnome-doc-utils >= 0.12.0
 BuildRequires:	gnome-menus-devel >= 2.21.3
 BuildRequires:	gnome-panel-devel >= 2.20.0
+BuildRequires:	gnome-settings-daemon-devel >= 2.21.5
 BuildRequires:	gnome-vfs2-devel >= 2.20.0
 BuildRequires:	gstreamer-plugins-base-devel >= 0.10.10
 BuildRequires:	gtk+2-devel >= 2:2.12.0
@@ -61,6 +62,7 @@ Requires(post,postun):	shared-mime-info
 Requires(post,preun):	GConf2
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
 Requires:	desktop-file-utils
+Requires:	gnome-settings-daemon >= 2.21.5
 Requires:	gnome-vfs2 >= 2.20.0
 Requires:	gstreamer-audio-effects-base >= 0.10.10
 Provides:	control-center = %{epoch}:%{version}-%{release}
@@ -240,13 +242,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_sysconfdir}/xdg/autostart/gnome-at-session.desktop
 %{_sysconfdir}/xdg/menus/gnomecc.menu
 %attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_libdir}/gnome-settings-daemon
 %attr(755,root,root) %{_libdir}/nautilus/extensions*/*.so
 %attr(755,root,root) %{_libdir}/gnome-vfs-2.0/modules/lib*.so
 %attr(755,root,root) %{_libdir}/window-manager-settings/*.so
 %dir %{_libdir}/window-manager-settings
 %{_datadir}/gnome-control-center
-%{_datadir}/dbus-1/services/*.service
 %{_datadir}/desktop-directories/*.directory
 %{_datadir}/gnome/cursor-fonts
 %{_datadir}/mime/packages/gnome-theme-package.xml
@@ -262,9 +262,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libgnome-window-settings.so
 %{_libdir}/libgnome-window-settings.la
-%{_includedir}/gnome-settings-daemon-2.0
 %{_includedir}/gnome-window-settings-2.0
-%{_pkgconfigdir}/gnome-settings-daemon.pc
 %{_pkgconfigdir}/gnome-window-settings-2.0.pc
 %{_datadir}/pkgconfig/gnome-keybindings.pc
 
