@@ -22,18 +22,6 @@ diff -aurN control-center-2.13.90.orig/capplets/accessibility/at-properties/at-p
  OnlyShowIn=GNOME;
  X-GNOME-Bugzilla-Bugzilla=GNOME
  X-GNOME-Bugzilla-Product=control-center
-diff -aurN control-center-2.13.90.orig/capplets/accessibility/keyboard/accessibility-keyboard.desktop.in.in control-center-2.13.90/capplets/accessibility/keyboard/accessibility-keyboard.desktop.in.in
---- control-center-2.13.90.orig/capplets/accessibility/keyboard/accessibility-keyboard.desktop.in.in	2006-01-23 12:36:20.000000000 +0100
-+++ control-center-2.13.90/capplets/accessibility/keyboard/accessibility-keyboard.desktop.in.in	2006-01-30 22:35:01.620754000 +0100
-@@ -7,7 +7,7 @@
- Terminal=false
- Type=Application
- StartupNotify=true
--Categories=GNOME;GTK;Settings;X-GNOME-PersonalSettings;Accessibility;
-+Categories=GTK;GNOME;Settings;X-GNOME-PersonalSettings;Accessibility;X-Capplet;
- OnlyShowIn=GNOME;
- X-GNOME-Bugzilla-Bugzilla=GNOME
- X-GNOME-Bugzilla-Product=control-center
 diff -aurN control-center-2.13.90.orig/capplets/appearance/data/gnome-appearance-properties.desktop.in.in control-center-2.13.90/capplets/appearance/data/gnome-appearance-properties.desktop.in.in
 --- control-center-2.13.90.orig/capplets/appearance/data/gnome-appearance-properties.desktop.in.in	2006-01-23 12:36:20.000000000 +0100
 +++ control-center-2.13.90/capplets/appearance/data/gnome-appearance-properties.desktop.in.in	2006-01-30 22:35:18.440754000 +0100
