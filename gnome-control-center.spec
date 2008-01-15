@@ -198,11 +198,7 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/gnome-vfs-2.0/modules/*.{a,la}
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%gconf_schema_install apps_gnome_settings_daemon_default_editor.schemas
-%gconf_schema_install apps_gnome_settings_daemon_keybindings.schemas
-%gconf_schema_install apps_gnome_settings_daemon_screensaver.schemas
 %gconf_schema_install control-center.schemas
-%gconf_schema_install desktop_gnome_font_rendering.schemas
 %gconf_schema_install fontilus.schemas
 %gconf_schema_install themus.schemas
 %scrollkeeper_update_post
@@ -211,11 +207,7 @@ rm -rf $RPM_BUILD_ROOT
 %update_icon_cache hicolor
 
 %preun
-%gconf_schema_uninstall apps_gnome_settings_daemon_default_editor.schemas
-%gconf_schema_uninstall apps_gnome_settings_daemon_keybindings.schemas
-%gconf_schema_uninstall apps_gnome_settings_daemon_screensaver.schemas
 %gconf_schema_uninstall	control-center.schemas
-%gconf_schema_uninstall desktop_gnome_font_rendering.schemas
 %gconf_schema_uninstall fontilus.schemas
 %gconf_schema_uninstall themus.schemas
 
@@ -231,11 +223,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog MAINTAINERS NEWS README
-%{_sysconfdir}/gconf/schemas/apps_gnome_settings_daemon_default_editor.schemas
-%{_sysconfdir}/gconf/schemas/apps_gnome_settings_daemon_keybindings.schemas
-%{_sysconfdir}/gconf/schemas/apps_gnome_settings_daemon_screensaver.schemas
 %{_sysconfdir}/gconf/schemas/control-center.schemas
-%{_sysconfdir}/gconf/schemas/desktop_gnome_font_rendering.schemas
 %{_sysconfdir}/gconf/schemas/fontilus.schemas
 %{_sysconfdir}/gconf/schemas/themus.schemas
 %{_sysconfdir}/gnome-vfs-2.0/modules/*
