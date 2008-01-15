@@ -47,7 +47,7 @@ BuildRequires:	librsvg-devel >= 2.18.1
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.30
 BuildRequires:	metacity-devel >= 2:2.20.0
-BuildRequires:	nautilus-devel >= 2.20.0
+BuildRequires:	nautilus-devel >= 2.21.5
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
