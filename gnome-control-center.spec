@@ -18,36 +18,37 @@ Patch3:		%{name}-default_apps.patch
 Patch4:		%{name}-capplet.patch
 Patch5:		%{name}-Makefile.patch
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.20.0
+BuildRequires:	GConf2-devel >= 2.21.90
 BuildRequires:	alsa-lib-devel >= 1.0.12
 BuildRequires:	audiofile >= 1:0.2.6
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	bison
-BuildRequires:	dbus-glib-devel >= 0.73
+BuildRequires:	dbus-glib-devel >= 0.74
+BuildRequires:	eel-devel >= 2.21.91
 BuildRequires:	esound-devel
-BuildRequires:	evolution-data-server-devel >= 1.12.0
+BuildRequires:	evolution-data-server-devel >= 2.21.91
 BuildRequires:	flex
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.20.0
-BuildRequires:	gnome-desktop-devel >= 2.20.0
-BuildRequires:	gnome-doc-utils >= 0.12.0
-BuildRequires:	gnome-menus-devel >= 2.21.3
-BuildRequires:	gnome-panel-devel >= 2.20.0
-BuildRequires:	gnome-settings-daemon-devel >= 2.21.5
-BuildRequires:	gnome-vfs2-devel >= 2.20.0
+BuildRequires:	gnome-desktop-devel >= 2.21.91
+BuildRequires:	gnome-doc-utils >= 0.12.1
+BuildRequires:	gnome-menus-devel >= 2.21.91
+BuildRequires:	gnome-panel-devel >= 2.21.91
+BuildRequires:	gnome-settings-daemon-devel >= 2.21.91
+BuildRequires:	gnome-vfs2-devel >= 2.21.90
 BuildRequires:	gstreamer-plugins-base-devel >= 0.10.10
-BuildRequires:	gtk+2-devel >= 2:2.12.0
-BuildRequires:	hal-devel >= 0.5.9
-BuildRequires:	intltool >= 0.36.2
+BuildRequires:	gtk+2-devel >= 2:2.12.8
+BuildRequires:	hal-devel >= 0.5.10
+BuildRequires:	intltool >= 0.37.0
 BuildRequires:	libglade2-devel >= 1:2.6.2
 BuildRequires:	libgnomekbd-devel >= 2.21.4.1
-BuildRequires:	libgnomeui-devel >= 2.20.0
-BuildRequires:	librsvg-devel >= 2.18.1
+BuildRequires:	libgnomeui-devel >= 2.21.91
+BuildRequires:	librsvg-devel >= 2.20.0
 BuildRequires:	libtool
-BuildRequires:	libxml2-devel >= 1:2.6.30
-BuildRequires:	metacity-devel >= 2:2.20.0
-BuildRequires:	nautilus-devel >= 2.21.5
+BuildRequires:	libxml2-devel >= 1:2.6.31
+BuildRequires:	metacity-devel >= 2:2.21.13
+BuildRequires:	nautilus-devel >= 2.21.91
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
@@ -62,8 +63,8 @@ Requires(post,postun):	shared-mime-info
 Requires(post,preun):	GConf2
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
 Requires:	desktop-file-utils
-Requires:	gnome-settings-daemon >= 2.21.5
-Requires:	gnome-vfs2 >= 2.20.0
+Requires:	gnome-settings-daemon >= 2.21.91
+Requires:	gnome-vfs2 >= 2.21.90
 Requires:	gstreamer-audio-effects-base >= 0.10.10
 Provides:	control-center = %{epoch}:%{version}-%{release}
 Obsoletes:	acme
@@ -108,8 +109,8 @@ GNOME вашей системы (такие вещи как фон рабоче�
 %package libs
 Summary:	GNOME Control Center gnome-window-settings library
 Summary(pl.UTF-8):	Biblioteka Control Center gnome-window-settings
-Group:		Development/Libraries
-Requires:	libgnomeui >= 2.20.0
+Group:		X11/Libraries
+Requires:	gnome-desktop-libs >= 2.21.91
 Provides:	control-center-libs = %{epoch}:%{version}-%{release}
 Obsoletes:	control-center-libs
 
@@ -124,11 +125,11 @@ Summary:	GNOME Control Center header files
 Summary(pl.UTF-8):	Pliki nagłówkowe bibliotek GNOME Control Center
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
-Requires:	dbus-glib-devel >= 0.73
-Requires:	gnome-desktop-devel >= 2.20.0
-Requires:	gnome-menus-devel >= 2.21.3
-Requires:	gtk+2-devel >= 2:2.12.0
-Requires:	libgnomeui-devel >= 2.20.0
+Requires:	dbus-glib-devel >= 0.74
+Requires:	gnome-desktop-devel >= 2.21.91
+Requires:	gnome-menus-devel >= 2.21.91
+Requires:	gtk+2-devel >= 2:2.12.8
+Requires:	libgnomeui-devel >= 2.21.91
 Provides:	control-center-devel = %{epoch}:%{version}-%{release}
 Obsoletes:	control-center-devel
 
@@ -170,8 +171,8 @@ mv po/sr@{Latn,latin}.po
 %{__intltoolize}
 %{__libtoolize}
 %{__aclocal}
-%{__autoheader}
 %{__autoconf}
+%{__autoheader}
 %{__automake}
 %configure \
 	--disable-schemas-install \
@@ -223,17 +224,37 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog MAINTAINERS NEWS README
+%attr(755,root,root) %{_bindir}/gnome-about-me
+%attr(755,root,root) %{_bindir}/gnome-appearance-properties
+%attr(755,root,root) %{_bindir}/gnome-at-mobility
+%attr(755,root,root) %{_bindir}/gnome-at-properties
+%attr(755,root,root) %{_bindir}/gnome-at-visual
+%attr(755,root,root) %{_bindir}/gnome-control-center
+%attr(755,root,root) %{_bindir}/gnome-default-applications-properties
+%attr(755,root,root) %{_bindir}/gnome-display-properties
+%attr(755,root,root) %{_bindir}/gnome-font-viewer
+%attr(755,root,root) %{_bindir}/gnome-keybinding-properties
+%attr(755,root,root) %{_bindir}/gnome-keyboard-properties
+%attr(755,root,root) %{_bindir}/gnome-mouse-properties
+%attr(755,root,root) %{_bindir}/gnome-network-preferences
+%attr(755,root,root) %{_bindir}/gnome-sound-properties
+%attr(755,root,root) %{_bindir}/gnome-theme-thumbnailer
+%attr(755,root,root) %{_bindir}/gnome-thumbnail-font
+%attr(755,root,root) %{_bindir}/gnome-window-properties
+%attr(755,root,root) %{_bindir}/themus-theme-applier
+%attr(755,root,root) %{_libdir}/nautilus/extensions-2.0/libnautilus-fontilus.so
+%attr(755,root,root) %{_libdir}/nautilus/extensions-2.0/libnautilus-themus.so
+%attr(755,root,root) %{_libdir}/gnome-vfs-2.0/modules/libfont-method.so
+%attr(755,root,root) %{_libdir}/gnome-vfs-2.0/modules/libtheme-method.so
+%dir %{_libdir}/window-manager-settings
+%attr(755,root,root) %{_libdir}/window-manager-settings/libmetacity.so
 %{_sysconfdir}/gconf/schemas/control-center.schemas
 %{_sysconfdir}/gconf/schemas/fontilus.schemas
 %{_sysconfdir}/gconf/schemas/themus.schemas
-%{_sysconfdir}/gnome-vfs-2.0/modules/*
+%{_sysconfdir}/gnome-vfs-2.0/modules/font-method.conf
+%{_sysconfdir}/gnome-vfs-2.0/modules/theme-method.conf
 %{_sysconfdir}/xdg/autostart/gnome-at-session.desktop
 %{_sysconfdir}/xdg/menus/gnomecc.menu
-%attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_libdir}/nautilus/extensions*/*.so
-%attr(755,root,root) %{_libdir}/gnome-vfs-2.0/modules/lib*.so
-%attr(755,root,root) %{_libdir}/window-manager-settings/*.so
-%dir %{_libdir}/window-manager-settings
 %{_datadir}/gnome-control-center
 %{_datadir}/desktop-directories/*.directory
 %{_datadir}/gnome/cursor-fonts
@@ -245,6 +266,7 @@ rm -rf $RPM_BUILD_ROOT
 %files libs
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libgnome-window-settings.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libgnome-window-settings.so.1
 
 %files devel
 %defattr(644,root,root,755)
