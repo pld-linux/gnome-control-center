@@ -5,50 +5,50 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	2.21.90
+Version:	2.22.0
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/2.21/%{name}-%{version}.tar.bz2
-# Source0-md5:	b6b747fa1bc6115f9bddd3546ead171b
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/2.22/%{name}-%{version}.tar.bz2
+# Source0-md5:	e6730ac4ee8b14a577978dee6c1cb88f
 Patch0:		%{name}-randr.patch
 Patch1:		%{name}-wm_properties-dir.patch
 Patch3:		%{name}-default_apps.patch
 Patch4:		%{name}-capplet.patch
 Patch5:		%{name}-Makefile.patch
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.21.90
+BuildRequires:	GConf2-devel >= 2.22.0
 BuildRequires:	alsa-lib-devel >= 1.0.12
 BuildRequires:	audiofile >= 1:0.2.6
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	bison
 BuildRequires:	dbus-glib-devel >= 0.74
-BuildRequires:	eel-devel >= 2.21.91
+BuildRequires:	eel-devel >= 2.22.0
 BuildRequires:	esound-devel
-BuildRequires:	evolution-data-server-devel >= 2.21.91
+BuildRequires:	evolution-data-server-devel >= 2.22.0
 BuildRequires:	flex
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.20.0
-BuildRequires:	gnome-desktop-devel >= 2.21.91
+BuildRequires:	gnome-desktop-devel >= 2.22.0
 BuildRequires:	gnome-doc-utils >= 0.12.1
-BuildRequires:	gnome-menus-devel >= 2.21.91
-BuildRequires:	gnome-panel-devel >= 2.21.91
-BuildRequires:	gnome-settings-daemon-devel >= 2.21.91
-BuildRequires:	gnome-vfs2-devel >= 2.21.90
+BuildRequires:	gnome-menus-devel >= 2.22.0
+BuildRequires:	gnome-panel-devel >= 2.22.0
+BuildRequires:	gnome-settings-daemon-devel >= 2.22.0
+BuildRequires:	gnome-vfs2-devel >= 2.22.0
 BuildRequires:	gstreamer-plugins-base-devel >= 0.10.10
 BuildRequires:	gtk+2-devel >= 2:2.12.8
 BuildRequires:	hal-devel >= 0.5.10
 BuildRequires:	intltool >= 0.37.0
 BuildRequires:	libglade2-devel >= 1:2.6.2
 BuildRequires:	libgnomekbd-devel >= 2.21.4.1
-BuildRequires:	libgnomeui-devel >= 2.21.91
+BuildRequires:	libgnomeui-devel >= 2.22.0
 BuildRequires:	librsvg-devel >= 2.20.0
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.31
-BuildRequires:	metacity-devel >= 2:2.21.13
-BuildRequires:	nautilus-devel >= 2.21.91
+BuildRequires:	metacity-devel >= 2:2.22.0
+BuildRequires:	nautilus-devel >= 2.22.0
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
@@ -63,8 +63,8 @@ Requires(post,postun):	shared-mime-info
 Requires(post,preun):	GConf2
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
 Requires:	desktop-file-utils
-Requires:	gnome-settings-daemon >= 2.21.91
-Requires:	gnome-vfs2 >= 2.21.90
+Requires:	gnome-settings-daemon >= 2.22.0
+Requires:	gnome-vfs2 >= 2.22.0
 Requires:	gstreamer-audio-effects-base >= 0.10.10
 Provides:	control-center = %{epoch}:%{version}-%{release}
 Obsoletes:	acme
@@ -110,7 +110,7 @@ GNOME вашей системы (такие вещи как фон рабоче�
 Summary:	GNOME Control Center gnome-window-settings library
 Summary(pl.UTF-8):	Biblioteka Control Center gnome-window-settings
 Group:		X11/Libraries
-Requires:	gnome-desktop-libs >= 2.21.91
+Requires:	gnome-desktop-libs >= 2.22.0
 Provides:	control-center-libs = %{epoch}:%{version}-%{release}
 Obsoletes:	control-center-libs
 
@@ -126,10 +126,10 @@ Summary(pl.UTF-8):	Pliki nagłówkowe bibliotek GNOME Control Center
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
 Requires:	dbus-glib-devel >= 0.74
-Requires:	gnome-desktop-devel >= 2.21.91
-Requires:	gnome-menus-devel >= 2.21.91
+Requires:	gnome-desktop-devel >= 2.22.0
+Requires:	gnome-menus-devel >= 2.22.0
 Requires:	gtk+2-devel >= 2:2.12.8
-Requires:	libgnomeui-devel >= 2.21.91
+Requires:	libgnomeui-devel >= 2.22.0
 Provides:	control-center-devel = %{epoch}:%{version}-%{release}
 Obsoletes:	control-center-devel
 
@@ -240,6 +240,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/gnome-sound-properties
 %attr(755,root,root) %{_bindir}/gnome-theme-thumbnailer
 %attr(755,root,root) %{_bindir}/gnome-thumbnail-font
+%attr(755,root,root) %{_bindir}/gnome-typing-monitor
 %attr(755,root,root) %{_bindir}/gnome-window-properties
 %attr(755,root,root) %{_bindir}/themus-theme-applier
 %attr(755,root,root) %{_libdir}/nautilus/extensions-2.0/libnautilus-fontilus.so
