@@ -66,6 +66,7 @@ Requires:	desktop-file-utils
 Requires:	gnome-settings-daemon >= 2.22.0
 Requires:	gnome-vfs2 >= 2.22.0
 Requires:	gstreamer-audio-effects-base >= 0.10.10
+Suggests:	mousetweaks >= 2.22.0
 Provides:	control-center = %{epoch}:%{version}-%{release}
 Obsoletes:	acme
 Obsoletes:	control-center
