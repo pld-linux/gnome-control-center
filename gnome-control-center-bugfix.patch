@@ -1,0 +1,290 @@
+diff -urN a/capplets/common/ChangeLog b/capplets/common/ChangeLog
+--- a/capplets/common/ChangeLog	2008-03-10 18:32:37.000000000 +0100
++++ b/capplets/common/ChangeLog	2008-03-23 17:04:51.000000000 +0100
+@@ -1,3 +1,31 @@
++2008-03-11  Jens Granseuer  <jensgr@gmx.net>
++
++	* gnome-theme-apply.c: (gnome_meta_theme_set): actually check the
++	cursor size before changing it in GConf, not the theme name
++	(thanks to Kjartan Maraas)
++
++2008-03-11  Jens Granseuer  <jensgr@gmx.net>
++
++	Encountering a theme that could not be thumbnailed (e.g. because the
++	metacity theme for a metatheme isn't installed) would make the
++	thumbnailer crash. Since it's not restarted by the appearance capplet
++	this would result in all themes encountered after the broken one not
++	to be thumbnailed either. This change fixes up error handling in the
++	thumbnailer so that the broken theme is simply skipped and processing
++	can continue with the next one. (bug #521009)
++
++	* theme-thumbnail.c: (create_meta_theme_pixbuf),
++	(create_metacity_theme_pixbuf), (message_from_capplet),
++	(message_from_child), (read_pixbuf),
++	(generate_theme_thumbnail_async), (theme_thumbnail_factory_init):
++	properly handle failed thumbnailing attempts
++
++2008-03-11  Jens Granseuer  <jensgr@gmx.net>
++
++	* gconf-property-editor.c: (peditor_numeric_range_widget_changed): don't
++	free the GConf value if we don't have one. Fixes a crash when schemas
++	are not properly installed (bug #520744)
++
+ 2008-02-27  Jens Granseuer  <jensgr@gmx.net>
+ 
+ 	* file-transfer-dialog.c: (file_transfer_dialog_update_num_files),
+diff -urN a/capplets/common/gconf-property-editor.c b/capplets/common/gconf-property-editor.c
+--- a/capplets/common/gconf-property-editor.c	2008-01-03 17:22:07.000000000 +0100
++++ b/capplets/common/gconf-property-editor.c	2008-03-23 17:04:51.000000000 +0100
+@@ -1122,7 +1122,7 @@
+ 	if (!peditor->p->inited) return;
+ 
+ 	/* We try to get the default type from the schemas.  if not, we default
+-	 * to a float.
++	 * to an int.
+ 	 */
+ 	client = gconf_client_get_default();
+ 
+@@ -1131,9 +1131,10 @@
+ 							      NULL);
+ 	g_object_unref (client);
+ 
+-	if (default_value)
++	if (default_value) {
+ 		value_wid = gconf_value_new (default_value->type);
+-	else {
++		gconf_value_free (default_value);
++	} else {
+ 		g_warning ("Unable to find a default value for key for %s.\n"
+ 			   "I'll assume it is an integer, but that may break things.\n"
+ 			   "Please be sure that the associated schema is installed",
+@@ -1141,8 +1142,6 @@
+ 		value_wid = gconf_value_new (GCONF_VALUE_INT);
+ 	}
+ 
+-	gconf_value_free (default_value);
+-
+ 	g_assert (value_wid);
+ 
+ 	if (value_wid->type == GCONF_VALUE_INT)
+@@ -1150,7 +1149,7 @@
+ 	else if (value_wid->type == GCONF_VALUE_FLOAT)
+ 		gconf_value_set_float (value_wid, gtk_adjustment_get_value (adjustment));
+ 	else {
+-		g_warning ("unable to set a gconf key for %s of type %d\n",
++		g_warning ("unable to set a gconf key for %s of type %d",
+ 			   peditor->p->key,
+ 			   value_wid->type);
+ 		gconf_value_free (value_wid);
+diff -urN a/capplets/common/gnome-theme-apply.c b/capplets/common/gnome-theme-apply.c
+--- a/capplets/common/gnome-theme-apply.c	2008-01-03 17:22:07.000000000 +0100
++++ b/capplets/common/gnome-theme-apply.c	2008-03-23 17:04:51.000000000 +0100
+@@ -103,9 +103,9 @@
+     }
+ 
+   old_key_int = gconf_client_get_int (client, CURSOR_SIZE_KEY, NULL);
+-  if (old_key_int != meta_theme_info->cursor_theme_name)
++  if (old_key_int != meta_theme_info->cursor_size)
+     {
+-      gconf_client_set_int (client, CURSOR_SIZE_KEY, meta_theme_info->cursor_size, NULL);    
++      gconf_client_set_int (client, CURSOR_SIZE_KEY, meta_theme_info->cursor_size, NULL);
+     }
+ #else
+   old_key = gconf_client_get_string (client, CURSOR_FONT_KEY, NULL);
+diff -urN a/capplets/common/theme-thumbnail.c b/capplets/common/theme-thumbnail.c
+--- a/capplets/common/theme-thumbnail.c	2008-03-10 18:32:37.000000000 +0100
++++ b/capplets/common/theme-thumbnail.c	2008-03-23 17:04:51.000000000 +0100
+@@ -268,7 +268,10 @@
+     "gtk-icon-theme-name", (char *) theme_thumbnail_data->icon_theme_name->data,
+     "gtk-color-scheme", (char *) theme_thumbnail_data->gtk_color_scheme->data,
+     NULL);
++
+   theme = meta_theme_load ((char *) theme_thumbnail_data->wm_theme_name->data, NULL);
++  if (theme == NULL)
++    return NULL;
+ 
+   /* Represent the icon theme */
+   icon = create_folder_icon ((char *) theme_thumbnail_data->icon_theme_name->data);
+@@ -473,6 +476,8 @@
+   GdkRegion *region;
+ 
+   theme = meta_theme_load ((char *) theme_thumbnail_data->wm_theme_name->data, NULL);
++  if (theme == NULL)
++    return NULL;
+ 
+   flags = META_FRAME_ALLOWS_DELETE |
+           META_FRAME_ALLOWS_MENU |
+@@ -712,10 +717,14 @@
+         else
+           g_assert_not_reached ();
+ 
+-        width = gdk_pixbuf_get_width (pixbuf);
+-        height = gdk_pixbuf_get_height (pixbuf);
+-        rowstride = gdk_pixbuf_get_rowstride (pixbuf);
+-        pixels = gdk_pixbuf_get_pixels (pixbuf);
++        if (pixbuf == NULL) {
++          width = height = 0;
++        } else {
++          width = gdk_pixbuf_get_width (pixbuf);
++          height = gdk_pixbuf_get_height (pixbuf);
++          rowstride = gdk_pixbuf_get_rowstride (pixbuf);
++          pixels = gdk_pixbuf_get_pixels (pixbuf);
++        }
+ 
+         /* Write the pixbuf's size */
+         write (pipe_from_factory_fd[1], &width, sizeof (width));
+@@ -723,16 +732,18 @@
+ 
+         for (i = 0; i < height; i++)
+         {
+-          write (pipe_from_factory_fd[1], pixels + (rowstride)*i, width * gdk_pixbuf_get_n_channels (pixbuf));
++          write (pipe_from_factory_fd[1], pixels + rowstride * i, width * gdk_pixbuf_get_n_channels (pixbuf));
+         }
+-        g_object_unref (pixbuf);
+-        theme_thumbnail_data->status = READY_FOR_THEME;
++
++        if (pixbuf)
++          g_object_unref (pixbuf);
+         g_byte_array_set_size (theme_thumbnail_data->type, 0);
+         g_byte_array_set_size (theme_thumbnail_data->control_theme_name, 0);
+         g_byte_array_set_size (theme_thumbnail_data->gtk_color_scheme, 0);
+         g_byte_array_set_size (theme_thumbnail_data->wm_theme_name, 0);
+         g_byte_array_set_size (theme_thumbnail_data->icon_theme_name, 0);
+         g_byte_array_set_size (theme_thumbnail_data->application_font, 0);
++        theme_thumbnail_data->status = READY_FOR_THEME;
+       }
+       return TRUE;
+ 
+@@ -798,9 +809,7 @@
+     return TRUE;
+ 
+   if (condition == G_IO_HUP)
+-  {
+     return FALSE;
+-  }
+ 
+   status = g_io_channel_read_chars (source,
+                                     buffer,
+@@ -812,24 +821,28 @@
+     case G_IO_STATUS_NORMAL:
+       g_byte_array_append (async_data.data, (guchar *) buffer, bytes_read);
+ 
+-      if (async_data.thumbnail_width == 0 && async_data.data->len >= 2 * sizeof (gint))
++      if (async_data.thumbnail_width == -1 && async_data.data->len >= 2 * sizeof (gint))
+       {
+         async_data.thumbnail_width = *((gint *) async_data.data->data);
+         async_data.thumbnail_height = *(((gint *) async_data.data->data) + 1);
+         g_byte_array_remove_range (async_data.data, 0, 2 * sizeof (gint));
+       }
+-      else if (async_data.thumbnail_width > 0 && async_data.data->len == async_data.thumbnail_width * async_data.thumbnail_height * 4)
++
++      if (async_data.thumbnail_width >= 0 && async_data.data->len == async_data.thumbnail_width * async_data.thumbnail_height * 4)
+       {
+-        GdkPixbuf *pixbuf;
+-        gchar *pixels;
+-        gint i, rowstride;
+-
+-        pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8, async_data.thumbnail_width, async_data.thumbnail_height);
+-        pixels = (gchar *) gdk_pixbuf_get_pixels (pixbuf);
+-        rowstride = gdk_pixbuf_get_rowstride (pixbuf);
++        GdkPixbuf *pixbuf = NULL;
++
++        if (async_data.thumbnail_width > 0) {
++          gchar *pixels;
++          gint i, rowstride;
++
++          pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8, async_data.thumbnail_width, async_data.thumbnail_height);
++          pixels = (gchar *) gdk_pixbuf_get_pixels (pixbuf);
++          rowstride = gdk_pixbuf_get_rowstride (pixbuf);
+ 
+-        for (i = 0; i < async_data.thumbnail_height; i++)
+-          memcpy (pixels + rowstride * i, async_data.data->data + 4 * async_data.thumbnail_width * i, async_data.thumbnail_width * 4);
++          for (i = 0; i < async_data.thumbnail_height; ++i)
++            memcpy (pixels + rowstride * i, async_data.data->data + 4 * async_data.thumbnail_width * i, async_data.thumbnail_width * 4);
++        }
+ 
+         /* callback function needs to unref the pixbuf */
+         (* async_data.func) (pixbuf, async_data.theme_name, async_data.user_data);
+@@ -843,8 +856,8 @@
+         g_io_channel_unref (async_data.channel);
+ 
+         /* reset async_data */
+-        async_data.thumbnail_width = 0;
+-        async_data.thumbnail_height = 0;
++        async_data.thumbnail_width = -1;
++        async_data.thumbnail_height = -1;
+         async_data.theme_name = NULL;
+         async_data.channel = NULL;
+         async_data.func = NULL;
+@@ -920,10 +933,15 @@
+   do
+   {
+     bytes_read = read (pipe_from_factory_fd[0], ((guint8*) size) + j, 2 * sizeof (gint));
++    if (bytes_read == 0)
++      goto eof;
+     j += bytes_read;
+   }
+   while (j < 2 * sizeof (gint));
+ 
++  if (size[0] <= 0 || size[1] <= 0)
++    return NULL;
++
+   pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8, size[0], size[1]);
+   rowstride = gdk_pixbuf_get_rowstride (pixbuf);
+   pixels = gdk_pixbuf_get_pixels (pixbuf);
+@@ -934,25 +952,28 @@
+ 
+     do
+     {
+-      bytes_read = read (pipe_from_factory_fd[0], pixels + (rowstride)*i + j, size[0] * gdk_pixbuf_get_n_channels (pixbuf) - j);
++      bytes_read = read (pipe_from_factory_fd[0], pixels + rowstride * i + j, size[0] * gdk_pixbuf_get_n_channels (pixbuf) - j);
+ 
+       if (bytes_read > 0)
+         j += bytes_read;
+       else if (bytes_read == 0)
+       {
+-        g_warning ("Received EOF while reading thumbnail");
+         g_object_unref (pixbuf);
+-        close (pipe_to_factory_fd[1]);
+-        pipe_to_factory_fd[1] = 0;
+-        close (pipe_from_factory_fd[0]);
+-        pipe_from_factory_fd[0] = 0;
+-        return NULL;
++        goto eof;
+       }
+     }
+     while (j < size[0] * gdk_pixbuf_get_n_channels (pixbuf));
+   }
+ 
+   return pixbuf;
++
++eof:
++  g_warning ("Received EOF while reading thumbnail");
++  close (pipe_to_factory_fd[1]);
++  pipe_to_factory_fd[1] = 0;
++  close (pipe_from_factory_fd[0]);
++  pipe_from_factory_fd[0] = 0;
++  return NULL;
+ }
+ 
+ static GdkPixbuf *
+@@ -1072,8 +1093,8 @@
+   }
+ 
+   async_data.set = TRUE;
+-  async_data.thumbnail_width = 0;
+-  async_data.thumbnail_height = 0;
++  async_data.thumbnail_width = -1;
++  async_data.thumbnail_height = -1;
+   async_data.theme_name = g_strdup (theme_name);
+   async_data.func = func;
+   async_data.user_data = user_data;
+@@ -1205,8 +1226,6 @@
+   close (pipe_to_factory_fd[0]);
+   close (pipe_from_factory_fd[1]);
+   async_data.set = FALSE;
+-  async_data.thumbnail_width = 0;
+-  async_data.thumbnail_height = 0;
+   async_data.theme_name = NULL;
+   async_data.data = g_byte_array_new ();
+ }
