@@ -5,19 +5,18 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	2.22.0
-Release:	2
+Version:	2.22.1
+Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/2.22/%{name}-%{version}.tar.bz2
-# Source0-md5:	e6730ac4ee8b14a577978dee6c1cb88f
+# Source0-md5:	170815bcf2627bf64436283f86c751aa
 Patch0:		%{name}-randr.patch
 Patch1:		%{name}-wm_properties-dir.patch
 Patch3:		%{name}-default_apps.patch
 Patch4:		%{name}-capplet.patch
 Patch5:		%{name}-Makefile.patch
-Patch6:		%{name}-bugfix.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.22.0
 BuildRequires:	alsa-lib-devel >= 1.0.12
@@ -43,8 +42,8 @@ BuildRequires:	gtk+2-devel >= 2:2.12.8
 BuildRequires:	hal-devel >= 0.5.10
 BuildRequires:	intltool >= 0.37.0
 BuildRequires:	libglade2-devel >= 1:2.6.2
-BuildRequires:	libgnomekbd-devel >= 2.21.4.1
-BuildRequires:	libgnomeui-devel >= 2.22.0
+BuildRequires:	libgnomekbd-devel >= 2.22.0
+BuildRequires:	libgnomeui-devel >= 2.22.1
 BuildRequires:	librsvg-devel >= 2.20.0
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.31
@@ -162,7 +161,6 @@ Statyczne biblioteki GNOME Control Center.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
-%patch6 -p1
 
 sed -i -e 's#sr@Latn#sr@latin#' po/LINGUAS
 mv po/sr@{Latn,latin}.po
