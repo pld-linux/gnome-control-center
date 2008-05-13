@@ -5,13 +5,13 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	2.22.1
+Version:	2.23.1
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/2.22/%{name}-%{version}.tar.bz2
-# Source0-md5:	170815bcf2627bf64436283f86c751aa
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/2.23/%{name}-%{version}.tar.bz2
+# Source0-md5:	0e3af5d9d78eb32b63a865f4d2438506
 Patch0:		%{name}-randr.patch
 Patch1:		%{name}-wm_properties-dir.patch
 Patch3:		%{name}-default_apps.patch
@@ -47,7 +47,7 @@ BuildRequires:	libgnomeui-devel >= 2.22.1
 BuildRequires:	librsvg-devel >= 2.20.0
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.31
-BuildRequires:	metacity-devel >= 2:2.22.0
+BuildRequires:	metacity-devel >= 2:2.23.1
 BuildRequires:	nautilus-devel >= 2.22.0
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
