@@ -9,14 +9,3 @@ diff -urN control-center-2.10.0.orig/vfs-methods/fontilus/Makefile.am control-ce
  
  uninstall-local:
  	rm -f $(DESTDIR)$(desktopdir)/mimeinfo.cache
-diff -urN control-center-2.10.0.orig/vfs-methods/themus/Makefile.am control-center-2.10.0/vfs-methods/themus/Makefile.am
---- control-center-2.10.0.orig/vfs-methods/themus/Makefile.am	2005-04-01 11:37:13.000000000 +0200
-+++ control-center-2.10.0/vfs-methods/themus/Makefile.am	2005-04-01 11:41:38.000000000 +0200
-@@ -71,7 +71,6 @@
- endif
- 
- install-desktop-database: install-desktopDATA
--	update-desktop-database $(DESTDIR)$(desktopdir)
- 
- distclean-local:
- 	rm -f $(DESTDIR)$(desktopdir)/mimeinfo.cache
