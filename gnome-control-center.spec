@@ -5,13 +5,13 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	2.23.3
+Version:	2.23.4
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/2.23/%{name}-%{version}.tar.bz2
-# Source0-md5:	a724c90f1eddf60bf18b7ace98cae479
+# Source0-md5:	100b1137a8da7c0bd9d165d97b2fe67f
 Patch0:		%{name}-randr.patch
 Patch1:		%{name}-wm_properties-dir.patch
 Patch3:		%{name}-default_apps.patch
@@ -31,7 +31,7 @@ BuildRequires:	evolution-data-server-devel >= 2.22.0
 BuildRequires:	flex
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.20.0
-BuildRequires:	gnome-desktop-devel >= 2.23.3
+BuildRequires:	gnome-desktop-devel >= 2.23.4
 BuildRequires:	gnome-doc-utils >= 0.12.1
 BuildRequires:	gnome-menus-devel >= 2.22.0
 BuildRequires:	gnome-panel-devel >= 2.22.0
@@ -40,7 +40,7 @@ BuildRequires:	gnome-vfs2-devel >= 2.22.0
 BuildRequires:	gstreamer-plugins-base-devel >= 0.10.10
 BuildRequires:	gtk+2-devel >= 2:2.12.8
 BuildRequires:	hal-devel >= 0.5.10
-BuildRequires:	intltool >= 0.37.0
+BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libglade2-devel >= 1:2.6.2
 BuildRequires:	libgnomekbd-devel >= 2.22.0
 BuildRequires:	libgnomeui-devel >= 2.22.1
