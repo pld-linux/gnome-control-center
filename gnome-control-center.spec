@@ -5,18 +5,17 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	2.23.4
+Version:	2.23.6
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/2.23/%{name}-%{version}.tar.bz2
-# Source0-md5:	100b1137a8da7c0bd9d165d97b2fe67f
+# Source0-md5:	caa527f6e163440c6262fa634d7e8d9e
 Patch0:		%{name}-randr.patch
 Patch1:		%{name}-wm_properties-dir.patch
 Patch3:		%{name}-default_apps.patch
 Patch4:		%{name}-capplet.patch
-Patch5:		%{name}-Makefile.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.22.0
 BuildRequires:	alsa-lib-devel >= 1.0.12
@@ -41,6 +40,7 @@ BuildRequires:	gstreamer-plugins-base-devel >= 0.10.10
 BuildRequires:	gtk+2-devel >= 2:2.12.8
 BuildRequires:	hal-devel >= 0.5.10
 BuildRequires:	intltool >= 0.40.0
+BuildRequires:	libcanberra-devel >= 0.4
 BuildRequires:	libglade2-devel >= 1:2.6.2
 BuildRequires:	libgnomekbd-devel >= 2.22.0
 BuildRequires:	libgnomeui-devel >= 2.22.1
@@ -160,7 +160,6 @@ Statyczne biblioteki GNOME Control Center.
 %patch1 -p1
 %patch3 -p1
 %patch4 -p1
-%patch5 -p1
 
 sed -i -e 's#sr@Latn#sr@latin#' po/LINGUAS
 mv po/sr@{Latn,latin}.po
@@ -201,7 +200,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 %gconf_schema_install control-center.schemas
-%gconf_schema_install fontilus.schemas
 %scrollkeeper_update_post
 %update_mime_database
 %update_desktop_database_post
@@ -209,7 +207,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %preun
 %gconf_schema_uninstall	control-center.schemas
-%gconf_schema_uninstall fontilus.schemas
 
 %postun
 %scrollkeeper_update_postun
@@ -231,22 +228,16 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/gnome-control-center
 %attr(755,root,root) %{_bindir}/gnome-default-applications-properties
 %attr(755,root,root) %{_bindir}/gnome-display-properties
-%attr(755,root,root) %{_bindir}/gnome-font-viewer
 %attr(755,root,root) %{_bindir}/gnome-keybinding-properties
 %attr(755,root,root) %{_bindir}/gnome-keyboard-properties
 %attr(755,root,root) %{_bindir}/gnome-mouse-properties
 %attr(755,root,root) %{_bindir}/gnome-network-preferences
 %attr(755,root,root) %{_bindir}/gnome-sound-properties
-%attr(755,root,root) %{_bindir}/gnome-thumbnail-font
 %attr(755,root,root) %{_bindir}/gnome-typing-monitor
 %attr(755,root,root) %{_bindir}/gnome-window-properties
-%attr(755,root,root) %{_libdir}/nautilus/extensions-2.0/libnautilus-fontilus.so
-%attr(755,root,root) %{_libdir}/gnome-vfs-2.0/modules/libfont-method.so
 %dir %{_libdir}/window-manager-settings
 %attr(755,root,root) %{_libdir}/window-manager-settings/libmetacity.so
 %{_sysconfdir}/gconf/schemas/control-center.schemas
-%{_sysconfdir}/gconf/schemas/fontilus.schemas
-%{_sysconfdir}/gnome-vfs-2.0/modules/font-method.conf
 %{_sysconfdir}/xdg/autostart/gnome-at-session.desktop
 %{_sysconfdir}/xdg/menus/gnomecc.menu
 %{_datadir}/gnome-control-center
@@ -268,6 +259,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libgnome-window-settings.la
 %{_includedir}/gnome-window-settings-2.0
 %{_pkgconfigdir}/gnome-window-settings-2.0.pc
+%{_datadir}/pkgconfig/gnome-default-applications.pc
 %{_datadir}/pkgconfig/gnome-keybindings.pc
 
 %files static
