@@ -12,10 +12,7 @@ License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/2.23/%{name}-%{version}.tar.bz2
 # Source0-md5:	831ddcaad205dc84323275480c7cb89c
-Patch0:		%{name}-randr.patch
-Patch1:		%{name}-wm_properties-dir.patch
 Patch3:		%{name}-default_apps.patch
-Patch4:		%{name}-capplet.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.22.0
 BuildRequires:	alsa-lib-devel >= 1.0.12
@@ -41,8 +38,9 @@ BuildRequires:	gtk+2-devel >= 2:2.12.8
 BuildRequires:	hal-devel >= 0.5.10
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libcanberra-devel >= 0.4
+BuildRequires:	libcanberra-gtk-devel >= 0.4
 BuildRequires:	libglade2-devel >= 1:2.6.2
-BuildRequires:	libgnomekbd-devel >= 2.22.0
+BuildRequires:	libgnomekbd-devel >= 2.23.91
 BuildRequires:	libgnomeui-devel >= 2.22.1
 BuildRequires:	librsvg-devel >= 2.20.0
 BuildRequires:	libtool
@@ -156,10 +154,7 @@ Statyczne biblioteki GNOME Control Center.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
 %patch3 -p1
-%patch4 -p1
 
 sed -i -e 's#sr@Latn#sr@latin#' po/LINGUAS
 mv po/sr@{Latn,latin}.po
