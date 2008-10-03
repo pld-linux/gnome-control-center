@@ -6,7 +6,7 @@ Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
 Version:	2.24.0.1
-Release:	1
+Release:	2
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
@@ -37,7 +37,6 @@ BuildRequires:	gstreamer-plugins-base-devel >= 0.10.10
 BuildRequires:	gtk+2-devel >= 2:2.14.0
 BuildRequires:	hal-devel >= 0.5.10
 BuildRequires:	intltool >= 0.40.0
-BuildRequires:	libcanberra-devel >= 0.4
 BuildRequires:	libcanberra-gtk-devel >= 0.4
 BuildRequires:	libglade2-devel >= 1:2.6.2
 BuildRequires:	libgnomekbd-devel >= 2.24.0
@@ -65,6 +64,7 @@ Requires:	gnome-settings-daemon >= 2.24.0
 Requires:	gnome-vfs2 >= 2.24.0
 Requires:	gstreamer-audio-effects-base >= 0.10.10
 Suggests:	mousetweaks >= 2.24.0
+Suggests:	libcanberra-gnome
 Provides:	control-center = %{epoch}:%{version}-%{release}
 Obsoletes:	acme
 Obsoletes:	control-center
