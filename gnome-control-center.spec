@@ -43,6 +43,7 @@ BuildRequires:	libgnomekbd-devel >= 2.24.0
 BuildRequires:	libgnomeui-devel >= 2.24.0
 BuildRequires:	librsvg-devel >= 2.22.0
 BuildRequires:	libtool
+BuildRequires:	libxklavier >= 3.6
 BuildRequires:	libxml2-devel >= 1:2.6.31
 BuildRequires:	metacity-devel >= 2:2.24.0
 BuildRequires:	nautilus-devel >= 2.24.0
