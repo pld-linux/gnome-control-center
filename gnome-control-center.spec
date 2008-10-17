@@ -26,6 +26,7 @@ BuildRequires:	esound-devel
 BuildRequires:	evolution-data-server-devel >= 2.24.0
 BuildRequires:	flex
 BuildRequires:	gettext-devel
+BuildRequires:	glib2-devel >= 1:2.14.0
 BuildRequires:	gnome-common >= 2.20.0
 BuildRequires:	gnome-desktop-devel >= 2.24.0
 BuildRequires:	gnome-doc-utils >= 0.12.1
@@ -43,7 +44,7 @@ BuildRequires:	libgnomekbd-devel >= 2.24.0
 BuildRequires:	libgnomeui-devel >= 2.24.0
 BuildRequires:	librsvg-devel >= 2.22.0
 BuildRequires:	libtool
-BuildRequires:	libxklavier >= 3.6
+BuildRequires:	libxklavier-devel >= 3.6
 BuildRequires:	libxml2-devel >= 1:2.6.31
 BuildRequires:	metacity-devel >= 2:2.24.0
 BuildRequires:	nautilus-devel >= 2.24.0
