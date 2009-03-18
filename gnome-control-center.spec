@@ -5,15 +5,15 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	2.25.92
+Version:	2.26.0
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/2.25/%{name}-%{version}.tar.bz2
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/2.26/%{name}-%{version}.tar.bz2
 # Source0-md5:	e6dce514e1a03e43c1f51b05928ddad3
 URL:		http://www.gnome.org/
-BuildRequires:	GConf2-devel >= 2.25.0
+BuildRequires:	GConf2-devel >= 2.26.0
 BuildRequires:	PolicyKit-gnome-devel
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.9
@@ -26,19 +26,19 @@ BuildRequires:	gnome-desktop-devel >= 2.25.90
 BuildRequires:	gnome-doc-utils >= 0.12.1
 BuildRequires:	gnome-menus-devel >= 2.25.90
 BuildRequires:	gnome-panel-devel >= 2.25.90
-BuildRequires:	gnome-settings-daemon-devel >= 2.25.90
+BuildRequires:	gnome-settings-daemon-devel >= 2.26.0
 BuildRequires:	gtk+2-devel >= 2:2.15.0
 BuildRequires:	hal-devel >= 0.5.10
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libcanberra-gtk-devel >= 0.4
 BuildRequires:	libglade2-devel >= 1:2.6.2
-BuildRequires:	libgnomekbd-devel >= 2.25.90
+BuildRequires:	libgnomekbd-devel >= 2.26.0
 BuildRequires:	libgnomeui-devel >= 2.24.0
 BuildRequires:	librsvg-devel >= 2.22.0
 BuildRequires:	libtool
 BuildRequires:	libxklavier-devel >= 3.6
 BuildRequires:	libxml2-devel >= 1:2.6.31
-BuildRequires:	metacity-devel >= 2:2.25.0
+BuildRequires:	metacity-devel >= 2:2.26.0
 BuildRequires:	pkgconfig
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
@@ -53,7 +53,7 @@ Requires(post,postun):	shared-mime-info
 Requires(post,preun):	GConf2
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
 Requires:	desktop-file-utils
-Requires:	gnome-settings-daemon >= 2.25.90
+Requires:	gnome-settings-daemon >= 2.26.0
 Suggests:	libcanberra-gnome
 Suggests:	mousetweaks >= 2.24.0
 Provides:	control-center = %{epoch}:%{version}-%{release}
