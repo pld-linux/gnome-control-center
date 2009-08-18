@@ -5,13 +5,13 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	2.27.5
+Version:	2.27.90
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/2.27/%{name}-%{version}.tar.bz2
-# Source0-md5:	ee1c62f934a1f89aadfe8bdb33cec99a
+# Source0-md5:	e60ba889c281e23079da2889144e5b48
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.26.0
 BuildRequires:	PolicyKit-gnome-devel
@@ -236,17 +236,12 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libgnome-window-settings.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libgnome-window-settings.so.1
-%attr(755,root,root) %{_libdir}/libslab.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libslab.so.0
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libgnome-window-settings.so
-%attr(755,root,root) %{_libdir}/libslab.so
 %{_libdir}/libgnome-window-settings.la
-%{_libdir}/libslab.la
 %{_includedir}/gnome-window-settings-2.0
-%{_includedir}/libslab
 %{_pkgconfigdir}/gnome-window-settings-2.0.pc
 %{_datadir}/pkgconfig/gnome-default-applications.pc
 %{_datadir}/pkgconfig/gnome-keybindings.pc
@@ -254,4 +249,3 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libgnome-window-settings.a
-%{_libdir}/libslab.a
