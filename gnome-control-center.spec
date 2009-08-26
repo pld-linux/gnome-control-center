@@ -5,13 +5,13 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	2.27.90
+Version:	2.27.91
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/2.27/%{name}-%{version}.tar.bz2
-# Source0-md5:	e60ba889c281e23079da2889144e5b48
+# Source0-md5:	fffc2c207a11f3f4d97828514200e61e
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.26.0
 BuildRequires:	PolicyKit-gnome-devel
@@ -181,6 +181,7 @@ rm -rf $RPM_BUILD_ROOT
 %post
 %gconf_schema_install control-center.schemas
 %gconf_schema_install fontilus.schemas
+%gconf_schema_install gnome-control-center.schemas
 %scrollkeeper_update_post
 %update_mime_database
 %update_desktop_database_post
@@ -189,6 +190,7 @@ rm -rf $RPM_BUILD_ROOT
 %preun
 %gconf_schema_uninstall	control-center.schemas
 %gconf_schema_uninstall fontilus.schemas
+%gconf_schema_uninstall gnome-control-center.schemas
 
 %postun
 %scrollkeeper_update_postun
@@ -222,6 +224,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/window-manager-settings/libmetacity.so
 %{_sysconfdir}/gconf/schemas/control-center.schemas
 %{_sysconfdir}/gconf/schemas/fontilus.schemas
+%{_sysconfdir}/gconf/schemas/gnome-control-center.schemas
 %{_sysconfdir}/xdg/autostart/gnome-at-session.desktop
 %{_sysconfdir}/xdg/menus/gnomecc.menu
 %{_datadir}/gnome-control-center
