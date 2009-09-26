@@ -5,13 +5,13 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	2.27.91
+Version:	2.28.0
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/2.27/%{name}-%{version}.tar.bz2
-# Source0-md5:	fffc2c207a11f3f4d97828514200e61e
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/2.28/%{name}-%{version}.tar.bz2
+# Source0-md5:	c0e009ed5d94d12a183b61136dd908de
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.26.0
 BuildRequires:	PolicyKit-gnome-devel
@@ -170,8 +170,6 @@ rm -rf $RPM_BUILD_ROOT
 
 # no static modules - shut up check-files
 rm -f $RPM_BUILD_ROOT%{_libdir}/window-manager-settings/*.{a,la}
-
-rm -rf $RPM_BUILD_ROOT%{_datadir}/locale/ca@valencia
 
 %find_lang %{name} --with-gnome --with-omf --all-name
 
