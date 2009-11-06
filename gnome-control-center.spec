@@ -12,13 +12,13 @@ License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/2.28/%{name}-%{version}.tar.bz2
 # Source0-md5:	c0e009ed5d94d12a183b61136dd908de
+Patch0:		no_update_desktop.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.26.0
 BuildRequires:	PolicyKit-gnome-devel
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	dbus-glib-devel >= 0.74
-BuildRequires:	desktop-file-utils
 BuildRequires:	evolution-data-server-devel >= 2.24.0
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.19.7
@@ -146,6 +146,7 @@ Statyczne biblioteki GNOME Control Center.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__gnome_doc_prepare}
@@ -160,6 +161,7 @@ Statyczne biblioteki GNOME Control Center.
 %configure \
 	--disable-schemas-install \
 	--disable-update-mimedb \
+	--disable-update-desktop \
 	--enable-aboutme \
 	X_EXTRA_LIBS="-lXext"
 %{__make}
