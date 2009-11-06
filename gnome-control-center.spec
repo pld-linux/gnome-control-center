@@ -35,6 +35,7 @@ BuildRequires:	libgnomekbd-devel >= 2.27.2-2
 BuildRequires:	libgnomeui-devel >= 2.24.0
 BuildRequires:	librsvg-devel >= 2.22.0
 BuildRequires:	libtool
+BuildRequires:	libunique-devel >= 1.0.0
 BuildRequires:	libxklavier-devel >= 4.0
 BuildRequires:	libxml2-devel >= 1:2.6.31
 BuildRequires:	metacity-devel >= 2:2.26.0
