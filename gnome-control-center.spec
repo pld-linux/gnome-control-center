@@ -5,13 +5,13 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	2.28.0
-Release:	3
+Version:	2.28.1
+Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/2.28/%{name}-%{version}.tar.bz2
-# Source0-md5:	c0e009ed5d94d12a183b61136dd908de
+# Source0-md5:	a37a1b5ff4cfce45baef0cf31126d380
 Patch0:		no_update_desktop.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.26.0
