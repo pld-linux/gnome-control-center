@@ -5,13 +5,13 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	2.28.1
+Version:	2.29.4
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/2.28/%{name}-%{version}.tar.bz2
-# Source0-md5:	a37a1b5ff4cfce45baef0cf31126d380
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/2.29/%{name}-%{version}.tar.bz2
+# Source0-md5:	8d5da025279d308fd2a3a5144c98ce82
 Patch0:		no_update_desktop.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.26.0
@@ -22,7 +22,7 @@ BuildRequires:	evolution-data-server-devel >= 2.24.0
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.19.7
 BuildRequires:	gnome-common >= 2.24.0
-BuildRequires:	gnome-desktop-devel >= 2.25.90
+BuildRequires:	gnome-desktop-devel >= 2.29.4
 BuildRequires:	gnome-doc-utils >= 0.12.1
 BuildRequires:	gnome-menus-devel >= 2.25.90
 BuildRequires:	gnome-panel-devel >= 2.25.90
@@ -146,6 +146,8 @@ Statyczne biblioteki GNOME Control Center.
 %prep
 %setup -q
 %patch0 -p1
+sed -i s#^en@shaw## po/LINGUAS
+rm po/en@shaw.po
 
 %build
 %{__gnome_doc_prepare}
