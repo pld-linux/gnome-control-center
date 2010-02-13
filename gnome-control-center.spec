@@ -5,13 +5,13 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	2.29.6
+Version:	2.29.90
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/2.29/%{name}-%{version}.tar.bz2
-# Source0-md5:	d0e6d350d62950aa3001534effa34c33
+# Source0-md5:	87e8f65cecb6ae8ed6d4607100f2753a
 Patch0:		no_update_desktop.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.26.0
@@ -22,17 +22,14 @@ BuildRequires:	evolution-data-server-devel >= 2.24.0
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.19.7
 BuildRequires:	gnome-common >= 2.24.0
-BuildRequires:	gnome-desktop-devel >= 2.29.4
+BuildRequires:	gnome-desktop-devel >= 2.29.90
 BuildRequires:	gnome-doc-utils >= 0.12.1
 BuildRequires:	gnome-menus-devel >= 2.25.90
-BuildRequires:	gnome-panel-devel >= 2.25.90
 BuildRequires:	gnome-settings-daemon-devel >= 2.26.0
-BuildRequires:	gtk+2-devel >= 2:2.15.0
-BuildRequires:	hal-devel >= 0.5.10
+BuildRequires:	gtk+2-devel >= 2:2.18.0
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libcanberra-gtk-devel >= 0.4
-BuildRequires:	libgnomekbd-devel >= 2.27.2-2
-BuildRequires:	libgnomeui-devel >= 2.24.0
+BuildRequires:	libgnomekbd-devel >= 2.28.0
 BuildRequires:	librsvg-devel >= 2.22.0
 BuildRequires:	libtool
 BuildRequires:	libunique-devel >= 1.0.0
@@ -100,7 +97,7 @@ GNOME вашей системы (такие вещи как фон рабоче�
 Summary:	GNOME Control Center gnome-window-settings library
 Summary(pl.UTF-8):	Biblioteka Control Center gnome-window-settings
 Group:		X11/Libraries
-Requires:	gnome-desktop-libs >= 2.25.90
+Requires:	gnome-desktop-libs >= 2.29.90
 Provides:	control-center-libs = %{epoch}:%{version}-%{release}
 Obsoletes:	control-center-libs
 
@@ -115,11 +112,8 @@ Summary:	GNOME Control Center header files
 Summary(pl.UTF-8):	Pliki nagłówkowe bibliotek GNOME Control Center
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
-Requires:	dbus-glib-devel >= 0.74
-Requires:	gnome-desktop-devel >= 2.25.90
-Requires:	gnome-menus-devel >= 2.25.90
-Requires:	gtk+2-devel >= 2:2.15.0
-Requires:	libgnomeui-devel >= 2.24.0
+Requires:	gnome-desktop-devel >= 2.29.90
+Requires:	gtk+2-devel >= 2:2.18.0
 Provides:	control-center-devel = %{epoch}:%{version}-%{release}
 Obsoletes:	control-center-devel
 
