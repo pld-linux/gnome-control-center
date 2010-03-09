@@ -6,13 +6,14 @@ Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
 Version:	2.28.1
-Release:	2
+Release:	3
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/2.28/%{name}-%{version}.tar.bz2
 # Source0-md5:	a37a1b5ff4cfce45baef0cf31126d380
 Patch0:		no_update_desktop.patch
+Patch1:		default-apps-chrome-chromium.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.26.0
 BuildRequires:	autoconf
@@ -147,6 +148,7 @@ Statyczne biblioteki GNOME Control Center.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__gnome_doc_prepare}
