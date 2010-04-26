@@ -5,13 +5,13 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	2.30.0
+Version:	2.30.1
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/2.30/%{name}-%{version}.tar.bz2
-# Source0-md5:	ff7a638c2aa733997c7062449c02ccca
+# Source0-md5:	9608eae5605cfc478ba35b683bf129c1
 Patch0:		no_update_desktop.patch
 Patch1:		default-apps-chrome-chromium.patch
 URL:		http://www.gnome.org/
