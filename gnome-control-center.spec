@@ -171,8 +171,9 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%{__rm} -f $RPM_BUILD_ROOT%{_libdir}/*.la
 # no static modules - shut up check-files
-rm -f $RPM_BUILD_ROOT%{_libdir}/window-manager-settings/*.{a,la}
+%{__rm} -f $RPM_BUILD_ROOT%{_libdir}/window-manager-settings/*.{a,la}
 
 %find_lang %{name} --with-gnome --with-omf --all-name
 
@@ -244,7 +245,6 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libgnome-window-settings.so
-%{_libdir}/libgnome-window-settings.la
 %{_includedir}/gnome-window-settings-2.0
 %{_pkgconfigdir}/gnome-window-settings-2.0.pc
 %{_datadir}/pkgconfig/gnome-default-applications.pc
