@@ -5,13 +5,13 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	2.30.1
-Release:	2
+Version:	2.31.90
+Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/2.30/%{name}-%{version}.tar.bz2
-# Source0-md5:	9608eae5605cfc478ba35b683bf129c1
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/2.31/%{name}-%{version}.tar.bz2
+# Source0-md5:	89500c78a32f6f9dbee901585007803e
 Patch0:		no_update_desktop.patch
 Patch1:		default-apps-chrome-chromium.patch
 URL:		http://www.gnome.org/
@@ -222,6 +222,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/gnome-thumbnail-font
 %attr(755,root,root) %{_bindir}/gnome-typing-monitor
 %attr(755,root,root) %{_bindir}/gnome-window-properties
+%attr(755,root,root) %{_sbindir}/gnome-display-properties-install-systemwide
 %dir %{_libdir}/window-manager-settings
 %attr(755,root,root) %{_libdir}/window-manager-settings/libmetacity.so
 %{_sysconfdir}/gconf/schemas/control-center.schemas
@@ -233,6 +234,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/desktop-directories/*.directory
 %{_datadir}/gnome/cursor-fonts
 %{_datadir}/mime/packages/gnome-theme-package.xml
+%{_datadir}/polkit-1/actions/org.gnome.randr.policy
 %{_iconsdir}/hicolor/*/*/*.png
 %{_iconsdir}/hicolor/*/*/*.svg
 %{_desktopdir}/*.desktop
