@@ -6,7 +6,7 @@ Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
 Version:	2.32.0
-Release:	1
+Release:	2
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
@@ -53,6 +53,7 @@ Requires(post,preun):	GConf2
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
 Requires:	desktop-file-utils
 Requires:	gnome-settings-daemon >= 2.26.0
+Requires:	libgnomekbd >= 2.32.0
 Suggests:	libcanberra-gnome
 Suggests:	mousetweaks >= 2.24.0
 Provides:	control-center = %{epoch}:%{version}-%{release}
