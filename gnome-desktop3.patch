@@ -1,0 +1,105 @@
+commit 32f59e6df5589952233c2b573a83065b0048adb0
+Author: Andreas Proschofsky <suka@gentoo.org>
+Date:   Sun Nov 14 22:12:59 2010 +0000
+
+    all: Fix build for latest gnome-desktop changes
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=634859
+
+diff --git a/panels/background/bg-pictures-source.c b/panels/background/bg-pictures-source.c
+index 43024e8..c26605c 100644
+--- a/panels/background/bg-pictures-source.c
++++ b/panels/background/bg-pictures-source.c
+@@ -26,7 +26,7 @@
+ 
+ #include <string.h>
+ #include <gio/gio.h>
+-#include <libgnomeui/gnome-desktop-thumbnail.h>
++#include <libgnome-desktop/gnome-desktop-thumbnail.h>
+ 
+ 
+ G_DEFINE_TYPE (BgPicturesSource, bg_pictures_source, BG_TYPE_SOURCE)
+diff --git a/panels/background/bg-wallpapers-source.c b/panels/background/bg-wallpapers-source.c
+index 1d2dfc4..cc6e81e 100644
+--- a/panels/background/bg-wallpapers-source.c
++++ b/panels/background/bg-wallpapers-source.c
+@@ -26,7 +26,7 @@
+ #include "gnome-wp-item.h"
+ #include "gnome-wp-xml.h"
+ 
+-#include <libgnomeui/gnome-desktop-thumbnail.h>
++#include <libgnome-desktop/gnome-desktop-thumbnail.h>
+ #include <gio/gio.h>
+ 
+ G_DEFINE_TYPE (BgWallpapersSource, bg_wallpapers_source, BG_TYPE_SOURCE)
+diff --git a/panels/background/gnome-wp-info.h b/panels/background/gnome-wp-info.h
+index ea1051e..b65ec79 100644
+--- a/panels/background/gnome-wp-info.h
++++ b/panels/background/gnome-wp-info.h
+@@ -22,7 +22,7 @@
+ #define _GNOME_WP_INFO_H_
+ 
+ #include <glib.h>
+-#include <libgnomeui/gnome-desktop-thumbnail.h>
++#include <libgnome-desktop/gnome-desktop-thumbnail.h>
+ 
+ typedef struct _GnomeWPInfo GnomeWPInfo;
+ 
+diff --git a/panels/background/gnome-wp-item.h b/panels/background/gnome-wp-item.h
+index 70f48c9..12281c8 100644
+--- a/panels/background/gnome-wp-item.h
++++ b/panels/background/gnome-wp-item.h
+@@ -21,8 +21,8 @@
+ #include <gio/gio.h>
+ #include <gdk-pixbuf/gdk-pixbuf.h>
+ #include <gtk/gtk.h>
+-#include <libgnomeui/gnome-desktop-thumbnail.h>
+-#include <libgnomeui/gnome-bg.h>
++#include <libgnome-desktop/gnome-desktop-thumbnail.h>
++#include <libgnome-desktop/gnome-bg.h>
+ #include <gsettings-desktop-schemas/gdesktop-enums.h>
+ 
+ #include "gnome-wp-info.h"
+diff --git a/panels/background/gnome-wp-xml.h b/panels/background/gnome-wp-xml.h
+index a08f4c4..2140a61 100644
+--- a/panels/background/gnome-wp-xml.h
++++ b/panels/background/gnome-wp-xml.h
+@@ -21,7 +21,7 @@
+ #ifndef _GNOME_WP_XML_H_
+ #define _GNOME_WP_XML_H_
+ 
+-#include <libgnomeui/gnome-desktop-thumbnail.h>
++#include <libgnome-desktop/gnome-desktop-thumbnail.h>
+ 
+ typedef struct _GnomeWpXml GnomeWpXml;
+ 
+diff --git a/panels/display/xrandr-capplet.c b/panels/display/xrandr-capplet.c
+index d2c1346..eeb7349 100644
+--- a/panels/display/xrandr-capplet.c
++++ b/panels/display/xrandr-capplet.c
+@@ -27,9 +27,9 @@
+ #include <gtk/gtk.h>
+ #include "scrollarea.h"
+ #define GNOME_DESKTOP_USE_UNSTABLE_API
+-#include <libgnomeui/gnome-rr.h>
+-#include <libgnomeui/gnome-rr-config.h>
+-#include <libgnomeui/gnome-rr-labeler.h>
++#include <libgnome-desktop/gnome-rr.h>
++#include <libgnome-desktop/gnome-rr-config.h>
++#include <libgnome-desktop/gnome-rr-labeler.h>
+ #include <gdk/gdkx.h>
+ #include <X11/Xlib.h>
+ #include <glib/gi18n.h>
+diff --git a/panels/user-accounts/um-photo-dialog.c b/panels/user-accounts/um-photo-dialog.c
+index 2061ebe..06a91e2 100644
+--- a/panels/user-accounts/um-photo-dialog.c
++++ b/panels/user-accounts/um-photo-dialog.c
+@@ -27,7 +27,7 @@
+ #include <glib/gi18n.h>
+ #include <gtk/gtk.h>
+ #define GNOME_DESKTOP_USE_UNSTABLE_API
+-#include <libgnomeui/gnome-desktop-thumbnail.h>
++#include <libgnome-desktop/gnome-desktop-thumbnail.h>
+ 
+ #ifdef HAVE_CHEESE
+ #include <cheese-avatar-chooser.h>
