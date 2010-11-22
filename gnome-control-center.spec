@@ -6,7 +6,7 @@ Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
 Version:	2.91.2
-Release:	0.1
+Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
@@ -17,32 +17,32 @@ Patch1:		default-apps-chrome-chromium.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.26.0
 BuildRequires:	autoconf
-BuildRequires:	automake >= 1:1.9
+BuildRequires:	automake >= 1:1.10
 BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	docbook-dtd412-xml
-BuildRequires:	evolution-data-server-devel >= 2.24.0
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.20.0
+BuildRequires:	glib2-devel >= 1:2.26.0
 BuildRequires:	gnome-common >= 2.24.0
 BuildRequires:	gnome-desktop3-devel >= 2.91.2
 BuildRequires:	gnome-doc-utils >= 0.12.1
 BuildRequires:	gnome-menus-devel >= 2.30.0
 BuildRequires:	gnome-settings-daemon-devel >= 2.91.0
-BuildRequires:	gtk+3-devel >= 2.91.0
+BuildRequires:	gsettings-desktop-schemas-devel >= 0.0.2
+BuildRequires:	gstreamer-devel
+BuildRequires:	gtk+3-devel >= 2.91.3
 BuildRequires:	intltool >= 0.40.0
+BuildRequires:	iso-codes
 BuildRequires:	libcanberra-gtk3-devel >= 0.26
 BuildRequires:	libgnomekbd-devel >= 2.91.0
-BuildRequires:	librsvg-devel >= 2.22.0
 BuildRequires:	libtool
-BuildRequires:	libunique-devel >= 1.0.0
 BuildRequires:	libxklavier-devel >= 4.0
 BuildRequires:	libxml2-devel >= 1:2.6.31
-BuildRequires:	metacity-devel >= 2:2.26.0
 BuildRequires:	pkgconfig
+BuildRequires:	polkit-devel >= 0.97
+BuildRequires:	pulseaudio-devel >= 0.9.16
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper
-BuildRequires:	xorg-lib-libXScrnSaver-devel
 BuildRequires:	xorg-lib-libXxf86misc-devel
 BuildRequires:	xorg-lib-libxkbfile-devel
 Requires(post,postun):	desktop-file-utils
@@ -53,6 +53,8 @@ Requires(post,preun):	GConf2
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
 Requires:	desktop-file-utils
 Requires:	gnome-settings-daemon >= 2.91.0
+Requires:	gsettings-desktop-schemas >= 0.0.2
+Requires:	hicolor-icon-theme
 Requires:	libgnomekbd >= 2.91.0
 Suggests:	libcanberra-gnome
 Suggests:	mousetweaks >= 2.24.0
@@ -115,8 +117,9 @@ Summary:	GNOME Control Center header files
 Summary(pl.UTF-8):	Pliki nagłówkowe bibliotek GNOME Control Center
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
+Requires:	glib2-devel >= 1:2.26.0
 Requires:	gnome-desktop3-devel >= 2.91.2
-Requires:	gtk+3-devel >= 2.91.0
+Requires:	gtk+3-devel >= 2.91.3
 Provides:	control-center-devel = %{epoch}:%{version}-%{release}
 Obsoletes:	control-center-devel
 
@@ -126,26 +129,10 @@ GNOME Control-Center header files.
 %description devel -l pl.UTF-8
 Pliki nagłówkowe bibliotek GNOME Control Center.
 
-%package static
-Summary:	GNOME Control Center static libraries
-Summary(pl.UTF-8):	Statyczne biblioteki GNOME Control Center
-Group:		X11/Development/Libraries
-Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
-Provides:	control-center-static = %{epoch}:%{version}-%{release}
-Obsoletes:	control-center-static
-
-%description static
-GNOME Control Center static libraries.
-
-%description static -l pl.UTF-8
-Statyczne biblioteki GNOME Control Center.
-
 %prep
 %setup -q
 %patch0 -p1
 %patch1 -p1
-sed -i s#^en@shaw## po/LINGUAS
-rm po/en@shaw.po
 
 %build
 %{__gnome_doc_prepare}
@@ -181,8 +168,6 @@ rm -rf $RPM_BUILD_ROOT
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%gconf_schema_install control-center.schemas
-%gconf_schema_install fontilus.schemas
 %gconf_schema_install gnome-control-center.schemas
 %scrollkeeper_update_post
 %update_mime_database
@@ -190,8 +175,6 @@ rm -rf $RPM_BUILD_ROOT
 %update_icon_cache hicolor
 
 %preun
-%gconf_schema_uninstall	control-center.schemas
-%gconf_schema_uninstall fontilus.schemas
 %gconf_schema_uninstall gnome-control-center.schemas
 
 %postun
@@ -211,7 +194,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/gnome-control-center
 %attr(755,root,root) %{_bindir}/gnome-sound-applet
 %dir %{_libdir}/control-center-1
-%dir %{_libdir}/control-center-1/panels/
+%dir %{_libdir}/control-center-1/panels
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libbackground.so
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libdate_time.so
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libdefault-applications.so
@@ -244,10 +227,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_gtkdocdir}/libgnome-control-center
 %attr(755,root,root) %{_libdir}/libgnome-control-center.so
 %{_includedir}/gnome-control-center-1
-%{_datadir}/pkgconfig/gnome-default-applications.pc
-%{_datadir}/pkgconfig/gnome-keybindings.pc
+%{_npkgconfigdir}/gnome-default-applications.pc
+%{_npkgconfigdir}/gnome-keybindings.pc
 %{_pkgconfigdir}/libgnome-control-center.pc
-
-#%files static
-#%defattr(644,root,root,755)
-#%{_libdir}/libgnome-window-settings.a
