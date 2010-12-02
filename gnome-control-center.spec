@@ -5,15 +5,13 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	2.91.2
+Version:	2.91.3.1
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/2.91/%{name}-%{version}.tar.bz2
-# Source0-md5:	2bd94f06e66eba6554a1c5808dc0e1d1
-Patch0:		gnome-desktop3.patch
-Patch1:		default-apps-chrome-chromium.patch
+# Source0-md5:	a670886ab368c4c742322ef6fa5902ae
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.26.0
 BuildRequires:	autoconf
@@ -131,8 +129,6 @@ Pliki nagłówkowe bibliotek GNOME Control Center.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
 
 %build
 %{__gnome_doc_prepare}
@@ -204,6 +200,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libnetwork.so
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libregion.so
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libsound.so
+%attr(755,root,root) %{_libdir}/control-center-1/panels/libmedia.so
+%attr(755,root,root) %{_libdir}/control-center-1/panels/libpower.so
+%attr(755,root,root) %{_libdir}/control-center-1/panels/libscreen.so
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libuniversal-access.so
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libuser-accounts.so
 %{_sysconfdir}/gconf/schemas/gnome-control-center.schemas
