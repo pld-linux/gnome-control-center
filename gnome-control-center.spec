@@ -6,7 +6,7 @@ Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
 Version:	2.32.1
-Release:	1
+Release:	2
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
@@ -46,7 +46,8 @@ BuildRequires:	xorg-lib-libXScrnSaver-devel
 BuildRequires:	xorg-lib-libXxf86misc-devel
 BuildRequires:	xorg-lib-libxkbfile-devel
 Requires(post,postun):	desktop-file-utils
-Requires(post,postun):	gtk+2
+Requires(post,postun):	gtk-update-icon-cache
+Requires(post,postun):	hicolor-icon-theme
 Requires(post,postun):	scrollkeeper
 Requires(post,postun):	shared-mime-info
 Requires(post,preun):	GConf2
