@@ -5,13 +5,13 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	2.91.3.1
+Version:	2.91.6
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/2.91/%{name}-%{version}.tar.bz2
-# Source0-md5:	a670886ab368c4c742322ef6fa5902ae
+# Source0-md5:	fbadb7789efcd6d76cccdbd4e3c0226b
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.26.0
 BuildRequires:	autoconf
@@ -19,19 +19,20 @@ BuildRequires:	automake >= 1:1.10
 BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.26.0
+BuildRequires:	glib2-devel >= 1:2.28.0
+BuildRequires:	gdk-pixbuf2-devel >= 2.23.0
 BuildRequires:	gnome-common >= 2.24.0
 BuildRequires:	gnome-desktop3-devel >= 2.91.2
 BuildRequires:	gnome-doc-utils >= 0.12.1
 BuildRequires:	gnome-menus-devel >= 2.30.0
-BuildRequires:	gnome-settings-daemon-devel >= 2.91.0
-BuildRequires:	gsettings-desktop-schemas-devel >= 0.0.2
+BuildRequires:	gnome-settings-daemon-devel >= 2.91.4
+BuildRequires:	gsettings-desktop-schemas-devel >= 0.1.3
 BuildRequires:	gstreamer-devel
-BuildRequires:	gtk+3-devel >= 2.91.3
+BuildRequires:	gtk+3-devel >= 3.0.0
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	iso-codes
 BuildRequires:	libcanberra-gtk3-devel >= 0.26
-BuildRequires:	libgnomekbd-devel >= 2.91.0
+BuildRequires:	libgnomekbd-devel >= 2.91.4
 BuildRequires:	libtool
 BuildRequires:	libxklavier-devel >= 4.0
 BuildRequires:	libxml2-devel >= 1:2.6.31
@@ -50,10 +51,10 @@ Requires(post,postun):	shared-mime-info
 Requires(post,preun):	GConf2
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
 Requires:	desktop-file-utils
-Requires:	gnome-settings-daemon >= 2.91.0
+Requires:	gnome-settings-daemon >= 2.91.4
 Requires:	gsettings-desktop-schemas >= 0.0.2
 Requires:	hicolor-icon-theme
-Requires:	libgnomekbd >= 2.91.0
+Requires:	libgnomekbd >= 2.91.4
 Suggests:	libcanberra-gnome
 Suggests:	mousetweaks >= 2.24.0
 Provides:	control-center = %{epoch}:%{version}-%{release}
@@ -115,9 +116,9 @@ Summary:	GNOME Control Center header files
 Summary(pl.UTF-8):	Pliki nagłówkowe bibliotek GNOME Control Center
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
-Requires:	glib2-devel >= 1:2.26.0
-Requires:	gnome-desktop3-devel >= 2.91.2
-Requires:	gtk+3-devel >= 2.91.3
+Requires:	glib2-devel >= 1:2.28.0
+Requires:	gnome-desktop3-devel >= 2.91.4
+Requires:	gtk+3-devel >= 3.0.0
 Provides:	control-center-devel = %{epoch}:%{version}-%{release}
 Obsoletes:	control-center-devel
 
@@ -185,16 +186,17 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog MAINTAINERS NEWS README
-%attr(755,root,root) %{_bindir}/gnome-at-mobility
-%attr(755,root,root) %{_bindir}/gnome-at-visual
+#%attr(755,root,root) %{_bindir}/gnome-at-mobility
+#%attr(755,root,root) %{_bindir}/gnome-at-visual
 %attr(755,root,root) %{_bindir}/gnome-control-center
 %attr(755,root,root) %{_bindir}/gnome-sound-applet
 %dir %{_libdir}/control-center-1
 %dir %{_libdir}/control-center-1/panels
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libbackground.so
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libdate_time.so
-%attr(755,root,root) %{_libdir}/control-center-1/panels/libdefault-applications.so
+#%attr(755,root,root) %{_libdir}/control-center-1/panels/libdefault-applications.so
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libdisplay.so
+%attr(755,root,root) %{_libdir}/control-center-1/panels/libinfo.so
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libkeyboard.so
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libmouse-properties.so
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libnetwork.so
@@ -202,11 +204,12 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libsound.so
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libmedia.so
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libpower.so
+%attr(755,root,root) %{_libdir}/control-center-1/panels/libprinters.so
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libscreen.so
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libuniversal-access.so
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libuser-accounts.so
 %{_sysconfdir}/gconf/schemas/gnome-control-center.schemas
-%{_sysconfdir}/xdg/autostart/gnome-at-session.desktop
+#%{_sysconfdir}/xdg/autostart/gnome-at-session.desktop
 %{_sysconfdir}/xdg/autostart/gnome-sound-applet.desktop
 %{_sysconfdir}/xdg/menus/gnomecc.menu
 %{_datadir}/gnome-control-center
@@ -226,6 +229,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_gtkdocdir}/libgnome-control-center
 %attr(755,root,root) %{_libdir}/libgnome-control-center.so
 %{_includedir}/gnome-control-center-1
-%{_npkgconfigdir}/gnome-default-applications.pc
+#%{_npkgconfigdir}/gnome-default-applications.pc
 %{_npkgconfigdir}/gnome-keybindings.pc
 %{_pkgconfigdir}/libgnome-control-center.pc
