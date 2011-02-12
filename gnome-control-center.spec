@@ -186,15 +186,12 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog MAINTAINERS NEWS README
-#%attr(755,root,root) %{_bindir}/gnome-at-mobility
-#%attr(755,root,root) %{_bindir}/gnome-at-visual
 %attr(755,root,root) %{_bindir}/gnome-control-center
 %attr(755,root,root) %{_bindir}/gnome-sound-applet
 %dir %{_libdir}/control-center-1
 %dir %{_libdir}/control-center-1/panels
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libbackground.so
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libdate_time.so
-#%attr(755,root,root) %{_libdir}/control-center-1/panels/libdefault-applications.so
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libdisplay.so
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libinfo.so
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libkeyboard.so
@@ -209,7 +206,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libuniversal-access.so
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libuser-accounts.so
 %{_sysconfdir}/gconf/schemas/gnome-control-center.schemas
-#%{_sysconfdir}/xdg/autostart/gnome-at-session.desktop
 %{_sysconfdir}/xdg/autostart/gnome-sound-applet.desktop
 %{_sysconfdir}/xdg/menus/gnomecc.menu
 %{_datadir}/gnome-control-center
@@ -229,6 +225,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_gtkdocdir}/libgnome-control-center
 %attr(755,root,root) %{_libdir}/libgnome-control-center.so
 %{_includedir}/gnome-control-center-1
-#%{_npkgconfigdir}/gnome-default-applications.pc
 %{_npkgconfigdir}/gnome-keybindings.pc
 %{_pkgconfigdir}/libgnome-control-center.pc
