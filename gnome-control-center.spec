@@ -5,17 +5,19 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	2.91.6
+Version:	2.91.90
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/2.91/%{name}-%{version}.tar.bz2
-# Source0-md5:	fbadb7789efcd6d76cccdbd4e3c0226b
+# Source0-md5:	410be83704567c2d1a18a3a4f123ed88
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.26.0
+#BuildRequires:	NetworkManager-devel >= 0.8.992
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.10
+#BuildRequires:	cheese-devel >= 2.29.90
 BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-devel
@@ -196,7 +198,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libinfo.so
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libkeyboard.so
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libmouse-properties.so
-%attr(755,root,root) %{_libdir}/control-center-1/panels/libnetwork.so
+#%attr(755,root,root) %{_libdir}/control-center-1/panels/libnetwork.so
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libregion.so
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libsound.so
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libmedia.so
