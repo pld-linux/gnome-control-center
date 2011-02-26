@@ -17,26 +17,30 @@ BuildRequires:	GConf2-devel >= 2.26.0
 #BuildRequires:	NetworkManager-devel >= 0.8.992
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.10
-#BuildRequires:	cheese-devel >= 2.29.90
+BuildRequires:	cheese-devel >= 2.30.0
+BuildRequires:	cups-devel >= 1.4
 BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.28.0
 BuildRequires:	gdk-pixbuf2-devel >= 2.23.0
 BuildRequires:	gnome-common >= 2.24.0
-BuildRequires:	gnome-desktop3-devel >= 2.91.2
+BuildRequires:	gnome-desktop3-devel >= 2.91.90
 BuildRequires:	gnome-doc-utils >= 0.12.1
 BuildRequires:	gnome-menus-devel >= 2.30.0
-BuildRequires:	gnome-settings-daemon-devel >= 2.91.4
-BuildRequires:	gsettings-desktop-schemas-devel >= 0.1.3
+BuildRequires:	gnome-settings-daemon-devel >= 2.91.9
+BuildRequires:	gsettings-desktop-schemas-devel >= 0.1.7
 BuildRequires:	gstreamer-devel
 BuildRequires:	gtk+3-devel >= 3.0.0
 BuildRequires:	intltool >= 0.40.0
+BuildRequires:	libsocialweb-devel
+BuildRequires:	gtk-doc >= 1.9
 BuildRequires:	iso-codes
 BuildRequires:	libcanberra-gtk3-devel >= 0.26
 BuildRequires:	libgnomekbd-devel >= 2.91.4
-BuildRequires:	libtool
-BuildRequires:	libxklavier-devel >= 4.0
+BuildRequires:	libgtop-devel
+BuildRequires:	libtool >= 2:2.2
+BuildRequires:	libxklavier-devel >= 5.1
 BuildRequires:	libxml2-devel >= 1:2.6.31
 BuildRequires:	pkgconfig
 BuildRequires:	polkit-devel >= 0.97
@@ -44,17 +48,18 @@ BuildRequires:	pulseaudio-devel >= 0.9.16
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	scrollkeeper
+BuildRequires:	upower-devel >= 0.9.1
 BuildRequires:	xorg-lib-libXxf86misc-devel
 BuildRequires:	xorg-lib-libxkbfile-devel
 Requires(post,postun):	desktop-file-utils
-Requires(post,postun):	gtk+2
 Requires(post,postun):	scrollkeeper
 Requires(post,postun):	shared-mime-info
 Requires(post,preun):	GConf2
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
 Requires:	desktop-file-utils
-Requires:	gnome-settings-daemon >= 2.91.4
-Requires:	gsettings-desktop-schemas >= 0.0.2
+Requires:	gnome-settings-daemon >= 2.91.9
+Requires:	gsettings-desktop-schemas >= 0.1.7
+Requires:	gtk-update-icon-cache
 Requires:	hicolor-icon-theme
 Requires:	libgnomekbd >= 2.91.4
 Suggests:	libcanberra-gnome
@@ -119,7 +124,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe bibliotek GNOME Control Center
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
 Requires:	glib2-devel >= 1:2.28.0
-Requires:	gnome-desktop3-devel >= 2.91.4
+Requires:	gnome-desktop3-devel >= 2.91.90
 Requires:	gtk+3-devel >= 3.0.0
 Provides:	control-center-devel = %{epoch}:%{version}-%{release}
 Obsoletes:	control-center-devel
@@ -160,6 +165,9 @@ rm -rf $RPM_BUILD_ROOT
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
 # no static modules - shut up check-files
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/control-center-1/panels/*.{a,la}
+
+# obsolete locales (nb already exists)
+%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/locale/no
 
 %find_lang %{name} --with-gnome --with-omf --all-name
 
