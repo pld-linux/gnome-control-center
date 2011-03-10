@@ -1,0 +1,11 @@
+--- gnome-control-center-2.91.91/panels/datetime/test-endianess.c.wiget	2011-03-09 22:20:32.258478986 +0100
++++ gnome-control-center-2.91.91/panels/datetime/test-endianess.c	2011-03-09 22:29:36.436369996 +0100
+@@ -38,7 +38,7 @@ int main (int argc, char **argv)
+ 		return 0;
+ 	}
+ 
+-	dir = g_dir_open ("/usr/share/i18n/locales/", 0, NULL);
++	dir = g_dir_open ("/usr/share/locale/", 0, NULL);
+ 	if (dir == NULL)
+ 		return 1;
+ 
