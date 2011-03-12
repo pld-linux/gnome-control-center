@@ -58,7 +58,7 @@ Requires(post,postun):	shared-mime-info
 Requires(post,preun):	GConf2
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
 Requires:	desktop-file-utils
-Requires:	gnome-settings-daemon >= 2.91.9
+Requires:	gnome-settings-daemon >= 2.91.91
 Requires:	gsettings-desktop-schemas >= 0.1.7
 Requires:	gtk-update-icon-cache
 Requires:	hicolor-icon-theme
