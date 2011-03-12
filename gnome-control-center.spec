@@ -15,7 +15,7 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/2.91/%{name
 Patch0:		locale.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.26.0
-#BuildRequires:	NetworkManager-devel >= 0.8.992
+BuildRequires:	NetworkManager-devel >= 0.8.996
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.10
 BuildRequires:	cheese-devel >= 2.91.91.1
@@ -154,6 +154,7 @@ Pliki nagłówkowe bibliotek GNOME Control Center.
 	--disable-schemas-install \
 	--disable-silent-rules \
 	--disable-update-mimedb \
+	--with-libsocialweb \
 	--with-html-dir=%{_gtkdocdir} \
 	X_EXTRA_LIBS="-lXext"
 %{__make}
@@ -208,7 +209,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libinfo.so
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libkeyboard.so
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libmouse-properties.so
-#%attr(755,root,root) %{_libdir}/control-center-1/panels/libnetwork.so
+%attr(755,root,root) %{_libdir}/control-center-1/panels/libnetwork.so
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libregion.so
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libsound.so
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libmedia.so
