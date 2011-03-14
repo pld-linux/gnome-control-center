@@ -13,6 +13,8 @@ Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/2.91/%{name}-%{version}.tar.bz2
 # Source0-md5:	f65f3c3ea44b2796cc09e30d902aabeb
 Patch0:		locale.patch
+# PLD-specific patches
+Patch1:		system-locale-archive-path.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.26.0
 BuildRequires:	NetworkManager-devel >= 0.8.996
@@ -139,6 +141,7 @@ Pliki nagłówkowe bibliotek GNOME Control Center.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__gnome_doc_prepare}
