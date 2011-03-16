@@ -59,12 +59,14 @@ Requires(post,postun):	scrollkeeper
 Requires(post,postun):	shared-mime-info
 Requires(post,preun):	GConf2
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
+Requires:	accountsservice
 Requires:	desktop-file-utils
 Requires:	gnome-settings-daemon >= 2.91.91
 Requires:	gsettings-desktop-schemas >= 0.1.7
 Requires:	gtk-update-icon-cache
 Requires:	hicolor-icon-theme
 Requires:	libgnomekbd >= 2.91.91
+Suggests:	apg
 Suggests:	libcanberra-gnome
 Suggests:	mousetweaks >= 2.24.0
 Provides:	control-center = %{epoch}:%{version}-%{release}
