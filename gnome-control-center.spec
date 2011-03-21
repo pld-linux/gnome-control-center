@@ -5,13 +5,13 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	2.91.91
+Version:	2.91.92
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/2.91/%{name}-%{version}.tar.bz2
-# Source0-md5:	f65f3c3ea44b2796cc09e30d902aabeb
+# Source0-md5:	30b55b94d6744045881f52806431b170
 Patch0:		locale.patch
 # PLD-specific patches
 Patch1:		system-locale-archive-path.patch
@@ -34,7 +34,7 @@ BuildRequires:	gnome-menus-devel >= 2.30.0
 BuildRequires:	gnome-settings-daemon-devel >= 2.91.9
 BuildRequires:	gsettings-desktop-schemas-devel >= 0.1.7
 BuildRequires:	gstreamer-devel
-BuildRequires:	gtk+3-devel >= 3.0.0
+BuildRequires:	gtk+3-devel >= 3.0.2
 BuildRequires:	intltool >= 0.40.0
 BuildRequires:	libsocialweb-devel
 BuildRequires:	gtk-doc >= 1.9
@@ -130,7 +130,7 @@ Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
 Requires:	glib2-devel >= 1:2.28.0
 Requires:	gnome-desktop3-devel >= 2.91.90
-Requires:	gtk+3-devel >= 3.0.0
+Requires:	gtk+3-devel >= 3.0.2
 Provides:	control-center-devel = %{epoch}:%{version}-%{release}
 Obsoletes:	control-center-devel
 
@@ -232,6 +232,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/*/*/*.png
 %{_iconsdir}/hicolor/*/*/*.svg
 %{_desktopdir}/*.desktop
+%{_pixmapsdir}/faces/*.png
+%{_pixmapsdir}/faces/*.jpg
 
 %files libs
 %defattr(644,root,root,755)
