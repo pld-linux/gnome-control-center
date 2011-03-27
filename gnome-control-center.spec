@@ -145,8 +145,6 @@ Statyczne biblioteki GNOME Control Center.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-sed -i s#^en@shaw## po/LINGUAS
-rm po/en@shaw.po
 
 %build
 %{__gnome_doc_prepare}
@@ -173,9 +171,9 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%{__rm} -f $RPM_BUILD_ROOT%{_libdir}/*.la
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
 # no static modules - shut up check-files
-%{__rm} -f $RPM_BUILD_ROOT%{_libdir}/window-manager-settings/*.{a,la}
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/window-manager-settings/*.{a,la}
 
 %find_lang %{name} --with-gnome --with-omf --all-name
 
