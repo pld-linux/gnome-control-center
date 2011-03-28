@@ -6,7 +6,7 @@ Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
 Version:	2.91.92
-Release:	1
+Release:	2
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
@@ -28,7 +28,7 @@ BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.28.0
 BuildRequires:	gdk-pixbuf2-devel >= 2.23.0
 BuildRequires:	gnome-common >= 2.24.0
-BuildRequires:	gnome-desktop3-devel >= 2.91.90
+BuildRequires:	gnome-desktop-devel >= 2.91.93
 BuildRequires:	gnome-doc-utils >= 0.12.1
 BuildRequires:	gnome-menus-devel >= 2.30.0
 BuildRequires:	gnome-settings-daemon-devel >= 2.91.9
