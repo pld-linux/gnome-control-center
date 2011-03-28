@@ -129,7 +129,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe bibliotek GNOME Control Center
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
 Requires:	glib2-devel >= 1:2.28.0
-Requires:	gnome-desktop3-devel >= 2.91.90
+Requires:	gnome-desktop-devel >= 2.91.90
 Requires:	gtk+3-devel >= 3.0.2
 Provides:	control-center-devel = %{epoch}:%{version}-%{release}
 Obsoletes:	control-center-devel
