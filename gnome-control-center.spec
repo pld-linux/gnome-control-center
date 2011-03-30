@@ -5,13 +5,13 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	2.91.92
-Release:	2
+Version:	2.91.93
+Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/2.91/%{name}-%{version}.tar.bz2
-# Source0-md5:	30b55b94d6744045881f52806431b170
+# Source0-md5:	ba27c713dc1d1313056bb80c2696cf50
 Patch0:		locale.patch
 # PLD-specific patches
 Patch1:		system-locale-archive-path.patch
@@ -24,7 +24,7 @@ BuildRequires:	cheese-devel >= 2.91.91.1
 BuildRequires:	cups-devel >= 1.4
 BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	docbook-dtd412-xml
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-devel >= 0.17
 BuildRequires:	glib2-devel >= 1:2.28.0
 BuildRequires:	gdk-pixbuf2-devel >= 2.23.0
 BuildRequires:	gnome-common >= 2.24.0
@@ -35,7 +35,7 @@ BuildRequires:	gnome-settings-daemon-devel >= 2.91.9
 BuildRequires:	gsettings-desktop-schemas-devel >= 0.1.7
 BuildRequires:	gstreamer-devel
 BuildRequires:	gtk+3-devel >= 3.0.2
-BuildRequires:	intltool >= 0.40.0
+BuildRequires:	intltool >= 0.40.1
 BuildRequires:	libsocialweb-devel
 BuildRequires:	gtk-doc >= 1.9
 BuildRequires:	iso-codes
@@ -129,7 +129,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe bibliotek GNOME Control Center
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
 Requires:	glib2-devel >= 1:2.28.0
-Requires:	gnome-desktop-devel >= 2.91.90
+Requires:	gnome-desktop-devel >= 2.91.93
 Requires:	gtk+3-devel >= 3.0.2
 Provides:	control-center-devel = %{epoch}:%{version}-%{release}
 Obsoletes:	control-center-devel
@@ -232,8 +232,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/*/*/*.png
 %{_iconsdir}/hicolor/*/*/*.svg
 %{_desktopdir}/*.desktop
-%{_pixmapsdir}/faces/*.png
-%{_pixmapsdir}/faces/*.jpg
+%{_pixmapsdir}/faces
 
 %files libs
 %defattr(644,root,root,755)
