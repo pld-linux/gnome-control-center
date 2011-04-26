@@ -5,13 +5,13 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	3.0.0.1
+Version:	3.0.1
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/3.0/%{name}-%{version}.tar.bz2
-# Source0-md5:	95df9948e7476bc691ee7dc182e11104
+# Source0-md5:	49f3c3716be3c7575b42a1ca43c9a0ce
 # PLD-specific patches
 Patch0:		system-locale-archive-path.patch
 URL:		http://www.gnome.org/
@@ -57,7 +57,6 @@ Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk-update-icon-cache
 Requires(post,postun):	scrollkeeper
 Requires(post,postun):	shared-mime-info
-Requires(post,preun):	GConf2
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
 Requires:	accountsservice
 Requires:	desktop-file-utils
@@ -180,14 +179,10 @@ rm -rf $RPM_BUILD_ROOT
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%gconf_schema_install gnome-control-center.schemas
 %scrollkeeper_update_post
 %update_mime_database
 %update_desktop_database_post
 %update_icon_cache hicolor
-
-%preun
-%gconf_schema_uninstall gnome-control-center.schemas
 
 %postun
 %scrollkeeper_update_postun
@@ -220,7 +215,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libscreen.so
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libuniversal-access.so
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libuser-accounts.so
-%{_sysconfdir}/gconf/schemas/gnome-control-center.schemas
 %{_sysconfdir}/xdg/autostart/gnome-sound-applet.desktop
 %{_sysconfdir}/xdg/menus/gnomecc.menu
 %{_datadir}/gnome-control-center
