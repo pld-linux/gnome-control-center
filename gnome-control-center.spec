@@ -6,7 +6,7 @@ Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
 Version:	3.0.1
-Release:	2
+Release:	3
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
@@ -19,7 +19,7 @@ BuildRequires:	GConf2-devel >= 2.26.0
 BuildRequires:	NetworkManager-devel >= 0.8.996
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.10
-BuildRequires:	cheese-devel >= 3.0.0
+BuildRequires:	cheese-devel >= 3.0.1
 BuildRequires:	cups-devel >= 1.4
 BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	docbook-dtd412-xml
