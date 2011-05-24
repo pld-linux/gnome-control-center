@@ -20,7 +20,7 @@ BuildRequires:	GConf2-devel >= 2.26.0
 BuildRequires:	NetworkManager-devel >= 0.8.996
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.10
-#BuildRequires:	cheese-devel >= 3.0.1
+BuildRequires:	cheese-devel >= 3.0.1
 BuildRequires:	cups-devel >= 1.4
 BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	docbook-dtd412-xml
