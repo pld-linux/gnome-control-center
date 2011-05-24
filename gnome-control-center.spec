@@ -14,12 +14,13 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/3.0/%{name}
 # Source0-md5:	5b5601fbae8be38a313a169b0fb4d9bf
 # PLD-specific patches
 Patch0:		system-locale-archive-path.patch
+Patch1:		configure-gettext.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.26.0
 BuildRequires:	NetworkManager-devel >= 0.8.996
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.10
-BuildRequires:	cheese-devel >= 3.0.1
+#BuildRequires:	cheese-devel >= 3.0.1
 BuildRequires:	cups-devel >= 1.4
 BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	docbook-dtd412-xml
@@ -141,6 +142,7 @@ Pliki nagłówkowe bibliotek GNOME Control Center.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__gnome_doc_prepare}
