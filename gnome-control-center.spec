@@ -5,13 +5,13 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	3.0.2
+Version:	3.1.4
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/3.0/%{name}-%{version}.tar.bz2
-# Source0-md5:	5b5601fbae8be38a313a169b0fb4d9bf
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/3.1/%{name}-%{version}.tar.bz2
+# Source0-md5:	6a134a857494841ab62e97ba87fd617f
 # PLD-specific patches
 Patch0:		system-locale-archive-path.patch
 Patch1:		configure-gettext.patch
@@ -28,11 +28,12 @@ BuildRequires:	gdk-pixbuf2-devel >= 2.23.0
 BuildRequires:	gettext-devel >= 0.17
 BuildRequires:	glib2-devel >= 1:2.28.0
 BuildRequires:	gnome-common >= 2.24.0
-BuildRequires:	gnome-desktop-devel >= 3.0.0
+BuildRequires:	gnome-desktop-devel >= 3.1.4
 BuildRequires:	gnome-doc-utils >= 0.12.1
 BuildRequires:	gnome-menus-devel >= 3.0.0
-BuildRequires:	gnome-settings-daemon-devel >= 1:3.0.0
-BuildRequires:	gsettings-desktop-schemas-devel >= 3.0.0
+BuildRequires:	gnome-online-accounts-devel >= 3.1.1
+BuildRequires:	gnome-settings-daemon-devel >= 1:3.1.4
+BuildRequires:	gsettings-desktop-schemas-devel >= 3.1.3
 BuildRequires:	gstreamer-devel
 BuildRequires:	gtk+3-devel >= 3.0.2
 BuildRequires:	gtk-doc >= 1.9
@@ -61,8 +62,8 @@ Requires(post,postun):	shared-mime-info
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
 Requires:	accountsservice
 Requires:	desktop-file-utils
-Requires:	gnome-settings-daemon >= 1:3.0.0
-Requires:	gsettings-desktop-schemas >= 3.0.0
+Requires:	gnome-settings-daemon >= 1:3.1.4
+Requires:	gsettings-desktop-schemas >= 3.1.3
 Requires:	hicolor-icon-theme
 Requires:	libgnomekbd >= 3.0.0
 Suggests:	apg
@@ -231,10 +232,12 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libgnome-control-center.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libgnome-control-center.so.1
+%dir %{_libdir}/control-center-1
+%dir %{_libdir}/control-center-1/panels
+%{_libdir}/control-center-1/panels/libcolor.so
+%{_libdir}/control-center-1/panels/libonline-accounts.so
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libgnome-control-center.so
-%{_includedir}/gnome-control-center-1
 %{_npkgconfigdir}/gnome-keybindings.pc
-%{_pkgconfigdir}/libgnome-control-center.pc
