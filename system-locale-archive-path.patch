@@ -3,7 +3,7 @@
 @@ -8,6 +8,7 @@
  	$(LIBLANGUAGE_CFLAGS)				\
  	-DDATADIR=\""$(datadir)"\"			\
- 	-DUIDIR=\""$(pkgdatadir)/ui/user-accounts"\"	\
+ 	-DUIDIR=\""$(pkgdatadir)/ui"\"			\
 +	-DLIBDIR=\""$(libdir)"\"			\
  	-DLIBLOCALEDIR=\""$(prefix)/lib/locale"\"       \
  	-DGNOMELOCALEDIR=\""$(datadir)/locale"\"        \
