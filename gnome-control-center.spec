@@ -5,13 +5,13 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	3.1.4
+Version:	3.1.90
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/3.1/%{name}-%{version}.tar.bz2
-# Source0-md5:	6a134a857494841ab62e97ba87fd617f
+# Source0-md5:	c9da268d11918d75ac7f460e903e07fe
 # PLD-specific patches
 Patch0:		system-locale-archive-path.patch
 Patch1:		configure-gettext.patch
@@ -173,9 +173,6 @@ rm -rf $RPM_BUILD_ROOT
 # no static modules - shut up check-files
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/control-center-1/panels/*.{a,la}
 
-# obsolete locales (nb already exists)
-%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/locale/no
-
 %find_lang %{name} --with-gnome --with-omf --all-name
 
 %clean
@@ -218,6 +215,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libscreen.so
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libuniversal-access.so
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libuser-accounts.so
+%attr(755,root,root) %{_libdir}/control-center-1/panels/libwacom-properties.so
 %{_sysconfdir}/xdg/autostart/gnome-sound-applet.desktop
 %{_sysconfdir}/xdg/menus/gnomecc.menu
 %{_datadir}/gnome-control-center
