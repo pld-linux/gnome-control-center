@@ -10,8 +10,8 @@ Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/3.1/%{name}-%{version}.tar.bz2
-# Source0-md5:	c9da268d11918d75ac7f460e903e07fe
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/3.1/%{name}-%{version}.tar.xz
+# Source0-md5:	612fae4fcfdb8c9479e6cafb091d4794
 # PLD-specific patches
 Patch0:		system-locale-archive-path.patch
 Patch1:		configure-gettext.patch
