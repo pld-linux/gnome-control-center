@@ -21,27 +21,29 @@ BuildRequires:	NetworkManager-devel >= 0.8.996
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.10
 BuildRequires:	cheese-devel >= 3.0.1
+BuildRequires:	colord-devel >= 0.1.8
 BuildRequires:	cups-devel >= 1.4
 BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gdk-pixbuf2-devel >= 2.23.0
 BuildRequires:	gettext-devel >= 0.17
-BuildRequires:	glib2-devel >= 1:2.28.0
+BuildRequires:	glib2-devel >= 1:2.29.14
 BuildRequires:	gnome-common >= 2.24.0
 BuildRequires:	gnome-desktop-devel >= 3.1.4
 BuildRequires:	gnome-doc-utils >= 0.12.1
-BuildRequires:	gnome-menus-devel >= 3.0.0
+BuildRequires:	gnome-menus-devel >= 3.1.90
 BuildRequires:	gnome-online-accounts-devel >= 3.1.1
 BuildRequires:	gnome-settings-daemon-devel >= 1:3.1.4
 BuildRequires:	gsettings-desktop-schemas-devel >= 3.1.3
 BuildRequires:	gstreamer-devel
-BuildRequires:	gtk+3-devel >= 3.0.2
+BuildRequires:	gtk+3-devel >= 3.1.3
 BuildRequires:	gtk-doc >= 1.9
 BuildRequires:	intltool >= 0.40.1
 BuildRequires:	iso-codes
 BuildRequires:	libcanberra-gtk3-devel >= 0.26
 BuildRequires:	libgnomekbd-devel >= 3.0.0
 BuildRequires:	libgtop-devel
+BuildRequires:	libnotify-devel >= 0.7.3
 BuildRequires:	libsocialweb-devel
 BuildRequires:	libtool >= 2:2.2
 BuildRequires:	libxklavier-devel >= 5.1
@@ -130,9 +132,9 @@ Summary:	GNOME Control Center header files
 Summary(pl.UTF-8):	Pliki nagłówkowe bibliotek GNOME Control Center
 Group:		X11/Development/Libraries
 Requires:	%{name}-libs = %{epoch}:%{version}-%{release}
-Requires:	glib2-devel >= 1:2.28.0
-Requires:	gnome-desktop-devel >= 3.0.0
-Requires:	gtk+3-devel >= 3.0.2
+Requires:	glib2-devel >= 1:2.29.14
+Requires:	gnome-desktop-devel >= 3.1.4
+Requires:	gtk+3-devel >= 3.1.3
 Provides:	control-center-devel = %{epoch}:%{version}-%{release}
 Obsoletes:	control-center-devel
 
@@ -158,7 +160,6 @@ Pliki nagłówkowe bibliotek GNOME Control Center.
 %{__autoheader}
 %{__automake}
 %configure \
-	--disable-schemas-install \
 	--disable-silent-rules \
 	--disable-update-mimedb \
 	--with-libsocialweb \
@@ -203,12 +204,14 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/control-center-1
 %dir %{_libdir}/control-center-1/panels
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libbackground.so
+%attr(755,root,root) %{_libdir}/control-center-1/panels/libcolor.so
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libdate_time.so
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libdisplay.so
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libinfo.so
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libkeyboard.so
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libmouse-properties.so
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libnetwork.so
+%attr(755,root,root) %{_libdir}/control-center-1/panels/libonline-accounts.so
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libregion.so
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libsound.so
 %attr(755,root,root) %{_libdir}/control-center-1/panels/libmedia.so
@@ -232,10 +235,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libgnome-control-center.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libgnome-control-center.so.1
-%dir %{_libdir}/control-center-1
-%dir %{_libdir}/control-center-1/panels
-%{_libdir}/control-center-1/panels/libcolor.so
-%{_libdir}/control-center-1/panels/libonline-accounts.so
 
 %files devel
 %defattr(644,root,root,755)
