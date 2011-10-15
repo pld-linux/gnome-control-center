@@ -1,0 +1,28 @@
+commit cbda9c4c6bbbeff84895f9fefb61cdc90129c68b
+Author: Artur Frysiak <wiget@pld-linux.org>
+Date:   Sat Oct 15 22:09:26 2011 +0200
+
+    Fix segfault on locale without territory.
+    
+    Some locale (eg. Esperanto) don't have territory. Check
+    locale->territory_code before using it.
+
+diff --git a/panels/common/gdm-languages.c b/panels/common/gdm-languages.c
+index 2dfc436..392e693 100644
+--- a/panels/common/gdm-languages.c
++++ b/panels/common/gdm-languages.c
+@@ -635,9 +635,11 @@ count_languages_and_territories (void)
+ 		count++;
+ 		g_hash_table_insert (gdm_language_count_map, g_strdup (locale->language_code), GINT_TO_POINTER (count));
+ 
+-		count = GPOINTER_TO_INT (g_hash_table_lookup (gdm_territory_count_map, locale->territory_code));
+-		count++;
+-		g_hash_table_insert (gdm_territory_count_map, g_strdup (locale->territory_code), GINT_TO_POINTER (count));
++		if (locale->territory_code) {
++			count = GPOINTER_TO_INT (g_hash_table_lookup (gdm_territory_count_map, locale->territory_code));
++			count++;
++			g_hash_table_insert (gdm_territory_count_map, g_strdup (locale->territory_code), GINT_TO_POINTER (count));
++		}
+         }
+ }
+ 
