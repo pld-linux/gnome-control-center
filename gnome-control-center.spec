@@ -6,7 +6,7 @@ Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
 Version:	3.2.0
-Release:	1
+Release:	2
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
@@ -15,6 +15,7 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/3.2/%{name}
 # PLD-specific patches
 Patch0:		system-locale-archive-path.patch
 Patch1:		configure-gettext.patch
+Patch2:		territory_code.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.26.0
 # use libnm-gtk - will use correct NM version
@@ -149,6 +150,7 @@ Pliki nagłówkowe bibliotek GNOME Control Center.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %{__gnome_doc_prepare}
