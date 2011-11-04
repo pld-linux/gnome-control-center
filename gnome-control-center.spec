@@ -6,7 +6,7 @@ Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
 Version:	2.32.1
-Release:	2
+Release:	3
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
@@ -63,6 +63,7 @@ Obsoletes:	control-center
 Obsoletes:	fontilus
 Obsoletes:	gnome
 Obsoletes:	themus
+Conflicts:	filesystem < 3.0-48
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -175,6 +176,9 @@ rm -rf $RPM_BUILD_ROOT
 # no static modules - shut up check-files
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/window-manager-settings/*.{a,la}
 
+# wm-properties dir for GNOME 2
+install -d $RPM_BUILD_ROOT%{_datadir}/gnome/wm-properties
+
 %find_lang %{name} --with-gnome --with-omf --all-name
 
 %clean
@@ -233,6 +237,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/gnome-control-center
 %{_datadir}/desktop-directories/*.directory
 %{_datadir}/gnome/cursor-fonts
+%dir %{_datadir}/gnome/wm-properties
 %{_datadir}/mime/packages/gnome-theme-package.xml
 %{_datadir}/polkit-1/actions/org.gnome.randr.policy
 %{_iconsdir}/hicolor/*/*/*.png
