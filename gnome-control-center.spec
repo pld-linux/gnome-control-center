@@ -5,13 +5,13 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	3.2.1
+Version:	3.2.2
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/3.2/%{name}-%{version}.tar.xz
-# Source0-md5:	b80c8485c210c1b0a88ba3c00354e7f6
+# Source0-md5:	7da05b8b5d78535482e8f849ca0cf274
 # PLD-specific patches
 Patch0:		system-locale-archive-path.patch
 Patch1:		configure-gettext.patch
