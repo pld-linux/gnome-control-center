@@ -5,7 +5,7 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	3.3.90
+Version:	3.3.91
 Release:	1
 Epoch:		1
 License:	GPL v2+
@@ -15,7 +15,6 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/3.3/%{name}
 # PLD-specific patches
 Patch0:		system-locale-archive-path.patch
 Patch1:		configure-gettext.patch
-Patch2:		territory_code.patch
 URL:		http://www.gnome.org/
 BuildRequires:	GConf2-devel >= 2.26.0
 # use libnm-gtk - will use correct NM version
@@ -32,11 +31,11 @@ BuildRequires:	gettext-devel >= 0.17
 BuildRequires:	glib2-devel >= 1:2.31.0
 BuildRequires:	gnome-bluetooth-devel >= 3.3.4
 BuildRequires:	gnome-common >= 2.24.0
-BuildRequires:	gnome-desktop-devel >= 3.1.4
+BuildRequires:	gnome-desktop-devel >= 3.1.91
 BuildRequires:	gnome-doc-utils >= 0.12.1
 BuildRequires:	gnome-menus-devel >= 3.1.90
 BuildRequires:	gnome-online-accounts-devel >= 3.1.1
-BuildRequires:	gnome-settings-daemon-devel >= 1:3.3.90
+BuildRequires:	gnome-settings-daemon-devel >= 1:3.3.91
 BuildRequires:	gsettings-desktop-schemas-devel >= 3.3.0
 BuildRequires:	gstreamer-devel
 BuildRequires:	gtk+3-devel >= 3.3.5
@@ -67,7 +66,7 @@ Requires(post,postun):	gtk-update-icon-cache
 Requires(post,postun):	shared-mime-info
 Requires:	accountsservice
 Requires:	desktop-file-utils
-Requires:	gnome-settings-daemon >= 1:3.3.90
+Requires:	gnome-settings-daemon >= 1:3.3.91
 Requires:	gsettings-desktop-schemas >= 3.3.0
 Requires:	hicolor-icon-theme
 Requires:	libgnomekbd >= 3.0.0
@@ -134,7 +133,6 @@ Pliki programistyczne GNOME Control Center.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %build
 %{__gnome_doc_prepare}
