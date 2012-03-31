@@ -43,6 +43,7 @@ BuildRequires:	gsettings-desktop-schemas-devel >= 3.3.0
 BuildRequires:	gstreamer-devel
 BuildRequires:	gtk+3-devel >= 3.3.5
 BuildRequires:	gtk-doc >= 1.9
+BuildRequires:	lcms2-devel
 BuildRequires:	intltool >= 0.40.1
 BuildRequires:	iso-codes
 BuildRequires:	libcanberra-gtk3-devel >= 0.26
