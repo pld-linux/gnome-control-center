@@ -16,10 +16,9 @@ License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/3.4/%{name}-%{version}.tar.xz
 # Source0-md5:	31163fa739846929043ae4963bd4f8fa
-# PLD-specific patches
 Patch0:		system-locale-archive-path.patch
 Patch1:		configure-gettext.patch
-%{?with_systemd:Patch2: systemd-fallback.patch}
+Patch2:		systemd-fallback.patch
 URL:		http://www.gnome.org/
 # use libnm-gtk - will use correct NM version
 BuildRequires:	NetworkManager-gtk-lib-devel >= 0.9.1.90-2
