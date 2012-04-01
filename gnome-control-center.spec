@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_with	systemd # rely on systemd for session tracking instead of ConsoleKit
+%bcond_without	systemd # use systemd for session tracking instead of ConsoleKit (fallback to ConsoleKit on runtime)
 #
 Summary:	GNOME Control Center
 Summary(es.UTF-8):	El centro de controle del GNOME
@@ -10,7 +10,7 @@ Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
 Version:	3.4.0
-Release:	1
+Release:	2
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
@@ -19,6 +19,7 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/3.4/%{name}
 # PLD-specific patches
 Patch0:		system-locale-archive-path.patch
 Patch1:		configure-gettext.patch
+%{?with_systemd:Patch2: systemd-fallback.patch}
 URL:		http://www.gnome.org/
 # use libnm-gtk - will use correct NM version
 BuildRequires:	NetworkManager-gtk-lib-devel >= 0.9.1.90-2
@@ -43,9 +44,9 @@ BuildRequires:	gsettings-desktop-schemas-devel >= 3.3.0
 BuildRequires:	gstreamer-devel
 BuildRequires:	gtk+3-devel >= 3.3.5
 BuildRequires:	gtk-doc >= 1.9
-BuildRequires:	lcms2-devel
 BuildRequires:	intltool >= 0.40.1
 BuildRequires:	iso-codes
+BuildRequires:	lcms2-devel
 BuildRequires:	libcanberra-gtk3-devel >= 0.26
 BuildRequires:	libgnomekbd-devel >= 3.0.0
 BuildRequires:	libgtop-devel
@@ -138,6 +139,7 @@ Pliki programistyczne GNOME Control Center.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%{?with_systemd:%patch2 -p1}
 
 %build
 %{__gnome_doc_prepare}
