@@ -70,6 +70,7 @@ Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk-update-icon-cache
 Requires(post,postun):	shared-mime-info
 Requires:	accountsservice
+Requires:	cups-pk-helper
 Requires:	desktop-file-utils
 Requires:	gnome-settings-daemon >= 1:3.3.91
 Requires:	gsettings-desktop-schemas >= 3.3.0
