@@ -9,13 +9,13 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	3.4.0
-Release:	2
+Version:	3.4.1
+Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/3.4/%{name}-%{version}.tar.xz
-# Source0-md5:	31163fa739846929043ae4963bd4f8fa
+# Source0-md5:	f9a65550e82dcd55ca23ceaa5a1489f6
 Patch0:		system-locale-archive-path.patch
 Patch1:		configure-gettext.patch
 Patch2:		systemd-fallback.patch
@@ -24,24 +24,24 @@ URL:		http://www.gnome.org/
 BuildRequires:	NetworkManager-gtk-lib-devel >= 0.9.1.90-2
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.11
-BuildRequires:	cheese-devel >= 3.3.5
+BuildRequires:	cheese-devel >= 3.4.0
 BuildRequires:	colord-devel >= 0.1.8
 BuildRequires:	cups-devel >= 1.4
 BuildRequires:	dbus-glib-devel >= 0.74
 BuildRequires:	docbook-dtd412-xml
-BuildRequires:	gdk-pixbuf2-devel >= 2.23.0
+BuildRequires:	gdk-pixbuf2-devel >= 2.24.0
 BuildRequires:	gettext-devel >= 0.17
-BuildRequires:	glib2-devel >= 1:2.31.0
-BuildRequires:	gnome-bluetooth-devel >= 3.3.4
+BuildRequires:	glib2-devel >= 1:2.32.0
+BuildRequires:	gnome-bluetooth-devel >= 3.4.0
 BuildRequires:	gnome-common >= 2.24.0
-BuildRequires:	gnome-desktop-devel >= 3.1.91
+BuildRequires:	gnome-desktop-devel >= 3.4.0
 BuildRequires:	gnome-doc-utils >= 0.12.1
-BuildRequires:	gnome-menus-devel >= 3.1.90
-BuildRequires:	gnome-online-accounts-devel >= 3.1.1
-BuildRequires:	gnome-settings-daemon-devel >= 1:3.3.91
-BuildRequires:	gsettings-desktop-schemas-devel >= 3.3.0
+BuildRequires:	gnome-menus-devel >= 3.4.0
+BuildRequires:	gnome-online-accounts-devel >= 3.2.0
+BuildRequires:	gnome-settings-daemon-devel >= 1:3.4.0
+BuildRequires:	gsettings-desktop-schemas-devel >= 3.4.0
 BuildRequires:	gstreamer-devel
-BuildRequires:	gtk+3-devel >= 3.3.5
+BuildRequires:	gtk+3-devel >= 3.4.0
 BuildRequires:	gtk-doc >= 1.9
 BuildRequires:	intltool >= 0.40.1
 BuildRequires:	iso-codes
@@ -72,8 +72,8 @@ Requires(post,postun):	shared-mime-info
 Requires:	accountsservice
 Requires:	cups-pk-helper
 Requires:	desktop-file-utils
-Requires:	gnome-settings-daemon >= 1:3.3.91
-Requires:	gsettings-desktop-schemas >= 3.3.0
+Requires:	gnome-settings-daemon >= 1:3.4.0
+Requires:	gsettings-desktop-schemas >= 3.4.0
 Requires:	hicolor-icon-theme
 Requires:	libgnomekbd >= 3.0.0
 Suggests:	apg
