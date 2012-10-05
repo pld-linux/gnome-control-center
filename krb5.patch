@@ -1,3 +1,15 @@
+diff -uNr gnome-control-center-3.6.0/configure.ac gnome-control-center-3.6.0.new/configure.ac
+--- gnome-control-center-3.6.0/configure.ac	2012-09-25 10:47:46.000000000 +0200
++++ gnome-control-center-3.6.0.new/configure.ac	2012-10-05 15:27:02.030495460 +0200
+@@ -267,6 +267,8 @@
+ KRB5_LIBS="`$KRB5_CONFIG --libs`"
+ AC_MSG_RESULT($KRB5_CFLAGS $KRB5_LIBS)
+ 
++AC_CHECK_FUNCS([krb5_get_init_creds_opt_set_out_ccache])
++
+ AC_SUBST(KRB5_CFLAGS)
+ AC_SUBST(KRB5_LIBS)
+ 
 diff -uNr gnome-control-center-3.6.0/panels/user-accounts/um-realm-manager.c gnome-control-center-3.6.0.new/panels/user-accounts/um-realm-manager.c
 --- gnome-control-center-3.6.0/panels/user-accounts/um-realm-manager.c	2012-09-24 17:39:34.000000000 +0200
 +++ gnome-control-center-3.6.0.new/panels/user-accounts/um-realm-manager.c	2012-10-05 14:30:29.557805038 +0200
