@@ -1,5 +1,6 @@
 #
 # Conditional build:
+%bcond_with	ibus	# ibus support need not yet released ibus 1.5 or at least devel 1.4.99 version
 %bcond_without	systemd # use systemd for session tracking instead of ConsoleKit (fallback to ConsoleKit on runtime)
 #
 Summary:	GNOME Control Center
@@ -9,22 +10,24 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	3.4.2
+Version:	3.6.0
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/3.4/%{name}-%{version}.tar.xz
-# Source0-md5:	cebb27d87bdfc8175073eebb6610a498
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/3.6/%{name}-%{version}.tar.xz
+# Source0-md5:	4f2c8df3a5ac2e3c27f136445904c665
 Patch0:		system-locale-archive-path.patch
 Patch1:		configure-gettext.patch
 Patch2:		systemd-fallback.patch
+Patch3:		krb5.patch
 URL:		http://www.gnome.org/
 # use libnm-gtk - will use correct NM version
 BuildRequires:	NetworkManager-gtk-lib-devel >= 0.9.1.90-2
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.11
-BuildRequires:	cheese-devel >= 3.4.0
+BuildRequires:	cheese-devel >= 3.6.0
+BuildRequires:	clutter-gtk-devel
 BuildRequires:	colord-devel >= 0.1.8
 BuildRequires:	cups-devel >= 1.4
 BuildRequires:	dbus-glib-devel >= 0.74
@@ -32,32 +35,32 @@ BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gdk-pixbuf2-devel >= 2.24.0
 BuildRequires:	gettext-devel >= 0.17
 BuildRequires:	glib2-devel >= 1:2.32.0
-BuildRequires:	gnome-bluetooth-devel >= 3.4.0
+BuildRequires:	gnome-bluetooth-devel >= 3.6.0
 BuildRequires:	gnome-common >= 2.24.0
-BuildRequires:	gnome-desktop-devel >= 3.4.0
-BuildRequires:	gnome-doc-utils >= 0.12.1
+BuildRequires:	gnome-desktop-devel >= 3.6.0
 BuildRequires:	gnome-menus-devel >= 3.4.0
-BuildRequires:	gnome-online-accounts-devel >= 3.2.0
-BuildRequires:	gnome-settings-daemon-devel >= 1:3.4.0
-BuildRequires:	gsettings-desktop-schemas-devel >= 3.4.0
-BuildRequires:	gstreamer-devel
-BuildRequires:	gtk+3-devel >= 3.4.0
+BuildRequires:	gnome-online-accounts-devel >= 3.6.0
+BuildRequires:	gnome-settings-daemon-devel >= 1:3.6.0
+BuildRequires:	gsettings-desktop-schemas-devel >= 3.6.0
+BuildRequires:	gstreamer-devel >= 1.0
+BuildRequires:	gtk+3-devel >= 3.6.0
 BuildRequires:	gtk-doc >= 1.9
+BuildRequires:	heimdal-devel
+%{?with_ibus:BuildRequires:	ibus-devel >= 1.4.99}
 BuildRequires:	intltool >= 0.40.1
 BuildRequires:	iso-codes
 BuildRequires:	lcms2-devel
 BuildRequires:	libcanberra-gtk3-devel >= 0.26
-BuildRequires:	libgnomekbd-devel >= 3.0.0
 BuildRequires:	libgtop-devel
 BuildRequires:	libnotify-devel >= 0.7.3
+BuildRequires:	libpwquality-devel
 BuildRequires:	libsocialweb-devel
 BuildRequires:	libtool >= 2:2.2
-BuildRequires:	libwacom-devel >= 0.3
-BuildRequires:	libxklavier-devel >= 5.1
+BuildRequires:	libwacom-devel >= 0.6
 BuildRequires:	libxml2-devel >= 1:2.6.31
 BuildRequires:	pkgconfig
 BuildRequires:	polkit-devel >= 0.103
-BuildRequires:	pulseaudio-devel >= 0.9.16
+BuildRequires:	pulseaudio-devel >= 2.0
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
 %{?with_systemd:BuildRequires:	systemd-devel}
@@ -66,16 +69,16 @@ BuildRequires:	upower-devel >= 0.9.1
 BuildRequires:	xorg-lib-libXxf86misc-devel
 BuildRequires:	xorg-lib-libxkbfile-devel
 BuildRequires:	xz
+BuildRequires:	yelp-tools
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk-update-icon-cache
 Requires(post,postun):	shared-mime-info
 Requires:	accountsservice
 Requires:	cups-pk-helper
 Requires:	desktop-file-utils
-Requires:	gnome-settings-daemon >= 1:3.4.0
-Requires:	gsettings-desktop-schemas >= 3.4.0
+Requires:	gnome-settings-daemon >= 1:3.6.0
+Requires:	gsettings-desktop-schemas >= 3.6.0
 Requires:	hicolor-icon-theme
-Requires:	libgnomekbd >= 3.0.0
 Suggests:	apg
 Suggests:	libcanberra-gnome
 Suggests:	mousetweaks >= 3.0.0
@@ -140,10 +143,9 @@ Pliki programistyczne GNOME Control Center.
 %patch0 -p1
 %patch1 -p1
 %{?with_systemd:%patch2 -p1}
+%patch3 -p1
 
 %build
-%{__gnome_doc_prepare}
-%{__gnome_doc_common}
 %{__gettextize}
 %{__intltoolize}
 %{__libtoolize}
@@ -156,6 +158,7 @@ Pliki programistyczne GNOME Control Center.
 	--disable-update-mimedb \
 	--with-libsocialweb \
 	%{__enable_disable systemd systemd} \
+	%{__enable_disable ibus ibus} \
 	X_EXTRA_LIBS="-lXext"
 %{__make}
 
@@ -211,6 +214,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_sysconfdir}/xdg/autostart/gnome-sound-applet.desktop
 %{_sysconfdir}/xdg/menus/gnomecc.menu
 %{_datadir}/polkit-1/actions/org.gnome.controlcenter.datetime.policy
+%{_datadir}/polkit-1/actions/org.gnome.controlcenter.user-accounts.policy
+%{_datadir}/polkit-1/rules.d/gnome-control-center.rules
 %{_datadir}/gnome-control-center
 %{_datadir}/sounds/gnome
 %{_datadir}/desktop-directories/*.directory
@@ -218,6 +223,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/*/*/*.svg
 %{_desktopdir}/*.desktop
 %{_pixmapsdir}/faces
+%{_mandir}/man1/gnome-control-center.1*
 
 %files devel
 %defattr(644,root,root,755)
