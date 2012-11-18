@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_with	ibus	# ibus support need not yet released ibus 1.5 or at least devel 1.4.99 version
+%bcond_without	ibus	# ibus support need not yet released ibus 1.5 or at least devel 1.4.99 version
 %bcond_without	systemd # use systemd for session tracking instead of ConsoleKit (fallback to ConsoleKit on runtime)
 #
 Summary:	GNOME Control Center
@@ -10,13 +10,13 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	3.6.2
+Version:	3.6.3
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/3.6/%{name}-%{version}.tar.xz
-# Source0-md5:	0bb96e62b3803a779832518a841fc769
+# Source0-md5:	13474a477658ccbca7484918edfc19d3
 Patch0:		system-locale-archive-path.patch
 Patch1:		configure-gettext.patch
 Patch2:		systemd-fallback.patch
@@ -81,6 +81,8 @@ Requires:	gsettings-desktop-schemas >= 3.6.0
 Requires:	hicolor-icon-theme
 Suggests:	apg
 Suggests:	libcanberra-gnome
+# info panel needs glxinfo
+Suggests:	mesa-utils
 Suggests:	mousetweaks >= 3.0.0
 Provides:	control-center = %{epoch}:%{version}-%{release}
 Obsoletes:	acme
