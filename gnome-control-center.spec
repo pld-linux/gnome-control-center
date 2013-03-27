@@ -68,7 +68,6 @@ BuildRequires:	xz
 BuildRequires:	yelp-tools
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	gtk-update-icon-cache
-Requires(post,postun):	shared-mime-info
 Requires:	accountsservice
 Requires:	cups-pk-helper
 Requires:	desktop-file-utils
@@ -178,12 +177,10 @@ rm -rf $RPM_BUILD_ROOT
 rm -rf $RPM_BUILD_ROOT
 
 %post
-%update_mime_database
 %update_desktop_database_post
 %update_icon_cache hicolor
 
 %postun
-%update_mime_database
 %update_desktop_database_postun
 %update_icon_cache hicolor
 
