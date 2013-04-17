@@ -1,7 +1,7 @@
 #
 # Conditional build:
 %bcond_without	ibus	# ibus support need not yet released ibus 1.5 or at least devel 1.4.99 version
-#
+
 Summary:	GNOME Control Center
 Summary(es.UTF-8):	El centro de controle del GNOME
 Summary(pl.UTF-8):	Centrum Kontroli GNOME
@@ -9,13 +9,13 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	3.8.0
+Version:	3.8.1
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/3.8/%{name}-%{version}.tar.xz
-# Source0-md5:	de81d26dfeaf197100f47c2eef4599e9
+# Source0-md5:	96cfe39246bd9d57df8f326f1ac77777
 Patch0:		krb5.patch
 URL:		http://www.gnome.org/
 #BuildRequires:	ModemManager-devel >= 0.7
@@ -167,7 +167,6 @@ Bashowe uzupełnianie nazw dla gnome-control-center.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
