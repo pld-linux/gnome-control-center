@@ -9,13 +9,13 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	3.8.4.1
+Version:	3.10.0
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/3.8/%{name}-%{version}.tar.xz
-# Source0-md5:	616b177a202dc9317e2394f68f54364b
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/3.10/%{name}-%{version}.tar.xz
+# Source0-md5:	1237d6763cc7665d64439dccc4bce999
 Patch0:		krb5.patch
 URL:		http://www.gnome.org/
 BuildRequires:	ModemManager-devel >= 1.0.0
@@ -27,30 +27,32 @@ BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	cheese-devel >= 3.6.0
 BuildRequires:	clutter-gtk-devel
-BuildRequires:	colord-devel >= 0.1.29
+BuildRequires:	colord-devel >= 0.1.34
 BuildRequires:	colord-gtk-devel >= 0.1.24
 BuildRequires:	cups-devel >= 1.4
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gdk-pixbuf2-devel >= 2.24.0
 BuildRequires:	gettext-devel >= 0.17
-BuildRequires:	glib2-devel >= 1:2.36.0
-BuildRequires:	gnome-bluetooth-devel >= 3.6.0
+BuildRequires:	glib2-devel >= 1:2.38.0
+BuildRequires:	gnome-bluetooth-devel >= 3.10.0
 BuildRequires:	gnome-common >= 2.24.0
-BuildRequires:	gnome-desktop-devel >= 3.8.0
+BuildRequires:	gnome-desktop-devel >= 3.10.0
 BuildRequires:	gnome-menus-devel >= 3.4.0
 BuildRequires:	gnome-online-accounts-devel >= 3.8.1
 BuildRequires:	gnome-settings-daemon-devel >= 1:3.8.0
-BuildRequires:	gsettings-desktop-schemas-devel >= 3.8.0
+BuildRequires:	gsettings-desktop-schemas-devel >= 3.10.0
 BuildRequires:	gstreamer-devel >= 1.0
-BuildRequires:	gtk+3-devel >= 3.8.0
+BuildRequires:	gtk+3-devel >= 3.10.0
 BuildRequires:	heimdal-devel
-%{?with_ibus:BuildRequires:	ibus-devel >= 1.4.99}
+%{?with_ibus:BuildRequires:	ibus-devel >= 1.5.2}
 BuildRequires:	intltool >= 0.40.1
 BuildRequires:	libcanberra-gtk3-devel >= 0.26
 BuildRequires:	libgtop-devel
 BuildRequires:	libnotify-devel >= 0.7.3
-BuildRequires:	libpwquality-devel
+BuildRequires:	libpwquality-devel >= 1.2.2
+BuildRequires:	libsmbclient-devel
 BuildRequires:	libsocialweb-devel
+BuildRequires:	libsoup-devel
 BuildRequires:	libtool >= 2:2.2
 BuildRequires:	libwacom-devel >= 0.7
 BuildRequires:	libxml2-devel >= 1:2.6.31
@@ -72,7 +74,7 @@ Requires:	accountsservice
 Requires:	cups-pk-helper
 Requires:	desktop-file-utils
 Requires:	gnome-settings-daemon >= 1:3.8.0
-Requires:	gsettings-desktop-schemas >= 3.8.0
+Requires:	gsettings-desktop-schemas >= 3.10.0
 Requires:	hicolor-icon-theme
 Suggests:	libcanberra-gnome
 # info panel needs glxinfo
@@ -189,6 +191,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/gnome-control-center
 %attr(755,root,root) %{_libdir}/cc-remote-login-helper
 %attr(755,root,root) %{_libdir}/gnome-control-center-search-provider
+%{_datadir}/dbus-1/services/org.gnome.ControlCenter.service
 %{_datadir}/dbus-1/services/org.gnome.ControlCenter.SearchProvider.service
 %{_datadir}/gnome-shell/search-providers/gnome-control-center-search-provider.ini
 %{_datadir}/polkit-1/actions/org.gnome.controlcenter.datetime.policy
