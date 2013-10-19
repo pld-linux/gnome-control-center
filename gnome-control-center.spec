@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_without	ibus	# ibus support need not yet released ibus 1.5 or at least devel 1.4.99 version
+%bcond_without	ibus	# ibus support
 
 Summary:	GNOME Control Center
 Summary(es.UTF-8):	El centro de controle del GNOME
@@ -10,13 +10,14 @@ Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
 Version:	3.10.1
-Release:	1
+Release:	2
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/3.10/%{name}-%{version}.tar.xz
 # Source0-md5:	0fc5b06af19d57d13f7f94df51a6a805
 Patch0:		krb5.patch
+Patch1:		bug709302.patch
 URL:		http://www.gnome.org/
 BuildRequires:	ModemManager-devel >= 1.0.0
 # use libnm-gtk - will use correct NM version
@@ -151,6 +152,7 @@ Bashowe uzupełnianie nazw dla gnome-control-center.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__intltoolize}
