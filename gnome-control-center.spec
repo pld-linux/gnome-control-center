@@ -141,6 +141,9 @@ Summary:	bash-completion for gnome-control-center
 Summary(pl.UTF-8):	Bashowe uzupełnianie nazw dla gnome-control-center
 Group:		Applications/Shells
 Requires:	bash-completion >= 2.0
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description -n bash-completion-gnome-control-center
 bash-completion for gnome-control-center.
