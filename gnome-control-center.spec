@@ -9,13 +9,13 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	3.12.1
-Release:	4
+Version:	3.14.0
+Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/3.12/%{name}-%{version}.tar.xz
-# Source0-md5:	412daa52c78f7ee5224c30e82128a02e
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/3.14/%{name}-%{version}.tar.xz
+# Source0-md5:	8650a8975dabd6fbea256be4583f9bb3
 Patch0:		krb5.patch
 URL:		http://www.gnome.org/
 BuildRequires:	ModemManager-devel >= 1.0.0
@@ -41,9 +41,9 @@ BuildRequires:	gnome-menus-devel >= 3.4.0
 BuildRequires:	gnome-online-accounts-devel >= 3.10.0
 BuildRequires:	gnome-settings-daemon-devel >= 1:3.8.0
 BuildRequires:	grilo-devel >= 0.2.6
-BuildRequires:	gsettings-desktop-schemas-devel >= 3.10.0
+BuildRequires:	gsettings-desktop-schemas-devel >= 3.14.0
 BuildRequires:	gstreamer-devel >= 1.0
-BuildRequires:	gtk+3-devel >= 3.12.0
+BuildRequires:	gtk+3-devel >= 3.14.0
 BuildRequires:	heimdal-devel
 %{?with_ibus:BuildRequires:	ibus-devel >= 1.5.2}
 BuildRequires:	intltool >= 0.40.1
@@ -76,8 +76,8 @@ Requires:	desktop-file-utils
 Requires:	glib2 >= 1:2.40.0
 Requires:	gnome-desktop >= 3.12.0
 Requires:	gnome-settings-daemon >= 1:3.8.0
-Requires:	gsettings-desktop-schemas >= 3.10.0
-Requires:	gtk+3 >= 3.12.0
+Requires:	gsettings-desktop-schemas >= 3.14.0
+Requires:	gtk+3 >= 3.14.0
 Requires:	hicolor-icon-theme
 Suggests:	libcanberra-gnome
 # info panel needs glxinfo
