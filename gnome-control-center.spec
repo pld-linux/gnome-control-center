@@ -9,13 +9,13 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	3.14.1
+Version:	3.14.2
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/3.14/%{name}-%{version}.tar.xz
-# Source0-md5:	80ac2767307691a36a13b9f3cae68c51
+# Source0-md5:	729951bfecc3f5fa87973383ec4ab787
 Patch0:		krb5.patch
 URL:		http://www.gnome.org/
 BuildRequires:	ModemManager-devel >= 1.0.0
@@ -217,4 +217,4 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n bash-completion-gnome-control-center
 %defattr(644,root,root,755)
-%{_datadir}/bash-completion/completions/gnome-control-center
+%{bash_compdir}/gnome-control-center
