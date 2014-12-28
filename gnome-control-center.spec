@@ -32,7 +32,7 @@ BuildRequires:	colord-gtk-devel >= 0.1.24
 BuildRequires:	cups-devel >= 1.4
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gdk-pixbuf2-devel >= 2.24.0
-BuildRequires:	gettext-devel >= 0.17
+BuildRequires:	gettext-tools >= 0.17
 BuildRequires:	glib2-devel >= 1:2.40.0
 BuildRequires:	gnome-bluetooth-devel >= 3.12.0
 BuildRequires:	gnome-common >= 2.24.0
