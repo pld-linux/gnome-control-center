@@ -10,7 +10,7 @@ Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
 Version:	3.14.2
-Release:	1
+Release:	2
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
@@ -79,6 +79,7 @@ Requires:	gnome-settings-daemon >= 1:3.8.0
 Requires:	gsettings-desktop-schemas >= 3.14.0
 Requires:	gtk+3 >= 3.14.0
 Requires:	hicolor-icon-theme
+Requires:	tzdata
 Suggests:	libcanberra-gnome
 # info panel needs glxinfo
 Suggests:	mesa-utils
