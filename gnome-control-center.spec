@@ -9,20 +9,20 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	3.14.4
+Version:	3.16.0
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/3.14/%{name}-%{version}.tar.xz
-# Source0-md5:	65786b7c6ab04e0a20df6d815f5026bd
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/3.16/%{name}-%{version}.tar.xz
+# Source0-md5:	ee595720b986c21c51fbdd2b055d507a
 Patch0:		krb5.patch
 URL:		http://www.gnome.org/
 BuildRequires:	ModemManager-devel >= 1.0.0
 # use libnm-gtk - will use correct NM version
 BuildRequires:	NetworkManager-gtk-lib-devel >= 0.9.8
 BuildRequires:	OpenGL-devel
-BuildRequires:	accountsservice-devel >= 0.6.30
+BuildRequires:	accountsservice-devel >= 0.6.39
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	cheese-devel >= 3.6.0
@@ -41,9 +41,9 @@ BuildRequires:	gnome-menus-devel >= 3.4.0
 BuildRequires:	gnome-online-accounts-devel >= 3.10.0
 BuildRequires:	gnome-settings-daemon-devel >= 1:3.8.0
 BuildRequires:	grilo-devel >= 0.2.6
-BuildRequires:	gsettings-desktop-schemas-devel >= 3.14.0
+BuildRequires:	gsettings-desktop-schemas-devel >= 3.15.4
 BuildRequires:	gstreamer-devel >= 1.0
-BuildRequires:	gtk+3-devel >= 3.14.0
+BuildRequires:	gtk+3-devel >= 3.15.0
 BuildRequires:	heimdal-devel
 %{?with_ibus:BuildRequires:	ibus-devel >= 1.5.2}
 BuildRequires:	intltool >= 0.40.1
@@ -62,6 +62,7 @@ BuildRequires:	pulseaudio-devel >= 2.0
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	tar >= 1:1.22
+BuildRequires:	udev-glib-devel
 BuildRequires:	upower-devel >= 0.99.0
 BuildRequires:	xorg-lib-libXi-devel >= 1.2
 BuildRequires:	xorg-lib-libXxf86misc-devel
@@ -76,8 +77,8 @@ Requires:	desktop-file-utils
 Requires:	glib2 >= 1:2.40.0
 Requires:	gnome-desktop >= 3.12.0
 Requires:	gnome-settings-daemon >= 1:3.8.0
-Requires:	gsettings-desktop-schemas >= 3.14.0
-Requires:	gtk+3 >= 3.14.0
+Requires:	gsettings-desktop-schemas >= 3.15.4
+Requires:	gtk+3 >= 3.15.0
 Requires:	hicolor-icon-theme
 Requires:	tzdata
 Suggests:	libcanberra-gnome
