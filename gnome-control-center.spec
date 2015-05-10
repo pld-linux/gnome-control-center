@@ -9,13 +9,13 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	3.16.0
-Release:	2
+Version:	3.16.1
+Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/3.16/%{name}-%{version}.tar.xz
-# Source0-md5:	ee595720b986c21c51fbdd2b055d507a
+# Source0-md5:	9a2bc59afa56ee7eb57896b034e0dc99
 Patch0:		krb5.patch
 URL:		http://www.gnome.org/
 BuildRequires:	ModemManager-devel >= 1.0.0
@@ -38,7 +38,7 @@ BuildRequires:	gnome-bluetooth-devel >= 3.12.0
 BuildRequires:	gnome-common >= 2.24.0
 BuildRequires:	gnome-desktop-devel >= 3.12.0
 BuildRequires:	gnome-menus-devel >= 3.4.0
-BuildRequires:	gnome-online-accounts-devel >= 3.10.0
+BuildRequires:	gnome-online-accounts-devel >= 3.16.0
 BuildRequires:	gnome-settings-daemon-devel >= 1:3.8.0
 BuildRequires:	grilo-devel >= 0.2.6
 BuildRequires:	gsettings-desktop-schemas-devel >= 3.15.4
@@ -76,6 +76,7 @@ Requires:	cups-pk-helper
 Requires:	desktop-file-utils
 Requires:	glib2 >= 1:2.40.0
 Requires:	gnome-desktop >= 3.12.0
+Requires:	gnome-online-accounts >= 3.16.0
 Requires:	gnome-settings-daemon >= 1:3.8.0
 Requires:	gsettings-desktop-schemas >= 3.15.4
 Requires:	gtk+3 >= 3.15.0
@@ -198,6 +199,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/gnome-control-center
 %attr(755,root,root) %{_libdir}/cc-remote-login-helper
 %attr(755,root,root) %{_libdir}/gnome-control-center-search-provider
+%{_datadir}/appdata/gnome-control-center.appdata.xml
 %{_datadir}/dbus-1/services/org.gnome.ControlCenter.service
 %{_datadir}/dbus-1/services/org.gnome.ControlCenter.SearchProvider.service
 %{_datadir}/gnome-shell/search-providers/gnome-control-center-search-provider.ini
