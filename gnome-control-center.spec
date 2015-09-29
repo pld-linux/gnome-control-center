@@ -9,13 +9,13 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	3.16.2
+Version:	3.18.0
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/3.16/%{name}-%{version}.tar.xz
-# Source0-md5:	92a5a36588de3d884fa8c20ec43b1896
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/3.18/%{name}-%{version}.tar.xz
+# Source0-md5:	8993cec29c775f565e01be645be51f53
 Patch0:		krb5.patch
 URL:		http://www.gnome.org/
 BuildRequires:	ModemManager-devel >= 1.0.0
@@ -34,9 +34,9 @@ BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gdk-pixbuf2-devel >= 2.24.0
 BuildRequires:	gettext-tools >= 0.17
 BuildRequires:	glib2-devel >= 1:2.40.0
-BuildRequires:	gnome-bluetooth-devel >= 3.12.0
+BuildRequires:	gnome-bluetooth-devel >= 3.18.0
 BuildRequires:	gnome-common >= 2.24.0
-BuildRequires:	gnome-desktop-devel >= 3.12.0
+BuildRequires:	gnome-desktop-devel >= 3.17.4
 BuildRequires:	gnome-menus-devel >= 3.4.0
 BuildRequires:	gnome-online-accounts-devel >= 3.16.0
 BuildRequires:	gnome-settings-daemon-devel >= 1:3.8.0
@@ -75,7 +75,7 @@ Requires:	accountsservice
 Requires:	cups-pk-helper
 Requires:	desktop-file-utils
 Requires:	glib2 >= 1:2.40.0
-Requires:	gnome-desktop >= 3.12.0
+Requires:	gnome-desktop >= 3.17.4
 Requires:	gnome-online-accounts >= 3.16.0
 Requires:	gnome-settings-daemon >= 1:3.8.0
 Requires:	gsettings-desktop-schemas >= 3.15.4
