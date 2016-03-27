@@ -9,13 +9,13 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	3.18.2
+Version:	3.20.0
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/3.18/%{name}-%{version}.tar.xz
-# Source0-md5:	21f4e52530ac5ccea4d6ae6f4f1e8aec
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/3.20/%{name}-%{version}.tar.xz
+# Source0-md5:	fa0252fb9093b3451b90c5b989624abf
 Patch0:		krb5.patch
 URL:		http://www.gnome.org/
 BuildRequires:	ModemManager-devel >= 1.0.0
@@ -26,6 +26,7 @@ BuildRequires:	accountsservice-devel >= 0.6.39
 BuildRequires:	autoconf
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	cheese-devel >= 3.6.0
+BuildRequires:	clutter-devel >= 1.12.0
 BuildRequires:	clutter-gtk-devel
 BuildRequires:	colord-devel >= 0.1.34
 BuildRequires:	colord-gtk-devel >= 0.1.24
@@ -33,17 +34,17 @@ BuildRequires:	cups-devel >= 1.4
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gdk-pixbuf2-devel >= 2.24.0
 BuildRequires:	gettext-tools >= 0.17
-BuildRequires:	glib2-devel >= 1:2.40.0
-BuildRequires:	gnome-bluetooth-devel >= 3.18.0
+BuildRequires:	glib2-devel >= 1:2.44.0
+BuildRequires:	gnome-bluetooth-devel >= 3.18.2
 BuildRequires:	gnome-common >= 2.24.0
-BuildRequires:	gnome-desktop-devel >= 3.17.4
+BuildRequires:	gnome-desktop-devel >= 3.20.0
 BuildRequires:	gnome-menus-devel >= 3.4.0
 BuildRequires:	gnome-online-accounts-devel >= 3.16.0
-BuildRequires:	gnome-settings-daemon-devel >= 1:3.8.0
-BuildRequires:	grilo-devel >= 0.2.6
-BuildRequires:	gsettings-desktop-schemas-devel >= 3.15.4
+BuildRequires:	gnome-settings-daemon-devel >= 1:3.20.0
+BuildRequires:	grilo-devel >= 0.3.0
+BuildRequires:	gsettings-desktop-schemas-devel >= 3.20.0
 BuildRequires:	gstreamer-devel >= 1.0
-BuildRequires:	gtk+3-devel >= 3.15.0
+BuildRequires:	gtk+3-devel >= 3.20.0
 BuildRequires:	heimdal-devel
 %{?with_ibus:BuildRequires:	ibus-devel >= 1.5.2}
 BuildRequires:	intltool >= 0.40.1
@@ -74,15 +75,20 @@ Requires(post,postun):	gtk-update-icon-cache
 Requires:	accountsservice
 Requires:	cups-pk-helper
 Requires:	desktop-file-utils
-Requires:	glib2 >= 1:2.40.0
-Requires:	gnome-desktop >= 3.17.4
+Requires:	glib2 >= 1:2.44.0
+Requires:	gnome-desktop >= 3.20.0
 Requires:	gnome-online-accounts >= 3.16.0
-Requires:	gnome-settings-daemon >= 1:3.8.0
-Requires:	gsettings-desktop-schemas >= 3.15.4
-Requires:	gtk+3 >= 3.15.0
+Requires:	gnome-settings-daemon >= 1:3.20.0
+Requires:	gsettings-desktop-schemas >= 3.20.0
+Requires:	gtk+3 >= 3.20.0
 Requires:	hicolor-icon-theme
+Requires:	polkit >= 0.103
 Requires:	tzdata
+Suggests:	NetworkManager-applet
+Suggests:	cups
+Suggests:	gnome-color-manager
 Suggests:	libcanberra-gnome
+Suggests:	libgnomekbd
 # info panel needs glxinfo
 Suggests:	mesa-utils
 Suggests:	mousetweaks >= 3.0.0
