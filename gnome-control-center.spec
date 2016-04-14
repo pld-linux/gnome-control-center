@@ -9,13 +9,13 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	3.20.0
+Version:	3.20.1
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/3.20/%{name}-%{version}.tar.xz
-# Source0-md5:	fa0252fb9093b3451b90c5b989624abf
+# Source0-md5:	0f2297bc4eebfaccf8898dd3d1e38f15
 Patch0:		krb5.patch
 URL:		http://www.gnome.org/
 BuildRequires:	ModemManager-devel >= 1.0.0
@@ -44,7 +44,7 @@ BuildRequires:	gnome-settings-daemon-devel >= 1:3.20.0
 BuildRequires:	grilo-devel >= 0.3.0
 BuildRequires:	gsettings-desktop-schemas-devel >= 3.20.0
 BuildRequires:	gstreamer-devel >= 1.0
-BuildRequires:	gtk+3-devel >= 3.20.0
+BuildRequires:	gtk+3-devel >= 3.20.3
 BuildRequires:	heimdal-devel
 %{?with_ibus:BuildRequires:	ibus-devel >= 1.5.2}
 BuildRequires:	intltool >= 0.40.1
@@ -80,7 +80,7 @@ Requires:	gnome-desktop >= 3.20.0
 Requires:	gnome-online-accounts >= 3.16.0
 Requires:	gnome-settings-daemon >= 1:3.20.0
 Requires:	gsettings-desktop-schemas >= 3.20.0
-Requires:	gtk+3 >= 3.20.0
+Requires:	gtk+3 >= 3.20.3
 Requires:	hicolor-icon-theme
 Requires:	polkit >= 0.103
 Requires:	tzdata
