@@ -9,22 +9,22 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	3.20.1
+Version:	3.22.1
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/3.20/%{name}-%{version}.tar.xz
-# Source0-md5:	0f2297bc4eebfaccf8898dd3d1e38f15
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/3.22/%{name}-%{version}.tar.xz
+# Source0-md5:	da949e268254af6aafdda0e8c1702384
 Patch0:		krb5.patch
 URL:		http://www.gnome.org/
 BuildRequires:	ModemManager-devel >= 1.0.0
 # use libnm-gtk - will use correct NM version
-BuildRequires:	NetworkManager-gtk-lib-devel >= 0.9.8
+BuildRequires:	NetworkManager-gtk-lib-devel >= 1.2.0
 BuildRequires:	OpenGL-devel
 BuildRequires:	accountsservice-devel >= 0.6.39
 BuildRequires:	autoconf
-BuildRequires:	automake >= 1:1.11
+BuildRequires:	automake >= 1:1.11.2
 BuildRequires:	cheese-devel >= 3.6.0
 BuildRequires:	clutter-devel >= 1.12.0
 BuildRequires:	clutter-gtk-devel
@@ -37,14 +37,14 @@ BuildRequires:	gettext-tools >= 0.17
 BuildRequires:	glib2-devel >= 1:2.44.0
 BuildRequires:	gnome-bluetooth-devel >= 3.18.2
 BuildRequires:	gnome-common >= 2.24.0
-BuildRequires:	gnome-desktop-devel >= 3.20.0
+BuildRequires:	gnome-desktop-devel >= 3.22.0
 BuildRequires:	gnome-menus-devel >= 3.4.0
-BuildRequires:	gnome-online-accounts-devel >= 3.16.0
+BuildRequires:	gnome-online-accounts-devel >= 3.22.0
 BuildRequires:	gnome-settings-daemon-devel >= 1:3.20.0
 BuildRequires:	grilo-devel >= 0.3.0
-BuildRequires:	gsettings-desktop-schemas-devel >= 3.20.0
+BuildRequires:	gsettings-desktop-schemas-devel >= 3.22.0
 BuildRequires:	gstreamer-devel >= 1.0
-BuildRequires:	gtk+3-devel >= 3.20.3
+BuildRequires:	gtk+3-devel >= 3.22.0
 BuildRequires:	heimdal-devel
 %{?with_ibus:BuildRequires:	ibus-devel >= 1.5.2}
 BuildRequires:	intltool >= 0.40.1
@@ -76,11 +76,11 @@ Requires:	accountsservice
 Requires:	cups-pk-helper
 Requires:	desktop-file-utils
 Requires:	glib2 >= 1:2.44.0
-Requires:	gnome-desktop >= 3.20.0
-Requires:	gnome-online-accounts >= 3.16.0
+Requires:	gnome-desktop >= 3.22.0
+Requires:	gnome-online-accounts >= 3.22.0
 Requires:	gnome-settings-daemon >= 1:3.20.0
-Requires:	gsettings-desktop-schemas >= 3.20.0
-Requires:	gtk+3 >= 3.20.3
+Requires:	gsettings-desktop-schemas >= 3.22.0
+Requires:	gtk+3 >= 3.22.0
 Requires:	hicolor-icon-theme
 Requires:	polkit >= 0.103
 Requires:	tzdata
@@ -223,6 +223,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
+%{_datadir}/gettext/its/gnome-keybindings.its
+%{_datadir}/gettext/its/gnome-keybindings.loc
 %{_npkgconfigdir}/gnome-keybindings.pc
 
 %files -n bash-completion-gnome-control-center
