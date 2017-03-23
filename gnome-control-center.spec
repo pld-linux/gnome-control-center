@@ -9,13 +9,13 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	3.22.1
+Version:	3.24.0
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/3.22/%{name}-%{version}.tar.xz
-# Source0-md5:	da949e268254af6aafdda0e8c1702384
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/3.24/%{name}-%{version}.tar.xz
+# Source0-md5:	3da73636052408167a069c096cb262c8
 Patch0:		krb5.patch
 URL:		http://www.gnome.org/
 BuildRequires:	ModemManager-devel >= 1.0.0
@@ -40,7 +40,7 @@ BuildRequires:	gnome-common >= 2.24.0
 BuildRequires:	gnome-desktop-devel >= 3.22.0
 BuildRequires:	gnome-menus-devel >= 3.4.0
 BuildRequires:	gnome-online-accounts-devel >= 3.22.0
-BuildRequires:	gnome-settings-daemon-devel >= 1:3.20.0
+BuildRequires:	gnome-settings-daemon-devel >= 1:3.24.0
 BuildRequires:	grilo-devel >= 0.3.0
 BuildRequires:	gsettings-desktop-schemas-devel >= 3.22.0
 BuildRequires:	gstreamer-devel >= 1.0
@@ -78,7 +78,7 @@ Requires:	desktop-file-utils
 Requires:	glib2 >= 1:2.44.0
 Requires:	gnome-desktop >= 3.22.0
 Requires:	gnome-online-accounts >= 3.22.0
-Requires:	gnome-settings-daemon >= 1:3.20.0
+Requires:	gnome-settings-daemon >= 1:3.24.0
 Requires:	gsettings-desktop-schemas >= 3.22.0
 Requires:	gtk+3 >= 3.22.0
 Requires:	hicolor-icon-theme
