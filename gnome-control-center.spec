@@ -9,13 +9,13 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	3.26.0
+Version:	3.28.0
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/3.26/%{name}-%{version}.tar.xz
-# Source0-md5:	bc04b3999290405b17aff2a85a20f29d
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/3.28/%{name}-%{version}.tar.xz
+# Source0-md5:	a717df964cf2cd6798358032932986bc
 Patch0:		krb5.patch
 URL:		http://www.gnome.org/
 BuildRequires:	ModemManager-devel >= 1.0.0
@@ -23,8 +23,6 @@ BuildRequires:	ModemManager-devel >= 1.0.0
 BuildRequires:	NetworkManager-gtk-lib-devel >= 1.2.0
 BuildRequires:	OpenGL-devel
 BuildRequires:	accountsservice-devel >= 0.6.39
-BuildRequires:	autoconf
-BuildRequires:	automake >= 1:1.11.2
 BuildRequires:	cheese-devel >= 3.6.0
 BuildRequires:	clutter-devel >= 1.12.0
 BuildRequires:	clutter-gtk-devel
@@ -37,26 +35,25 @@ BuildRequires:	gettext-tools >= 0.17
 BuildRequires:	glib2-devel >= 1:2.54.0
 BuildRequires:	gnome-bluetooth-devel >= 3.18.2
 BuildRequires:	gnome-common >= 2.24.0
-BuildRequires:	gnome-desktop-devel >= 3.22.0
+BuildRequires:	gnome-desktop-devel >= 3.28.0
 BuildRequires:	gnome-menus-devel >= 3.4.0
 BuildRequires:	gnome-online-accounts-devel >= 3.26.0
 BuildRequires:	gnome-settings-daemon-devel >= 1:3.26.0
 BuildRequires:	grilo-devel >= 0.3.0
-BuildRequires:	gsettings-desktop-schemas-devel >= 3.22.0
+BuildRequires:	gsettings-desktop-schemas-devel >= 3.28.0
 BuildRequires:	gstreamer-devel >= 1.0
-BuildRequires:	gtk+3-devel >= 3.22.0
+BuildRequires:	gtk+3-devel >= 3.22.20
 BuildRequires:	heimdal-devel
 %{?with_ibus:BuildRequires:	ibus-devel >= 1.5.2}
-BuildRequires:	intltool >= 0.40.1
 BuildRequires:	libcanberra-gtk3-devel >= 0.26
 BuildRequires:	libgtop-devel
 BuildRequires:	libnotify-devel >= 0.7.3
 BuildRequires:	libpwquality-devel >= 1.2.2
 BuildRequires:	libsmbclient-devel
 BuildRequires:	libsoup-devel
-BuildRequires:	libtool >= 2:2.2
 BuildRequires:	libwacom-devel >= 0.7
 BuildRequires:	libxml2-devel >= 1:2.6.31
+BuildRequires:	meson >= 0.43.0
 BuildRequires:	pkgconfig
 BuildRequires:	polkit-devel >= 0.103
 BuildRequires:	pulseaudio-devel >= 2.0
@@ -71,16 +68,17 @@ BuildRequires:	xorg-lib-libxkbfile-devel
 BuildRequires:	xz
 BuildRequires:	yelp-tools
 Requires(post,postun):	desktop-file-utils
+Requires(post,postun):	glib2 >= 1:2.54.0
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	accountsservice
 Requires:	cups-pk-helper
 Requires:	desktop-file-utils
 Requires:	glib2 >= 1:2.54.0
-Requires:	gnome-desktop >= 3.22.0
+Requires:	gnome-desktop >= 3.28.0
 Requires:	gnome-online-accounts >= 3.26.0
 Requires:	gnome-settings-daemon >= 1:3.26.0
-Requires:	gsettings-desktop-schemas >= 3.22.0
-Requires:	gtk+3 >= 3.22.0
+Requires:	gsettings-desktop-schemas >= 3.28.0
+Requires:	gtk+3 >= 3.22.20
 Requires:	hicolor-icon-theme
 Requires:	polkit >= 0.103
 Requires:	tzdata
@@ -168,23 +166,15 @@ Bashowe uzupełnianie nazw dla gnome-control-center.
 %patch0 -p1
 
 %build
-%{__intltoolize}
-%{__libtoolize}
-%{__aclocal} -I m4 -I libgd
-%{__autoconf}
-%{__autoheader}
-%{__automake}
-%configure \
-	--disable-silent-rules \
-	--disable-update-mimedb \
-	%{__enable_disable ibus ibus} \
-	X_EXTRA_LIBS="-lXext"
-%{__make}
+%meson build \
+	-Dibus=%{?with_ibus:true}%{!?with_ibus:false}
+
+%meson_build -C build
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
+
+%meson_install -C build
 
 %find_lang %{name} --with-gnome --with-omf --all-name
 
@@ -192,10 +182,12 @@ rm -rf $RPM_BUILD_ROOT
 rm -rf $RPM_BUILD_ROOT
 
 %post
+%glib_compile_schemas
 %update_desktop_database_post
 %update_icon_cache hicolor
 
 %postun
+%glib_compile_schemas
 %update_desktop_database_postun
 %update_icon_cache hicolor
 
@@ -203,11 +195,12 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog MAINTAINERS NEWS README
 %attr(755,root,root) %{_bindir}/gnome-control-center
-%attr(755,root,root) %{_libdir}/cc-remote-login-helper
-%attr(755,root,root) %{_libdir}/gnome-control-center-search-provider
-%{_datadir}/appdata/gnome-control-center.appdata.xml
+%attr(755,root,root) %{_libexecdir}/cc-remote-login-helper
+%attr(755,root,root) %{_libexecdir}/gnome-control-center-search-provider
+%{_datadir}/metainfo/gnome-control-center.appdata.xml
 %{_datadir}/dbus-1/services/org.gnome.ControlCenter.service
 %{_datadir}/dbus-1/services/org.gnome.ControlCenter.SearchProvider.service
+%{_datadir}/glib-2.0/schemas/org.gnome.ControlCenter.gschema.xml
 %{_datadir}/gnome-shell/search-providers/gnome-control-center-search-provider.ini
 %{_datadir}/polkit-1/actions/org.gnome.controlcenter.datetime.policy
 %{_datadir}/polkit-1/actions/org.gnome.controlcenter.remote-login-helper.policy
@@ -219,12 +212,13 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/*/*/*.svg
 %{_desktopdir}/*.desktop
 %{_pixmapsdir}/faces
-%{_mandir}/man1/gnome-control-center.1*
 
 %files devel
 %defattr(644,root,root,755)
 %{_datadir}/gettext/its/gnome-keybindings.its
 %{_datadir}/gettext/its/gnome-keybindings.loc
+%{_datadir}/gettext/its/sounds.its
+%{_datadir}/gettext/its/sounds.loc
 %{_npkgconfigdir}/gnome-keybindings.pc
 
 %files -n bash-completion-gnome-control-center
