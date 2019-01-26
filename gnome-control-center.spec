@@ -9,13 +9,13 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	3.28.0
+Version:	3.30.2
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/3.28/%{name}-%{version}.tar.xz
-# Source0-md5:	a717df964cf2cd6798358032932986bc
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/3.30/%{name}-%{version}.tar.xz
+# Source0-md5:	a1c5eb83cad50db3f54c03c8d1be02f8
 Patch0:		krb5.patch
 URL:		http://www.gnome.org/
 BuildRequires:	ModemManager-devel >= 1.0.0
@@ -193,7 +193,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog MAINTAINERS NEWS README
+%doc NEWS
 %attr(755,root,root) %{_bindir}/gnome-control-center
 %attr(755,root,root) %{_libexecdir}/cc-remote-login-helper
 %attr(755,root,root) %{_libexecdir}/gnome-control-center-search-provider
