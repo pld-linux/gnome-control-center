@@ -23,37 +23,33 @@ BuildRequires:	ModemManager-devel >= 1.0.0
 BuildRequires:	NetworkManager-devel >= 1.10.0
 # use libnm-gtk - will use correct NM version
 BuildRequires:	NetworkManager-gtk-lib-devel >= 1.8.0
-BuildRequires:	OpenGL-devel
 BuildRequires:	accountsservice-devel >= 0.6.39
+BuildRequires:	cairo-gobject-devel
 BuildRequires:	cheese-devel >= 3.28.0
-BuildRequires:	clutter-devel >= 1.12.0
-BuildRequires:	clutter-gtk-devel
 BuildRequires:	colord-devel >= 0.1.34
 BuildRequires:	colord-gtk-devel >= 0.1.24
 BuildRequires:	cups-devel >= 1.4
-BuildRequires:	docbook-dtd412-xml
+BuildRequires:	docbook-dtd42-xml
 BuildRequires:	gdk-pixbuf2-devel >= 2.24.0
 BuildRequires:	gettext-tools >= 0.17
 BuildRequires:	glib2-devel >= 1:2.54.0
 BuildRequires:	gnome-bluetooth-devel >= 3.18.2
-BuildRequires:	gnome-common >= 2.24.0
 BuildRequires:	gnome-desktop-devel >= 3.28.0
 BuildRequires:	gnome-menus-devel >= 3.4.0
 BuildRequires:	gnome-online-accounts-devel >= 3.26.0
 BuildRequires:	gnome-settings-daemon-devel >= 1:3.26.0
 BuildRequires:	grilo-devel >= 0.3.0
 BuildRequires:	gsettings-desktop-schemas-devel >= 3.31.0
-BuildRequires:	gstreamer-devel >= 1.0
 BuildRequires:	gtk+3-devel >= 3.22.20
 BuildRequires:	heimdal-devel
 %{?with_ibus:BuildRequires:	ibus-devel >= 1.5.2}
 BuildRequires:	libcanberra-gtk3-devel >= 0.26
-BuildRequires:	libgtop-devel
+BuildRequires:	libgtop-devel >= 2.0
 BuildRequires:	libhandy-devel >= 0.0.9
-BuildRequires:	libnotify-devel >= 0.7.3
 BuildRequires:	libpwquality-devel >= 1.2.2
+BuildRequires:	libsecret-devel
 BuildRequires:	libsmbclient-devel
-BuildRequires:	libsoup-devel
+BuildRequires:	libsoup-devel >= 2.4
 BuildRequires:	libwacom-devel >= 0.7
 BuildRequires:	libxml2-devel >= 1:2.6.31
 BuildRequires:	meson >= 0.48.0
@@ -64,6 +60,7 @@ BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	tar >= 1:1.22
 %{?with_wayland:BuildRequires:	udev-glib-devel}
+BuildRequires:	udisks2-devel >= 2.1.8
 BuildRequires:	upower-devel >= 0.99.8
 BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	xorg-lib-libXi-devel >= 1.2
@@ -88,6 +85,7 @@ Requires:	libhandy >= 0.0.9
 Requires:	libwacom >= 0.7
 Requires:	polkit >= 0.103
 Requires:	tzdata
+Requires:	udisks2-libs >= 2.1.8
 Requires:	upower-libs >= 0.99.8
 Suggests:	NetworkManager-applet
 Suggests:	cups
@@ -146,6 +144,7 @@ Summary(pl.UTF-8):	Pliki programistyczne GNOME Control Center
 Group:		X11/Development/Libraries
 Provides:	control-center-devel = %{epoch}:%{version}-%{release}
 Obsoletes:	control-center-devel
+Obsoletes:	gnome-control-center-static
 
 %description devel
 GNOME Control Center development files.
