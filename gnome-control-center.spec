@@ -40,6 +40,7 @@ BuildRequires:	gnome-online-accounts-devel >= 3.26.0
 BuildRequires:	gnome-settings-daemon-devel >= 1:3.26.0
 BuildRequires:	grilo-devel >= 0.3.0
 BuildRequires:	gsettings-desktop-schemas-devel >= 3.31.0
+BuildRequires:	gsound-devel
 BuildRequires:	gtk+3-devel >= 3.22.20
 BuildRequires:	heimdal-devel
 %{?with_ibus:BuildRequires:	ibus-devel >= 1.5.2}
