@@ -18,9 +18,9 @@ Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/3.34/%{name}-%{version}.tar.xz
 # Source0-md5:	8b0f0baea34fbe937efd0ad1be4b451b
 Patch0:		krb5.patch
-URL:		http://www.gnome.org/
+URL:		https://www.gnome.org/
 BuildRequires:	ModemManager-devel >= 1.0.0
-BuildRequires:	NetworkManager-devel >= 1.10.0
+BuildRequires:	NetworkManager-devel >= 1.12.0
 # use libnm-gtk - will use correct NM version
 BuildRequires:	NetworkManager-gtk-lib-devel >= 1.8.0
 BuildRequires:	accountsservice-devel >= 0.6.39
@@ -37,7 +37,7 @@ BuildRequires:	gnome-bluetooth-devel >= 3.18.2
 BuildRequires:	gnome-desktop-devel >= 3.28.0
 BuildRequires:	gnome-menus-devel >= 3.4.0
 BuildRequires:	gnome-online-accounts-devel >= 3.26.0
-BuildRequires:	gnome-settings-daemon-devel >= 1:3.26.0
+BuildRequires:	gnome-settings-daemon-devel >= 1:3.28.0
 BuildRequires:	grilo-devel >= 0.3.0
 BuildRequires:	gsettings-desktop-schemas-devel >= 3.31.0
 BuildRequires:	gsound-devel
@@ -53,12 +53,13 @@ BuildRequires:	libsmbclient-devel
 BuildRequires:	libsoup-devel >= 2.4
 BuildRequires:	libwacom-devel >= 0.7
 BuildRequires:	libxml2-devel >= 1:2.6.31
-BuildRequires:	meson >= 0.48.0
+BuildRequires:	meson >= 0.50.0
+BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
 BuildRequires:	polkit-devel >= 0.103
 BuildRequires:	pulseaudio-devel >= 2.0
 BuildRequires:	rpmbuild(find_lang) >= 1.23
-BuildRequires:	rpmbuild(macros) >= 1.311
+BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	tar >= 1:1.22
 %{?with_wayland:BuildRequires:	udev-glib-devel}
 BuildRequires:	udisks2-devel >= 2.1.8
@@ -72,24 +73,30 @@ Requires(post,postun):	glib2 >= 1:2.54.0
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	accountsservice >= 0.6.39
 Requires:	cheese-libs >= 3.28.0
+Requires:	colord >= 0.1.34
+Requires:	colord-gtk >= 0.1.24
 Requires:	cups-pk-helper
 Requires:	desktop-file-utils
+Requires:	gdk-pixbuf2 >= 2.24.0
 Requires:	glib2 >= 1:2.54.0
 Requires:	gnome-bluetooth-libs >= 3.18.2
 Requires:	gnome-desktop >= 3.28.0
 Requires:	gnome-online-accounts >= 3.26.0
-Requires:	gnome-settings-daemon >= 1:3.26.0
+Requires:	gnome-settings-daemon >= 1:3.28.0
 Requires:	gsettings-desktop-schemas >= 3.31.0
 Requires:	gtk+3 >= 3.22.20
 Requires:	hicolor-icon-theme
+%{?with_ibus:Requires:	ibus-libs >= 1.5.2}
 Requires:	libhandy >= 0.0.9
+Requires:	libpwquality >= 1.2.2
 Requires:	libwacom >= 0.7
 Requires:	polkit >= 0.103
+Requires:	pulseaudio-libs >= 2.0
 Requires:	tzdata
 Requires:	udisks2-libs >= 2.1.8
 Requires:	upower-libs >= 0.99.8
-Suggests:	NetworkManager-applet
-Suggests:	cups
+Suggests:	NetworkManager-applet >= 1.8.0
+Suggests:	cups >= 1.4
 Suggests:	gnome-color-manager
 Suggests:	libcanberra-gnome
 Suggests:	libgnomekbd
