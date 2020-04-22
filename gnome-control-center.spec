@@ -212,6 +212,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc NEWS README.md
 %attr(755,root,root) %{_bindir}/gnome-control-center
 %attr(755,root,root) %{_libexecdir}/cc-remote-login-helper
+%attr(755,root,root) %{_libexecdir}/gnome-control-center-print-renderer
 %attr(755,root,root) %{_libexecdir}/gnome-control-center-search-provider
 %{_datadir}/dbus-1/services/org.gnome.ControlCenter.service
 %{_datadir}/dbus-1/services/org.gnome.ControlCenter.SearchProvider.service
@@ -248,6 +249,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/gettext/its/sounds.its
 %{_datadir}/gettext/its/sounds.loc
 %{_npkgconfigdir}/gnome-keybindings.pc
+%{_iconsdir}/hicolor/scalable/apps/org.gnome.Settings.Devel.svg
 
 %files -n bash-completion-gnome-control-center
 %defattr(644,root,root,755)
