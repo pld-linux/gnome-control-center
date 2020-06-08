@@ -10,13 +10,13 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	3.36.1
+Version:	3.36.3
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/3.36/%{name}-%{version}.tar.xz
-# Source0-md5:	29a6d529ba4e7ca6dc53018cc8378352
+# Source0-md5:	fd99a8df0cc656e971415f2a1b310019
 Patch0:		krb5.patch
 URL:		https://www.gnome.org/
 BuildRequires:	ModemManager-devel >= 1.0.0
@@ -30,10 +30,13 @@ BuildRequires:	colord-devel >= 0.1.34
 BuildRequires:	colord-gtk-devel >= 0.1.24
 BuildRequires:	cups-devel >= 1.4
 BuildRequires:	docbook-dtd42-xml
+BuildRequires:	fontconfig-devel
 BuildRequires:	gdk-pixbuf2-devel >= 2.24.0
 BuildRequires:	gettext-tools >= 0.17
-BuildRequires:	glib2-devel >= 1:2.54.0
+BuildRequires:	glib2-devel >= 1:2.56.0
+%ifnarch s390 s390x
 BuildRequires:	gnome-bluetooth-devel >= 3.18.2
+%endif
 BuildRequires:	gnome-desktop-devel >= 3.28.0
 BuildRequires:	gnome-menus-devel >= 3.4.0
 BuildRequires:	gnome-online-accounts-devel >= 3.26.0
@@ -45,23 +48,26 @@ BuildRequires:	gtk+3-devel >= 3.22.20
 BuildRequires:	heimdal-devel
 %{?with_ibus:BuildRequires:	ibus-devel >= 1.5.2}
 BuildRequires:	libcanberra-gtk3-devel >= 0.26
+BuildRequires:	libepoxy-devel
 BuildRequires:	libgtop-devel >= 2.0
+BuildRequires:	libgudev-devel >= 232
 BuildRequires:	libhandy-devel >= 0.0.9
 BuildRequires:	libpwquality-devel >= 1.2.2
 BuildRequires:	libsecret-devel
 BuildRequires:	libsmbclient-devel
 BuildRequires:	libsoup-devel >= 2.4
+%ifnarch s390 s390x
 BuildRequires:	libwacom-devel >= 0.7
+%endif
 BuildRequires:	libxml2-devel >= 1:2.6.31
 BuildRequires:	meson >= 0.50.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
-BuildRequires:	polkit-devel >= 0.103
+BuildRequires:	polkit-devel >= 0.114
 BuildRequires:	pulseaudio-devel >= 2.0
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	tar >= 1:1.22
-%{?with_wayland:BuildRequires:	udev-glib-devel}
 BuildRequires:	udisks2-devel >= 2.1.8
 BuildRequires:	upower-devel >= 0.99.8
 BuildRequires:	xorg-lib-libX11-devel
@@ -69,7 +75,7 @@ BuildRequires:	xorg-lib-libXi-devel >= 1.2
 BuildRequires:	xz
 BuildRequires:	yelp-tools
 Requires(post,postun):	desktop-file-utils
-Requires(post,postun):	glib2 >= 1:2.54.0
+Requires(post,postun):	glib2 >= 1:2.56.0
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	accountsservice >= 0.6.39
 Requires:	cheese-libs >= 3.28.0
@@ -78,8 +84,10 @@ Requires:	colord-gtk >= 0.1.24
 Requires:	cups-pk-helper
 Requires:	desktop-file-utils
 Requires:	gdk-pixbuf2 >= 2.24.0
-Requires:	glib2 >= 1:2.54.0
+Requires:	glib2 >= 1:2.56.0
+%ifnarch s390 s390x
 Requires:	gnome-bluetooth-libs >= 3.18.2
+%endif
 Requires:	gnome-desktop >= 3.28.0
 Requires:	gnome-online-accounts >= 3.26.0
 Requires:	gnome-settings-daemon >= 1:3.28.0
@@ -87,10 +95,13 @@ Requires:	gsettings-desktop-schemas >= 3.31.0
 Requires:	gtk+3 >= 3.22.20
 Requires:	hicolor-icon-theme
 %{?with_ibus:Requires:	ibus-libs >= 1.5.2}
+Requires:	libgudev >= 232
 Requires:	libhandy >= 0.0.9
 Requires:	libpwquality >= 1.2.2
+%ifnarch s390 s390x
 Requires:	libwacom >= 0.7
-Requires:	polkit >= 0.103
+%endif
+Requires:	polkit >= 0.114
 Requires:	pulseaudio-libs >= 2.0
 Requires:	tzdata
 Requires:	udisks2-libs >= 2.1.8
@@ -112,8 +123,6 @@ Obsoletes:	gnome
 Obsoletes:	gnome-control-center-libs
 Obsoletes:	gnome-media-volume-control
 Obsoletes:	themus
-# sr@Latn vs. sr@latin
-Conflicts:	glibc-misc < 6:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -165,7 +174,7 @@ Summary:	bash-completion for gnome-control-center
 Summary(pl.UTF-8):	Bashowe uzupełnianie nazw dla gnome-control-center
 Group:		Applications/Shells
 Requires:	bash-completion >= 2.0
-%if "%{_rpmversion}" >= "5"
+%if "%{_rpmversion}" >= "4.6"
 BuildArch:	noarch
 %endif
 
@@ -184,6 +193,8 @@ Bashowe uzupełnianie nazw dla gnome-control-center.
 	-Ddocumentation=true \
 	%{!?with_ibus:-Dibus=false} \
 	%{!?with_wayland:-Dwayland=false}
+
+# -Dsnap=true R: snapd-glib >= 1.49
 
 %meson_build -C build
 
