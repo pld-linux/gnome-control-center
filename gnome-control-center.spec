@@ -242,6 +242,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/*x*/apps/preferences-desktop-display.png
 %{_iconsdir}/hicolor/*x*/apps/preferences-system-time.png
 %{_iconsdir}/hicolor/scalable/apps/org.gnome.Settings.svg
+%{_iconsdir}/hicolor/scalable/apps/org.gnome.Settings.Devel.svg
 %{_iconsdir}/hicolor/scalable/apps/preferences-color.svg
 %{_iconsdir}/hicolor/scalable/apps/preferences-desktop-display.svg
 %{_iconsdir}/hicolor/scalable/apps/preferences-system-time.svg
@@ -260,7 +261,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/gettext/its/sounds.its
 %{_datadir}/gettext/its/sounds.loc
 %{_npkgconfigdir}/gnome-keybindings.pc
-%{_iconsdir}/hicolor/scalable/apps/org.gnome.Settings.Devel.svg
 
 %files -n bash-completion-gnome-control-center
 %defattr(644,root,root,755)
