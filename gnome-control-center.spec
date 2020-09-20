@@ -1,7 +1,8 @@
 #
 # Conditional build:
-%bcond_without	ibus	# IBus support
-%bcond_without	wayland	# Wayland support
+%bcond_without	ibus		# IBus support
+%bcond_with	malcontent	# Malcontent support
+%bcond_without	wayland		# Wayland support
 
 Summary:	GNOME Control Center
 Summary(es.UTF-8):	El centro de controle del GNOME
@@ -10,17 +11,17 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	3.36.4
+Version:	3.38.0
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/3.36/%{name}-%{version}.tar.xz
-# Source0-md5:	16c228d7de4e9d2d57550791fbca3390
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/3.38/%{name}-%{version}.tar.xz
+# Source0-md5:	1ef6faf6946dc54e228521b5d3af936a
 Patch0:		krb5.patch
 URL:		https://www.gnome.org/
 BuildRequires:	ModemManager-devel >= 1.0.0
-BuildRequires:	NetworkManager-devel >= 1.12.0
+BuildRequires:	NetworkManager-devel >= 1.20.0
 # use libnm-gtk - will use correct NM version
 BuildRequires:	NetworkManager-gtk-lib-devel >= 1.8.0
 BuildRequires:	accountsservice-devel >= 0.6.39
@@ -42,7 +43,7 @@ BuildRequires:	gnome-menus-devel >= 3.4.0
 BuildRequires:	gnome-online-accounts-devel >= 3.26.0
 BuildRequires:	gnome-settings-daemon-devel >= 1:3.28.0
 BuildRequires:	grilo-devel >= 0.3.0
-BuildRequires:	gsettings-desktop-schemas-devel >= 3.31.0
+BuildRequires:	gsettings-desktop-schemas-devel >= 3.37.1
 BuildRequires:	gsound-devel
 BuildRequires:	gtk+3-devel >= 3.22.20
 BuildRequires:	heimdal-devel
@@ -51,7 +52,8 @@ BuildRequires:	libcanberra-gtk3-devel >= 0.26
 BuildRequires:	libepoxy-devel
 BuildRequires:	libgtop-devel >= 2.0
 BuildRequires:	libgudev-devel >= 232
-BuildRequires:	libhandy-devel >= 0.0.9
+BuildRequires:	libhandy1-devel >= 0.90.0
+%{?with_malcontent:BuildRequires:	libmalcontent-devel >= 0.7.0}
 BuildRequires:	libpwquality-devel >= 1.2.2
 BuildRequires:	libsecret-devel
 BuildRequires:	libsmbclient-devel
@@ -60,11 +62,12 @@ BuildRequires:	libsoup-devel >= 2.4
 BuildRequires:	libwacom-devel >= 0.7
 %endif
 BuildRequires:	libxml2-devel >= 1:2.6.31
-BuildRequires:	meson >= 0.50.0
+BuildRequires:	meson >= 0.51.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
 BuildRequires:	polkit-devel >= 0.114
 BuildRequires:	pulseaudio-devel >= 2.0
+BuildRequires:	python3 >= 1:3
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	tar >= 1:1.22
@@ -77,6 +80,8 @@ BuildRequires:	yelp-tools
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	glib2 >= 1:2.56.0
 Requires(post,postun):	gtk-update-icon-cache
+Requires:	NetworkManager >= 1.20.0
+Requires:	NetworkManager-gtk-lib >= 1.8.0
 Requires:	accountsservice >= 0.6.39
 Requires:	cheese-libs >= 3.28.0
 Requires:	colord >= 0.1.34
@@ -91,12 +96,13 @@ Requires:	gnome-bluetooth-libs >= 3.18.2
 Requires:	gnome-desktop >= 3.28.0
 Requires:	gnome-online-accounts >= 3.26.0
 Requires:	gnome-settings-daemon >= 1:3.28.0
-Requires:	gsettings-desktop-schemas >= 3.31.0
+Requires:	gsettings-desktop-schemas >= 3.37.1
 Requires:	gtk+3 >= 3.22.20
 Requires:	hicolor-icon-theme
 %{?with_ibus:Requires:	ibus-libs >= 1.5.2}
 Requires:	libgudev >= 232
-Requires:	libhandy >= 0.0.9
+Requires:	libhandy1 >= 0.90.0
+%{?with_malcontent:Requires:	libmalcontent >= 0.7.0}
 Requires:	libpwquality >= 1.2.2
 %ifnarch s390 s390x
 Requires:	libwacom >= 0.7
@@ -192,9 +198,10 @@ Bashowe uzupełnianie nazw dla gnome-control-center.
 %meson build \
 	-Ddocumentation=true \
 	%{!?with_ibus:-Dibus=false} \
+	%{?with_malcontent:-Dmalcontent=true} \
 	%{!?with_wayland:-Dwayland=false}
 
-# -Dsnap=true R: snapd-glib >= 1.49
+# -Dsnap=true R: snapd-glib >= 1.57
 
 %meson_build -C build
 
