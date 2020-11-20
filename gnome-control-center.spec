@@ -11,13 +11,13 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	3.38.1
+Version:	3.38.2
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-control-center/3.38/%{name}-%{version}.tar.xz
-# Source0-md5:	19ab78acfb6142974921bd8b5bf66937
+Source0:	https://download.gnome.org/sources/gnome-control-center/3.38/%{name}-%{version}.tar.xz
+# Source0-md5:	f25b2afb9a0f3ef6bbca30718b785488
 Patch0:		krb5.patch
 URL:		https://www.gnome.org/
 BuildRequires:	ModemManager-devel >= 1.0.0
@@ -69,7 +69,7 @@ BuildRequires:	polkit-devel >= 0.114
 BuildRequires:	pulseaudio-devel >= 2.0
 BuildRequires:	python3 >= 1:3
 BuildRequires:	rpmbuild(find_lang) >= 1.23
-BuildRequires:	rpmbuild(macros) >= 1.736
+BuildRequires:	rpmbuild(macros) >= 1.752
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	udisks2-devel >= 2.1.8
 BuildRequires:	upower-devel >= 0.99.8
@@ -180,9 +180,7 @@ Summary:	bash-completion for gnome-control-center
 Summary(pl.UTF-8):	Bashowe uzupełnianie nazw dla gnome-control-center
 Group:		Applications/Shells
 Requires:	bash-completion >= 2.0
-%if "%{_rpmversion}" >= "4.6"
-BuildArch:	noarch
-%endif
+%{?noarchpackage}
 
 %description -n bash-completion-gnome-control-center
 bash-completion for gnome-control-center.
