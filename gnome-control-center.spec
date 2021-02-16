@@ -11,13 +11,13 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	3.38.3
+Version:	3.38.4
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	https://download.gnome.org/sources/gnome-control-center/3.38/%{name}-%{version}.tar.xz
-# Source0-md5:	cbc42acae9890d654504010fc1810c72
+# Source0-md5:	147d0d5f53992b2c8fdaa695070367b4
 Patch0:		krb5.patch
 URL:		https://www.gnome.org/
 BuildRequires:	ModemManager-devel >= 1.0.0
