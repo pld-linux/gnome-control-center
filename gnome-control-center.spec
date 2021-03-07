@@ -180,7 +180,7 @@ Summary:	bash-completion for gnome-control-center
 Summary(pl.UTF-8):	Bashowe uzupełnianie nazw dla gnome-control-center
 Group:		Applications/Shells
 Requires:	bash-completion >= 2.0
-%{?noarchpackage}
+BuildArch:	noarch
 
 %description -n bash-completion-gnome-control-center
 bash-completion for gnome-control-center.
