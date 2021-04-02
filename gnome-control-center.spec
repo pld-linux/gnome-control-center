@@ -11,17 +11,17 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	3.38.4
+Version:	40.0
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/gnome-control-center/3.38/%{name}-%{version}.tar.xz
-# Source0-md5:	147d0d5f53992b2c8fdaa695070367b4
+Source0:	https://download.gnome.org/sources/gnome-control-center/40/%{name}-%{version}.tar.xz
+# Source0-md5:	d704e59afe2df9c24ed876841adb3e0a
 Patch0:		krb5.patch
 URL:		https://www.gnome.org/
 BuildRequires:	ModemManager-devel >= 1.0.0
-BuildRequires:	NetworkManager-devel >= 1.20.0
+BuildRequires:	NetworkManager-devel >= 1.24.0
 # use libnm-gtk - will use correct NM version
 BuildRequires:	NetworkManager-gtk-lib-devel >= 1.8.0
 BuildRequires:	accountsservice-devel >= 0.6.39
@@ -38,7 +38,7 @@ BuildRequires:	glib2-devel >= 1:2.56.0
 %ifnarch s390 s390x
 BuildRequires:	gnome-bluetooth-devel >= 3.18.2
 %endif
-BuildRequires:	gnome-desktop-devel >= 3.28.0
+BuildRequires:	gnome-desktop-devel >= 3.33.4
 BuildRequires:	gnome-menus-devel >= 3.4.0
 BuildRequires:	gnome-online-accounts-devel >= 3.26.0
 BuildRequires:	gnome-settings-daemon-devel >= 1:3.28.0
@@ -52,8 +52,8 @@ BuildRequires:	libcanberra-gtk3-devel >= 0.26
 BuildRequires:	libepoxy-devel
 BuildRequires:	libgtop-devel >= 2.0
 BuildRequires:	libgudev-devel >= 232
-BuildRequires:	libhandy1-devel >= 0.90.0
-%{?with_malcontent:BuildRequires:	libmalcontent-devel >= 0.7.0}
+BuildRequires:	libhandy1-devel >= 1.0.0
+%{?with_malcontent:BuildRequires:	libmalcontent-devel >= 0.10.0}
 BuildRequires:	libpwquality-devel >= 1.2.2
 BuildRequires:	libsecret-devel
 BuildRequires:	libsmbclient-devel
@@ -62,12 +62,13 @@ BuildRequires:	libsoup-devel >= 2.4
 BuildRequires:	libwacom-devel >= 0.7
 %endif
 BuildRequires:	libxml2-devel >= 1:2.6.31
-BuildRequires:	meson >= 0.51.0
+BuildRequires:	meson >= 0.53.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
 BuildRequires:	polkit-devel >= 0.114
 BuildRequires:	pulseaudio-devel >= 2.0
 BuildRequires:	python3 >= 1:3
+BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.752
 BuildRequires:	tar >= 1:1.22
@@ -80,7 +81,7 @@ BuildRequires:	yelp-tools
 Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	glib2 >= 1:2.56.0
 Requires(post,postun):	gtk-update-icon-cache
-Requires:	NetworkManager >= 1.20.0
+Requires:	NetworkManager >= 1.24.0
 Requires:	NetworkManager-gtk-lib >= 1.8.0
 Requires:	accountsservice >= 0.6.39
 Requires:	cheese-libs >= 3.28.0
@@ -93,7 +94,7 @@ Requires:	glib2 >= 1:2.56.0
 %ifnarch s390 s390x
 Requires:	gnome-bluetooth-libs >= 3.18.2
 %endif
-Requires:	gnome-desktop >= 3.28.0
+Requires:	gnome-desktop >= 3.33.4
 Requires:	gnome-online-accounts >= 3.26.0
 Requires:	gnome-settings-daemon >= 1:3.28.0
 Requires:	gsettings-desktop-schemas >= 3.37.1
@@ -101,8 +102,8 @@ Requires:	gtk+3 >= 3.22.20
 Requires:	hicolor-icon-theme
 %{?with_ibus:Requires:	ibus-libs >= 1.5.2}
 Requires:	libgudev >= 232
-Requires:	libhandy1 >= 0.90.0
-%{?with_malcontent:Requires:	libmalcontent >= 0.7.0}
+Requires:	libhandy1 >= 1.0.0
+%{?with_malcontent:Requires:	libmalcontent >= 0.10.0}
 Requires:	libpwquality >= 1.2.2
 %ifnarch s390 s390x
 Requires:	libwacom >= 0.7
@@ -121,14 +122,14 @@ Suggests:	libgnomekbd
 Suggests:	mesa-utils
 Suggests:	mousetweaks >= 3.0.0
 Provides:	control-center = %{epoch}:%{version}-%{release}
-Obsoletes:	acme
-Obsoletes:	control-center
-Obsoletes:	control-center-libs
-Obsoletes:	fontilus
-Obsoletes:	gnome
-Obsoletes:	gnome-control-center-libs
-Obsoletes:	gnome-media-volume-control
-Obsoletes:	themus
+Obsoletes:	acme < 2.5
+Obsoletes:	control-center < 1:2.19
+Obsoletes:	control-center-libs < 1:2.19
+Obsoletes:	fontilus < 0.5
+Obsoletes:	gnome < 2
+Obsoletes:	gnome-control-center-libs < 1:3.4
+Obsoletes:	gnome-media-volume-control < 2.21
+Obsoletes:	themus < 0.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -166,8 +167,8 @@ Summary:	GNOME Control Center development files
 Summary(pl.UTF-8):	Pliki programistyczne GNOME Control Center
 Group:		X11/Development/Libraries
 Provides:	control-center-devel = %{epoch}:%{version}-%{release}
-Obsoletes:	control-center-devel
-Obsoletes:	gnome-control-center-static
+Obsoletes:	control-center-devel < 1:2.19
+Obsoletes:	gnome-control-center-static < 1:3
 
 %description devel
 GNOME Control Center development files.
