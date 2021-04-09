@@ -1,15 +1,15 @@
---- gnome-control-center-3.32.1/panels/user-accounts/cc-realm-manager.c	2012-09-24 17:39:34.000000000 +0200
-+++ gnome-control-center-3.32.1.new/panels/user-accounts/cc-realm-manager.c	2012-10-05 14:30:29.557805038 +0200
-@@ -23,7 +23,7 @@
+--- gnome-control-center-40.0/panels/user-accounts/cc-realm-manager.c.orig	2021-03-20 22:52:23.074849600 +0100
++++ gnome-control-center-40.0/panels/user-accounts/cc-realm-manager.c	2021-04-09 21:44:23.338086641 +0200
+@@ -22,7 +22,7 @@
  
- #include "um-realm-manager.h"
+ #include "cc-realm-manager.h"
  
 -#include <krb5/krb5.h>
 +#include <krb5.h>
  
  #include <glib.h>
  #include <glib/gi18n.h>
-@@ -703,8 +703,10 @@
+@@ -637,8 +637,10 @@ login_perform_kinit (krb5_context k5,
          code = krb5_get_init_creds_opt_alloc (k5, &opts);
          g_return_val_if_fail (code == 0, code);
  
