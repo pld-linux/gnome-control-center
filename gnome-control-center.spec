@@ -11,13 +11,13 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	40.0
+Version:	41.0
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/gnome-control-center/40/%{name}-%{version}.tar.xz
-# Source0-md5:	d704e59afe2df9c24ed876841adb3e0a
+Source0:	https://download.gnome.org/sources/gnome-control-center/41/%{name}-%{version}.tar.xz
+# Source0-md5:	44c3abf9c5a8e678952adbf9704641e8
 Patch0:		krb5.patch
 URL:		https://www.gnome.org/
 BuildRequires:	ModemManager-devel >= 1.0.0
@@ -34,7 +34,7 @@ BuildRequires:	docbook-dtd42-xml
 BuildRequires:	fontconfig-devel
 BuildRequires:	gdk-pixbuf2-devel >= 2.24.0
 BuildRequires:	gettext-tools >= 0.17
-BuildRequires:	glib2-devel >= 1:2.56.0
+BuildRequires:	glib2-devel >= 1:2.68.0
 %ifnarch s390 s390x
 BuildRequires:	gnome-bluetooth-devel >= 3.18.2
 %endif
@@ -43,7 +43,7 @@ BuildRequires:	gnome-menus-devel >= 3.4.0
 BuildRequires:	gnome-online-accounts-devel >= 3.26.0
 BuildRequires:	gnome-settings-daemon-devel >= 1:3.28.0
 BuildRequires:	grilo-devel >= 0.3.0
-BuildRequires:	gsettings-desktop-schemas-devel >= 3.37.1
+BuildRequires:	gsettings-desktop-schemas-devel >= 40
 BuildRequires:	gsound-devel
 BuildRequires:	gtk+3-devel >= 3.22.20
 BuildRequires:	heimdal-devel
@@ -52,7 +52,7 @@ BuildRequires:	libcanberra-gtk3-devel >= 0.26
 BuildRequires:	libepoxy-devel
 BuildRequires:	libgtop-devel >= 2.0
 BuildRequires:	libgudev-devel >= 232
-BuildRequires:	libhandy1-devel >= 1.0.0
+BuildRequires:	libhandy1-devel >= 1.2.0
 %{?with_malcontent:BuildRequires:	libmalcontent-devel >= 0.10.0}
 BuildRequires:	libpwquality-devel >= 1.2.2
 BuildRequires:	libsecret-devel
@@ -79,7 +79,7 @@ BuildRequires:	xorg-lib-libXi-devel >= 1.2
 BuildRequires:	xz
 BuildRequires:	yelp-tools
 Requires(post,postun):	desktop-file-utils
-Requires(post,postun):	glib2 >= 1:2.56.0
+Requires(post,postun):	glib2 >= 1:2.68.0
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	NetworkManager >= 1.24.0
 Requires:	NetworkManager-gtk-lib >= 1.8.0
@@ -90,19 +90,19 @@ Requires:	colord-gtk >= 0.1.24
 Requires:	cups-pk-helper
 Requires:	desktop-file-utils
 Requires:	gdk-pixbuf2 >= 2.24.0
-Requires:	glib2 >= 1:2.56.0
+Requires:	glib2 >= 1:2.68.0
 %ifnarch s390 s390x
 Requires:	gnome-bluetooth-libs >= 3.18.2
 %endif
 Requires:	gnome-desktop >= 3.33.4
 Requires:	gnome-online-accounts >= 3.26.0
 Requires:	gnome-settings-daemon >= 1:3.28.0
-Requires:	gsettings-desktop-schemas >= 3.37.1
+Requires:	gsettings-desktop-schemas >= 40
 Requires:	gtk+3 >= 3.22.20
 Requires:	hicolor-icon-theme
 %{?with_ibus:Requires:	ibus-libs >= 1.5.2}
 Requires:	libgudev >= 232
-Requires:	libhandy1 >= 1.0.0
+Requires:	libhandy1 >= 1.2.0
 %{?with_malcontent:Requires:	libmalcontent >= 0.10.0}
 Requires:	libpwquality >= 1.2.2
 %ifnarch s390 s390x
@@ -248,13 +248,18 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/*x*/apps/preferences-desktop-display.png
 %{_iconsdir}/hicolor/*x*/apps/preferences-system-time.png
 %{_iconsdir}/hicolor/scalable/apps/org.gnome.Settings.svg
+%{_iconsdir}/hicolor/scalable/apps/org.gnome.Settings-multitasking-symbolic.svg
 %{_iconsdir}/hicolor/scalable/apps/org.gnome.Settings.Devel.svg
 %{_iconsdir}/hicolor/scalable/apps/preferences-color.svg
 %{_iconsdir}/hicolor/scalable/apps/preferences-desktop-display.svg
 %{_iconsdir}/hicolor/scalable/apps/preferences-system-time.svg
 %{_iconsdir}/hicolor/scalable/categories/slideshow-symbolic.svg
 %{_iconsdir}/hicolor/scalable/emblems/slideshow-emblem.svg
+%{_iconsdir}/hicolor/scalable/status/info-symbolic.svg
 %{_iconsdir}/hicolor/symbolic/apps/org.gnome.Settings-symbolic.svg
+# FIXME: wrong location (move to pixmapsdir or hicolor/scalable/...?)
+%{_iconsdir}/gnome-logo-text.svg
+%{_iconsdir}/gnome-logo-text-dark.svg
 %{_desktopdir}/gnome-*-panel.desktop
 %{_desktopdir}/gnome-control-center.desktop
 %{_pixmapsdir}/faces
