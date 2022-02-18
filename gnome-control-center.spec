@@ -32,6 +32,7 @@ BuildRequires:	colord-gtk-devel >= 0.1.24
 BuildRequires:	cups-devel >= 1.4
 BuildRequires:	docbook-dtd42-xml
 BuildRequires:	fontconfig-devel
+BuildRequires:	gcr-ui-devel >= 3
 BuildRequires:	gdk-pixbuf2-devel >= 2.24.0
 BuildRequires:	gettext-tools >= 0.17
 BuildRequires:	glib2-devel >= 1:2.68.0
