@@ -11,54 +11,50 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	41.4
+Version:	42.1
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/gnome-control-center/41/%{name}-%{version}.tar.xz
-# Source0-md5:	4543d5dbee3229ce0579afc547679f46
+Source0:	https://download.gnome.org/sources/gnome-control-center/42/%{name}-%{version}.tar.xz
+# Source0-md5:	cfa5ea72a2bd9a7385120d0cf577b195
 Patch0:		krb5.patch
 URL:		https://www.gnome.org/
 BuildRequires:	ModemManager-devel >= 1.0.0
 BuildRequires:	NetworkManager-devel >= 1.24.0
-# use libnm-gtk - will use correct NM version
-BuildRequires:	NetworkManager-gtk-lib-devel >= 1.8.0
 BuildRequires:	accountsservice-devel >= 0.6.39
 BuildRequires:	cairo-gobject-devel
-BuildRequires:	cheese-devel >= 3.28.0
 BuildRequires:	colord-devel >= 0.1.34
-BuildRequires:	colord-gtk-devel >= 0.1.24
+BuildRequires:	colord-gtk4-devel >= 0.1.24
 BuildRequires:	cups-devel >= 1.4
 BuildRequires:	docbook-dtd42-xml
 BuildRequires:	fontconfig-devel
-BuildRequires:	gcr-ui-devel >= 3
 BuildRequires:	gdk-pixbuf2-devel >= 2.24.0
 BuildRequires:	gettext-tools >= 0.17
 BuildRequires:	glib2-devel >= 1:2.68.0
 %ifnarch s390 s390x
-BuildRequires:	gnome-bluetooth-devel >= 3.18.2
+BuildRequires:	gnome-bluetooth3-ui-devel >= 42
 %endif
-BuildRequires:	gnome-desktop-devel >= 3.33.4
-BuildRequires:	gnome-menus-devel >= 3.4.0
+BuildRequires:	gnome-desktop4-devel >= 42
 BuildRequires:	gnome-online-accounts-devel >= 3.26.0
-BuildRequires:	gnome-settings-daemon-devel >= 1:3.28.0
-BuildRequires:	grilo-devel >= 0.3.0
-BuildRequires:	gsettings-desktop-schemas-devel >= 40
+BuildRequires:	gnome-settings-daemon-devel >= 1:41.0
+BuildRequires:	gnutls-devel
+BuildRequires:	gsettings-desktop-schemas-devel >= 42
 BuildRequires:	gsound-devel
-BuildRequires:	gtk+3-devel >= 3.22.20
+# X11 and Wayland checks in panels/online-accounts/meson.build (subject to update?)
+BuildRequires:	gtk+3-devel >= 3.0
+BuildRequires:	gtk4-devel >= 4.4
 BuildRequires:	heimdal-devel
 %{?with_ibus:BuildRequires:	ibus-devel >= 1.5.2}
-BuildRequires:	libcanberra-gtk3-devel >= 0.26
+BuildRequires:	libadwaita-devel >= 1.1
 BuildRequires:	libepoxy-devel
 BuildRequires:	libgtop-devel >= 2.0
 BuildRequires:	libgudev-devel >= 232
-BuildRequires:	libhandy1-devel >= 1.2.0
 %{?with_malcontent:BuildRequires:	libmalcontent-devel >= 0.10.0}
+BuildRequires:	libnma-gtk4-devel >= 1.8.0
 BuildRequires:	libpwquality-devel >= 1.2.2
 BuildRequires:	libsecret-devel
 BuildRequires:	libsmbclient-devel
-BuildRequires:	libsoup-devel >= 2.4
 %ifnarch s390 s390x
 BuildRequires:	libwacom-devel >= 0.7
 %endif
@@ -73,7 +69,7 @@ BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.752
 BuildRequires:	tar >= 1:1.22
-BuildRequires:	udisks2-devel >= 2.1.8
+BuildRequires:	udisks2-devel >= 2.8.2
 BuildRequires:	upower-devel >= 0.99.8
 BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	xorg-lib-libXi-devel >= 1.2
@@ -83,28 +79,27 @@ Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	glib2 >= 1:2.68.0
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	NetworkManager >= 1.24.0
-Requires:	NetworkManager-gtk-lib >= 1.8.0
 Requires:	accountsservice >= 0.6.39
-Requires:	cheese-libs >= 3.28.0
 Requires:	colord >= 0.1.34
-Requires:	colord-gtk >= 0.1.24
+Requires:	colord-gtk4 >= 0.1.24
 Requires:	cups-pk-helper
 Requires:	desktop-file-utils
 Requires:	gdk-pixbuf2 >= 2.24.0
 Requires:	glib2 >= 1:2.68.0
 %ifnarch s390 s390x
-Requires:	gnome-bluetooth-libs >= 3.18.2
+Requires:	gnome-bluetooth3-ui-libs >= 42
 %endif
-Requires:	gnome-desktop >= 3.33.4
+Requires:	gnome-desktop4 >= 42
 Requires:	gnome-online-accounts >= 3.26.0
-Requires:	gnome-settings-daemon >= 1:3.28.0
-Requires:	gsettings-desktop-schemas >= 40
-Requires:	gtk+3 >= 3.22.20
+Requires:	gnome-settings-daemon >= 1:41.0
+Requires:	gsettings-desktop-schemas >= 42
+Requires:	gtk4 >= 4.4
 Requires:	hicolor-icon-theme
 %{?with_ibus:Requires:	ibus-libs >= 1.5.2}
+Requires:	libadwaita >= 1.1
 Requires:	libgudev >= 232
-Requires:	libhandy1 >= 1.2.0
 %{?with_malcontent:Requires:	libmalcontent >= 0.10.0}
+Requires:	libnma-gtk4 >= 1.8.0
 Requires:	libpwquality >= 1.2.2
 %ifnarch s390 s390x
 Requires:	libwacom >= 0.7
@@ -112,12 +107,11 @@ Requires:	libwacom >= 0.7
 Requires:	polkit >= 0.114
 Requires:	pulseaudio-libs >= 2.0
 Requires:	tzdata
-Requires:	udisks2-libs >= 2.1.8
+Requires:	udisks2-libs >= 2.8.2
 Requires:	upower-libs >= 0.99.8
 Suggests:	NetworkManager-applet >= 1.8.0
 Suggests:	cups >= 1.4
 Suggests:	gnome-color-manager
-Suggests:	libcanberra-gnome
 Suggests:	libgnomekbd
 # info panel needs glxinfo
 Suggests:	mesa-utils
@@ -170,6 +164,7 @@ Group:		X11/Development/Libraries
 Provides:	control-center-devel = %{epoch}:%{version}-%{release}
 Obsoletes:	control-center-devel < 1:2.19
 Obsoletes:	gnome-control-center-static < 1:3
+BuildArch:	noarch
 
 %description devel
 GNOME Control Center development files.
@@ -230,39 +225,30 @@ rm -rf $RPM_BUILD_ROOT
 %doc NEWS README.md
 %attr(755,root,root) %{_bindir}/gnome-control-center
 %attr(755,root,root) %{_libexecdir}/cc-remote-login-helper
+%attr(755,root,root) %{_libexecdir}/gnome-control-center-goa-helper
 %attr(755,root,root) %{_libexecdir}/gnome-control-center-print-renderer
 %attr(755,root,root) %{_libexecdir}/gnome-control-center-search-provider
-%{_datadir}/dbus-1/services/org.gnome.ControlCenter.service
-%{_datadir}/dbus-1/services/org.gnome.ControlCenter.SearchProvider.service
-%{_datadir}/glib-2.0/schemas/org.gnome.ControlCenter.gschema.xml
-%{_datadir}/gnome-shell/search-providers/gnome-control-center-search-provider.ini
-%{_datadir}/metainfo/gnome-control-center.appdata.xml
+%{_datadir}/dbus-1/services/org.gnome.Settings.service
+%{_datadir}/dbus-1/services/org.gnome.Settings.SearchProvider.service
+%{_datadir}/glib-2.0/schemas/org.gnome.Settings.gschema.xml
+%{_datadir}/gnome-shell/search-providers/org.gnome.Settings.search-provider.ini
+%{_datadir}/metainfo/org.gnome.Settings.appdata.xml
 %{_datadir}/polkit-1/actions/org.gnome.controlcenter.datetime.policy
 %{_datadir}/polkit-1/actions/org.gnome.controlcenter.remote-login-helper.policy
 %{_datadir}/polkit-1/actions/org.gnome.controlcenter.user-accounts.policy
 %{_datadir}/polkit-1/rules.d/gnome-control-center.rules
 %{_datadir}/gnome-control-center
 %{_datadir}/sounds/gnome
-%{_iconsdir}/hicolor/*x*/apps/gnome-power-manager.png
-%{_iconsdir}/hicolor/*x*/apps/goa-panel.png
-%{_iconsdir}/hicolor/*x*/apps/preferences-color.png
-%{_iconsdir}/hicolor/*x*/apps/preferences-desktop-display.png
-%{_iconsdir}/hicolor/*x*/apps/preferences-system-time.png
 %{_iconsdir}/hicolor/scalable/apps/org.gnome.Settings.svg
-%{_iconsdir}/hicolor/scalable/apps/org.gnome.Settings-multitasking-symbolic.svg
+%{_iconsdir}/hicolor/scalable/apps/org.gnome.Settings-*.svg
 %{_iconsdir}/hicolor/scalable/apps/org.gnome.Settings.Devel.svg
-%{_iconsdir}/hicolor/scalable/apps/preferences-color.svg
-%{_iconsdir}/hicolor/scalable/apps/preferences-desktop-display.svg
-%{_iconsdir}/hicolor/scalable/apps/preferences-system-time.svg
-%{_iconsdir}/hicolor/scalable/categories/slideshow-symbolic.svg
-%{_iconsdir}/hicolor/scalable/emblems/slideshow-emblem.svg
 %{_iconsdir}/hicolor/scalable/status/info-symbolic.svg
 %{_iconsdir}/hicolor/symbolic/apps/org.gnome.Settings-symbolic.svg
 # FIXME: wrong location (move to pixmapsdir or hicolor/scalable/...?)
 %{_iconsdir}/gnome-logo-text.svg
 %{_iconsdir}/gnome-logo-text-dark.svg
 %{_desktopdir}/gnome-*-panel.desktop
-%{_desktopdir}/gnome-control-center.desktop
+%{_desktopdir}/org.gnome.Settings.desktop
 %{_pixmapsdir}/faces
 %{_mandir}/man1/gnome-control-center.1*
 
