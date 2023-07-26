@@ -12,17 +12,17 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	43.6
+Version:	44.3
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/gnome-control-center/43/%{name}-%{version}.tar.xz
-# Source0-md5:	2a3d8e21792f970320f6eb09b662d78f
+Source0:	https://download.gnome.org/sources/gnome-control-center/44/%{name}-%{version}.tar.xz
+# Source0-md5:	a31987664414838a40b45ac485ee0375
 Patch0:		krb5.patch
 URL:		https://www.gnome.org/
 BuildRequires:	ModemManager-devel >= 1.0.0
-BuildRequires:	NetworkManager-devel >= 1.24.0
+BuildRequires:	NetworkManager-devel >= 2:1.24.0
 BuildRequires:	accountsservice-devel >= 0.6.39
 BuildRequires:	cairo-gobject-devel
 BuildRequires:	colord-devel >= 0.1.34
@@ -33,7 +33,7 @@ BuildRequires:	fontconfig-devel
 BuildRequires:	gcr-devel >= 3
 BuildRequires:	gdk-pixbuf2-devel >= 2.24.0
 BuildRequires:	gettext-tools >= 0.17
-BuildRequires:	glib2-devel >= 1:2.70.0
+BuildRequires:	glib2-devel >= 1:2.75.0
 %ifnarch s390 s390x
 BuildRequires:	gnome-bluetooth3-ui-devel >= 42
 %endif
@@ -45,7 +45,7 @@ BuildRequires:	gsettings-desktop-schemas-devel >= 42
 BuildRequires:	gsound-devel
 # X11 and Wayland checks in panels/online-accounts/meson.build (subject to update?)
 BuildRequires:	gtk+3-devel >= 3.0
-BuildRequires:	gtk4-devel >= 4.4
+BuildRequires:	gtk4-devel >= 4.9.3
 BuildRequires:	heimdal-devel
 %{?with_ibus:BuildRequires:	ibus-devel >= 1.5.2}
 BuildRequires:	libadwaita-devel >= 1.2
@@ -74,21 +74,21 @@ BuildRequires:	rpmbuild(macros) >= 1.752
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	udisks2-devel >= 2.8.2
 BuildRequires:	upower-devel >= 0.99.8
-BuildRequires:	xorg-lib-libX11-devel
+BuildRequires:	xorg-lib-libX11-devel >= 1.8
 BuildRequires:	xorg-lib-libXi-devel >= 1.2
 BuildRequires:	xz
 BuildRequires:	yelp-tools
 Requires(post,postun):	desktop-file-utils
-Requires(post,postun):	glib2 >= 1:2.70.0
+Requires(post,postun):	glib2 >= 1:2.75.0
 Requires(post,postun):	gtk-update-icon-cache
-Requires:	NetworkManager >= 1.24.0
+Requires:	NetworkManager >= 2:1.24.0
 Requires:	accountsservice >= 0.6.39
 Requires:	colord >= 0.1.34
 Requires:	colord-gtk4 >= 0.1.24
 Requires:	cups-pk-helper
 Requires:	desktop-file-utils
 Requires:	gdk-pixbuf2 >= 2.24.0
-Requires:	glib2 >= 1:2.70.0
+Requires:	glib2 >= 1:2.75.0
 %ifnarch s390 s390x
 Requires:	gnome-bluetooth3-ui-libs >= 42
 %endif
@@ -96,7 +96,7 @@ Requires:	gnome-desktop4 >= 42
 Requires:	gnome-online-accounts >= 3.26.0
 Requires:	gnome-settings-daemon >= 1:41.0
 Requires:	gsettings-desktop-schemas >= 42
-Requires:	gtk4 >= 4.4
+Requires:	gtk4 >= 4.9.3
 Requires:	hicolor-icon-theme
 %{?with_ibus:Requires:	ibus-libs >= 1.5.2}
 Requires:	libadwaita >= 1.2
@@ -112,6 +112,8 @@ Requires:	pulseaudio-libs >= 2.0
 Requires:	tzdata
 Requires:	udisks2-libs >= 2.8.2
 Requires:	upower-libs >= 0.99.8
+Requires:	xorg-lib-libX11 >= 1.8
+Requires:	xorg-lib-libXi >= 1.2
 Suggests:	NetworkManager-applet >= 1.8.0
 Suggests:	cups >= 1.4
 Suggests:	gnome-color-manager
@@ -179,7 +181,7 @@ Pliki programistyczne GNOME Control Center.
 Summary:	bash-completion for gnome-control-center
 Summary(pl.UTF-8):	Bashowe uzupełnianie nazw dla gnome-control-center
 Group:		Applications/Shells
-Requires:	bash-completion >= 2.0
+Requires:	bash-completion >= 1:2.0
 BuildArch:	noarch
 
 %description -n bash-completion-gnome-control-center
