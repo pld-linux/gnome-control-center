@@ -201,6 +201,7 @@ Bashowe uzupełnianie nazw dla gnome-control-center.
 	%{!?with_ibus:-Dibus=false} \
 	%{?with_malcontent:-Dmalcontent=true} \
 	%{?with_snap:-Dsnap=true} \
+	-Dtests=false \
 	%{!?with_wayland:-Dwayland=false}
 
 %meson_build -C build
