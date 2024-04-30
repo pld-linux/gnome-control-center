@@ -12,13 +12,13 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	45.3
+Version:	46.1
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/gnome-control-center/45/%{name}-%{version}.tar.xz
-# Source0-md5:	b8b5bc5f66d48d0ef231fc85c79abfdd
+Source0:	https://download.gnome.org/sources/gnome-control-center/46/%{name}-%{version}.tar.xz
+# Source0-md5:	58c966c88514d267df4ef9a357e4676e
 Patch0:		krb5.patch
 URL:		https://www.gnome.org/
 BuildRequires:	ModemManager-devel >= 1.0.0
@@ -30,30 +30,31 @@ BuildRequires:	colord-gtk4-devel >= 0.1.24
 BuildRequires:	cups-devel >= 1.4
 BuildRequires:	docbook-dtd42-xml
 BuildRequires:	fontconfig-devel
-BuildRequires:	gcr-devel >= 3
+BuildRequires:	gcr4-devel >= 4.1.0
 BuildRequires:	gdk-pixbuf2-devel >= 2.24.0
 BuildRequires:	gettext-tools >= 0.17
-BuildRequires:	glib2-devel >= 1:2.75.0
+BuildRequires:	glib2-devel >= 1:2.76.6
 %ifnarch s390 s390x
 BuildRequires:	gnome-bluetooth3-ui-devel >= 42
 %endif
 BuildRequires:	gnome-desktop4-devel >= 42
-BuildRequires:	gnome-online-accounts-devel >= 3.26.0
+BuildRequires:	gnome-online-accounts-devel >= 3.49.1
 BuildRequires:	gnome-settings-daemon-devel >= 1:41.0
 BuildRequires:	gnutls-devel
-BuildRequires:	gsettings-desktop-schemas-devel >= 42
+BuildRequires:	gsettings-desktop-schemas-devel >= 46
 BuildRequires:	gsound-devel
 # X11 and Wayland checks in panels/online-accounts/meson.build (subject to update?)
 BuildRequires:	gtk+3-devel >= 3.0
-BuildRequires:	gtk4-devel >= 4.9.3
+BuildRequires:	gtk4-devel >= 4.11.2
 BuildRequires:	heimdal-devel
 %{?with_ibus:BuildRequires:	ibus-devel >= 1.5.2}
-BuildRequires:	libadwaita-devel >= 1.2
+%{?with_snap:BuildRequires:	json-glib-devel}
+BuildRequires:	libadwaita-devel >= 1.4
 BuildRequires:	libepoxy-devel
 BuildRequires:	libgtop-devel >= 2.0
 BuildRequires:	libgudev-devel >= 232
 %{?with_malcontent:BuildRequires:	libmalcontent-devel >= 0.10.0}
-BuildRequires:	libnma-gtk4-devel >= 1.8.0
+BuildRequires:	libnma-gtk4-devel >= 1.10.2
 BuildRequires:	libpwquality-devel >= 1.2.2
 BuildRequires:	libsecret-devel
 BuildRequires:	libsmbclient-devel
@@ -61,7 +62,7 @@ BuildRequires:	libsmbclient-devel
 BuildRequires:	libwacom-devel >= 0.27
 %endif
 BuildRequires:	libxml2-devel >= 1:2.6.31
-BuildRequires:	meson >= 0.57.0
+BuildRequires:	meson >= 0.58.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig
 BuildRequires:	polkit-devel >= 0.114
@@ -80,7 +81,7 @@ BuildRequires:	xorg-lib-libXi-devel >= 1.2
 BuildRequires:	xz
 BuildRequires:	yelp-tools
 Requires(post,postun):	desktop-file-utils
-Requires(post,postun):	glib2 >= 1:2.75.0
+Requires(post,postun):	glib2 >= 1:2.76.6
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	NetworkManager >= 2:1.24.0
 Requires:	accountsservice >= 0.6.39
@@ -88,22 +89,23 @@ Requires:	colord >= 0.1.34
 Requires:	colord-gtk4 >= 0.1.24
 Requires:	cups-pk-helper
 Requires:	desktop-file-utils
+Requires:	gcr4-devel >= 4.1.0
 Requires:	gdk-pixbuf2 >= 2.24.0
-Requires:	glib2 >= 1:2.75.0
+Requires:	glib2 >= 1:2.76.6
 %ifnarch s390 s390x
 Requires:	gnome-bluetooth3-ui-libs >= 42
 %endif
 Requires:	gnome-desktop4 >= 42
-Requires:	gnome-online-accounts >= 3.26.0
+Requires:	gnome-online-accounts >= 3.49.1
 Requires:	gnome-settings-daemon >= 1:41.0
-Requires:	gsettings-desktop-schemas >= 42
-Requires:	gtk4 >= 4.9.3
+Requires:	gsettings-desktop-schemas >= 46
+Requires:	gtk4 >= 4.11.2
 Requires:	hicolor-icon-theme
 %{?with_ibus:Requires:	ibus-libs >= 1.5.2}
-Requires:	libadwaita >= 1.2
+Requires:	libadwaita >= 1.4
 Requires:	libgudev >= 232
 %{?with_malcontent:Requires:	libmalcontent >= 0.10.0}
-Requires:	libnma-gtk4 >= 1.8.0
+Requires:	libnma-gtk4 >= 1.10.2
 Requires:	libpwquality >= 1.2.2
 %ifnarch s390 s390x
 Requires:	libwacom >= 0.27
@@ -233,8 +235,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc NEWS README.md
 %attr(755,root,root) %{_bindir}/gnome-control-center
-%attr(755,root,root) %{_libexecdir}/cc-remote-login-helper
-%attr(755,root,root) %{_libexecdir}/gnome-control-center-goa-helper
 %attr(755,root,root) %{_libexecdir}/gnome-control-center-print-renderer
 %attr(755,root,root) %{_libexecdir}/gnome-control-center-search-provider
 %{_datadir}/dbus-1/services/org.gnome.Settings.service
@@ -242,8 +242,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/glib-2.0/schemas/org.gnome.Settings.gschema.xml
 %{_datadir}/gnome-shell/search-providers/org.gnome.Settings.search-provider.ini
 %{_datadir}/metainfo/org.gnome.Settings.appdata.xml
-%{_datadir}/polkit-1/actions/org.gnome.controlcenter.datetime.policy
 %{_datadir}/polkit-1/actions/org.gnome.controlcenter.remote-login-helper.policy
+%{_datadir}/polkit-1/actions/org.gnome.controlcenter.remote-session-helper.policy
+%{_datadir}/polkit-1/actions/org.gnome.controlcenter.system.policy
 %{_datadir}/polkit-1/actions/org.gnome.controlcenter.user-accounts.policy
 %{_datadir}/polkit-1/rules.d/gnome-control-center.rules
 %{_datadir}/gnome-control-center
@@ -251,7 +252,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/scalable/apps/org.gnome.Settings.svg
 %{_iconsdir}/hicolor/scalable/apps/org.gnome.Settings-*.svg
 %{_iconsdir}/hicolor/scalable/apps/org.gnome.Settings.Devel.svg
-%{_iconsdir}/hicolor/scalable/status/info-symbolic.svg
 %{_iconsdir}/hicolor/symbolic/apps/org.gnome.Settings-symbolic.svg
 # FIXME: wrong location (move to pixmapsdir or hicolor/scalable/...?)
 %{_iconsdir}/gnome-logo-text.svg
