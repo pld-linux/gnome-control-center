@@ -12,13 +12,13 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	46.4
+Version:	47.0.1
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/gnome-control-center/46/%{name}-%{version}.tar.xz
-# Source0-md5:	661850c7283a0ef1a50efd4184906b10
+Source0:	https://download.gnome.org/sources/gnome-control-center/47/%{name}-%{version}.tar.xz
+# Source0-md5:	2bbe48e592922bb9be71ae39396b7ccd
 Patch0:		krb5.patch
 URL:		https://www.gnome.org/
 BuildRequires:	ModemManager-devel >= 1.0.0
@@ -38,18 +38,18 @@ BuildRequires:	glib2-devel >= 1:2.76.6
 BuildRequires:	gnome-bluetooth3-ui-devel >= 42
 %endif
 BuildRequires:	gnome-desktop4-devel >= 42
-BuildRequires:	gnome-online-accounts-devel >= 3.49.1
+BuildRequires:	gnome-online-accounts-devel >= 3.51.0
 BuildRequires:	gnome-settings-daemon-devel >= 1:41.0
 BuildRequires:	gnutls-devel
-BuildRequires:	gsettings-desktop-schemas-devel >= 46
+BuildRequires:	gsettings-desktop-schemas-devel >= 47
 BuildRequires:	gsound-devel
 # X11 and Wayland checks in panels/online-accounts/meson.build (subject to update?)
 BuildRequires:	gtk+3-devel >= 3.0
-BuildRequires:	gtk4-devel >= 4.11.2
+BuildRequires:	gtk4-devel >= 4.15.2
 BuildRequires:	heimdal-devel
 %{?with_ibus:BuildRequires:	ibus-devel >= 1.5.2}
 %{?with_snap:BuildRequires:	json-glib-devel}
-BuildRequires:	libadwaita-devel >= 1.4
+BuildRequires:	libadwaita-devel >= 1.6
 BuildRequires:	libepoxy-devel
 BuildRequires:	libgtop-devel >= 2.0
 BuildRequires:	libgudev-devel >= 232
@@ -58,8 +58,9 @@ BuildRequires:	libnma-gtk4-devel >= 1.10.2
 BuildRequires:	libpwquality-devel >= 1.2.2
 BuildRequires:	libsecret-devel
 BuildRequires:	libsmbclient-devel
+%{?with_snap:BuildRequires:	libsoup3-devel >= 3.0}
 %ifnarch s390 s390x
-BuildRequires:	libwacom-devel >= 0.27
+BuildRequires:	libwacom-devel >= 1.4
 %endif
 BuildRequires:	libxml2-devel >= 1:2.6.31
 BuildRequires:	meson >= 0.58.0
@@ -71,7 +72,6 @@ BuildRequires:	python3 >= 1:3
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 1.752
-%{?with_snap:BuildRequires:	snapd-glib-devel >= 1.57}
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	tecla-devel
 BuildRequires:	udisks2-devel >= 2.8.2
@@ -96,19 +96,19 @@ Requires:	glib2 >= 1:2.76.6
 Requires:	gnome-bluetooth3-ui-libs >= 42
 %endif
 Requires:	gnome-desktop4 >= 42
-Requires:	gnome-online-accounts >= 3.49.1
+Requires:	gnome-online-accounts >= 3.51.0
 Requires:	gnome-settings-daemon >= 1:41.0
-Requires:	gsettings-desktop-schemas >= 46
-Requires:	gtk4 >= 4.11.2
+Requires:	gsettings-desktop-schemas >= 47
+Requires:	gtk4 >= 4.15.2
 Requires:	hicolor-icon-theme
 %{?with_ibus:Requires:	ibus-libs >= 1.5.2}
-Requires:	libadwaita >= 1.4
+Requires:	libadwaita >= 1.6
 Requires:	libgudev >= 232
 %{?with_malcontent:Requires:	libmalcontent >= 0.10.0}
 Requires:	libnma-gtk4 >= 1.10.2
 Requires:	libpwquality >= 1.2.2
 %ifnarch s390 s390x
-Requires:	libwacom >= 0.27
+Requires:	libwacom >= 1.4
 %endif
 Requires:	polkit >= 0.114
 Requires:	pulseaudio-libs >= 2.0
