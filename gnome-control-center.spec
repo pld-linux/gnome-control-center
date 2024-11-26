@@ -12,13 +12,13 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	47.1.1
+Version:	47.2
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	https://download.gnome.org/sources/gnome-control-center/47/%{name}-%{version}.tar.xz
-# Source0-md5:	763581587416e95fa0a2363f14a53fbd
+# Source0-md5:	0b495f0ca17e14c6e193bb58170a957d
 Patch0:		krb5.patch
 URL:		https://www.gnome.org/
 BuildRequires:	ModemManager-devel >= 1.0.0
