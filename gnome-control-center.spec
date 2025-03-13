@@ -12,13 +12,13 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	47.3
+Version:	47.4
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
 Source0:	https://download.gnome.org/sources/gnome-control-center/47/%{name}-%{version}.tar.xz
-# Source0-md5:	5be96745debe167d43514f85c3496a34
+# Source0-md5:	1997a8871725d72a322820189378ea9a
 Patch0:		krb5.patch
 URL:		https://www.gnome.org/
 BuildRequires:	ModemManager-devel >= 1.0.0
@@ -71,7 +71,7 @@ BuildRequires:	pulseaudio-devel >= 2.0
 BuildRequires:	python3 >= 1:3
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(find_lang) >= 1.23
-BuildRequires:	rpmbuild(macros) >= 1.752
+BuildRequires:	rpmbuild(macros) >= 2.042
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	tecla-devel
 BuildRequires:	udisks2-devel >= 2.8.2
@@ -198,7 +198,7 @@ Bashowe uzupełnianie nazw dla gnome-control-center.
 %patch -P0 -p1
 
 %build
-%meson build \
+%meson \
 	-Ddocumentation=true \
 	%{!?with_ibus:-Dibus=false} \
 	%{?with_malcontent:-Dmalcontent=true} \
@@ -206,12 +206,12 @@ Bashowe uzupełnianie nazw dla gnome-control-center.
 	-Dtests=false \
 	%{!?with_wayland:-Dwayland=false}
 
-%meson_build -C build
+%meson_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%meson_install -C build
+%meson_install
 
 # not supported by glibc (as of 2.37)
 %{__rm} -r $RPM_BUILD_ROOT%{_localedir}/ie
