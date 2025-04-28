@@ -12,18 +12,18 @@ Summary(pt_BR.UTF-8):	O Centro de Controle do GNOME
 Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
-Version:	47.5
+Version:	48.1
 Release:	1
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/gnome-control-center/47/%{name}-%{version}.tar.xz
-# Source0-md5:	89b4bd60f245f2bd3f9faf87d1e32391
+Source0:	https://download.gnome.org/sources/gnome-control-center/48/%{name}-%{version}.tar.xz
+# Source0-md5:	2e17d5476434e9f753276d83a503be44
 Patch0:		krb5.patch
 URL:		https://www.gnome.org/
 BuildRequires:	ModemManager-devel >= 1.0.0
 BuildRequires:	NetworkManager-devel >= 2:1.24.0
-BuildRequires:	accountsservice-devel >= 0.6.39
+BuildRequires:	accountsservice-devel >= 23.11.69
 BuildRequires:	cairo-gobject-devel
 BuildRequires:	colord-devel >= 0.1.34
 BuildRequires:	colord-gtk4-devel >= 0.1.24
@@ -39,9 +39,9 @@ BuildRequires:	gnome-bluetooth3-ui-devel >= 42
 %endif
 BuildRequires:	gnome-desktop4-devel >= 42
 BuildRequires:	gnome-online-accounts-devel >= 3.51.0
-BuildRequires:	gnome-settings-daemon-devel >= 1:41.0
+BuildRequires:	gnome-settings-daemon-devel >= 1:48
 BuildRequires:	gnutls-devel
-BuildRequires:	gsettings-desktop-schemas-devel >= 47
+BuildRequires:	gsettings-desktop-schemas-devel >= 48
 BuildRequires:	gsound-devel
 # X11 and Wayland checks in panels/online-accounts/meson.build (subject to update?)
 BuildRequires:	gtk+3-devel >= 3.0
@@ -49,7 +49,7 @@ BuildRequires:	gtk4-devel >= 4.15.2
 BuildRequires:	heimdal-devel
 %{?with_ibus:BuildRequires:	ibus-devel >= 1.5.2}
 %{?with_snap:BuildRequires:	json-glib-devel}
-BuildRequires:	libadwaita-devel >= 1.6
+BuildRequires:	libadwaita-devel >= 1.7
 BuildRequires:	libepoxy-devel
 BuildRequires:	libgtop-devel >= 2.0
 BuildRequires:	libgudev-devel >= 232
@@ -73,9 +73,9 @@ BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(find_lang) >= 1.23
 BuildRequires:	rpmbuild(macros) >= 2.042
 BuildRequires:	tar >= 1:1.22
-BuildRequires:	tecla-devel
+BuildRequires:	tecla-devel >= 47.0
 BuildRequires:	udisks2-devel >= 2.8.2
-BuildRequires:	upower-devel >= 0.99.8
+BuildRequires:	upower-devel >= 1.90.6
 BuildRequires:	xorg-lib-libX11-devel >= 1.8
 BuildRequires:	xorg-lib-libXi-devel >= 1.2
 BuildRequires:	xz
@@ -84,7 +84,7 @@ Requires(post,postun):	desktop-file-utils
 Requires(post,postun):	glib2 >= 1:2.76.6
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	NetworkManager >= 2:1.24.0
-Requires:	accountsservice >= 0.6.39
+Requires:	accountsservice >= 23.11.69
 Requires:	colord >= 0.1.34
 Requires:	colord-gtk4 >= 0.1.24
 Requires:	cups-pk-helper
@@ -97,12 +97,12 @@ Requires:	gnome-bluetooth3-ui-libs >= 42
 %endif
 Requires:	gnome-desktop4 >= 42
 Requires:	gnome-online-accounts >= 3.51.0
-Requires:	gnome-settings-daemon >= 1:41.0
-Requires:	gsettings-desktop-schemas >= 47
+Requires:	gnome-settings-daemon >= 1:48
+Requires:	gsettings-desktop-schemas >= 48
 Requires:	gtk4 >= 4.15.2
 Requires:	hicolor-icon-theme
 %{?with_ibus:Requires:	ibus-libs >= 1.5.2}
-Requires:	libadwaita >= 1.6
+Requires:	libadwaita >= 1.7
 Requires:	libgudev >= 232
 %{?with_malcontent:Requires:	libmalcontent >= 0.10.0}
 Requires:	libnma-gtk4 >= 1.10.2
@@ -112,9 +112,10 @@ Requires:	libwacom >= 1.4
 %endif
 Requires:	polkit >= 0.114
 Requires:	pulseaudio-libs >= 2.0
+Requires:	tecla >= 47.0
 Requires:	tzdata
 Requires:	udisks2-libs >= 2.8.2
-Requires:	upower-libs >= 0.99.8
+Requires:	upower-libs >= 1.90.6
 Requires:	xorg-lib-libX11 >= 1.8
 Requires:	xorg-lib-libXi >= 1.2
 Suggests:	NetworkManager-applet >= 1.8.0
@@ -235,9 +236,12 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc NEWS README.md
 %attr(755,root,root) %{_bindir}/gnome-control-center
+%attr(755,root,root) %{_libexecdir}/gnome-control-center-global-shortcuts-provider
 %attr(755,root,root) %{_libexecdir}/gnome-control-center-print-renderer
 %attr(755,root,root) %{_libexecdir}/gnome-control-center-search-provider
+%{_datadir}/dbus-1/interfaces/org.gnome.GlobalShortcutsRebind.xml
 %{_datadir}/dbus-1/services/org.gnome.Settings.service
+%{_datadir}/dbus-1/services/org.gnome.Settings.GlobalShortcutsProvider.service
 %{_datadir}/dbus-1/services/org.gnome.Settings.SearchProvider.service
 %{_datadir}/glib-2.0/schemas/org.gnome.Settings.gschema.xml
 %{_datadir}/gnome-shell/search-providers/org.gnome.Settings.search-provider.ini
