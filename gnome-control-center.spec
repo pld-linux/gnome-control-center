@@ -13,7 +13,7 @@ Summary(ru.UTF-8):	Центр управления GNOME
 Summary(uk.UTF-8):	Центр керування GNOME
 Name:		gnome-control-center
 Version:	48.3
-Release:	2
+Release:	3
 Epoch:		1
 License:	GPL v2+
 Group:		X11/Applications
@@ -89,7 +89,7 @@ Requires:	colord >= 0.1.34
 Requires:	colord-gtk4 >= 0.1.24
 Requires:	cups-pk-helper
 Requires:	desktop-file-utils
-Requires:	gcr4-devel >= 4.1.0
+Requires:	gcr4 >= 4.1.0
 Requires:	gdk-pixbuf2 >= 2.24.0
 Requires:	glib2 >= 1:2.76.6
 %ifnarch s390 s390x
